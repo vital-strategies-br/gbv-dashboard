@@ -1,0 +1,46 @@
+.dashboard-viewport {
+  flex: 1;
+  display: flex;
+	flex-direction: column;
+  justify-content: center;
+	height: 100%;
+  box-sizing: border-box;
+  /* background-color: mediumaquamarine; */
+}
+
+.dashboard-header {
+	display: flex;
+	align-items: center;
+	height: auto;
+	background-color: #c7dcff;
+	padding: 30px 10% 30px 10%; 
+}
+
+.dashboard-header h2 {
+	margin: 0;
+	padding: 0;
+}
+
+.dashboard-content {
+	flex: 1;
+	display: flex;
+	padding: 0 10% 0 10%;
+	background-color: #e5f0ff;
+}
+
+.dashboard-block {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/* background-color: beige; */
+}
+
+.dashboard-block > div {
+	flex: 1;
+	display: flex;
+	/* background-color: turquoise; */
+}
+.dashboard-block > div:last-child {
+	flex: 10;
+}

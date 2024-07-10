@@ -1,24 +1,43 @@
 import React from 'react';
-import paths from './bairros.json';
 
-function Map() {
+import './Map.css';
+import shapes from './res/shapes-recife.json';
+
+interface MapProps {
+  // The 'id' of the selected shape
+  selectedShape?: number,
+  // A mapping of shape 'id' to color
+  colors: { [index: number]: string },
+  // The onShapeClick callback
+  onShapeClick: (id: number) => void;
+}
+
+function Map({ colors, onShapeClick }: MapProps) {
+
+  function onPathClick(id: number): void {
+    if (onShapeClick) {
+      onShapeClick(id);
+    }
+  }
+
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      version="1.2"
-      baseProfile="tiny"
-      width="800"
-      height="1136"
-      viewBox="0 0 800 1136"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      {paths.locations.map(x => {
-        return (
-          <path d={x.path} onClick={() => alert(x.id)} stroke="black" fill="orange"></path>
-        );
-      })}
-    </svg>
+    <div className="wrapper">
+      <svg
+        className="svg-map"
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.2"
+        baseProfile="tiny"
+        viewBox={shapes.viewBox}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        {shapes.locations.map(x => {
+          return (
+            <path d={x.path} onClick={() => onPathClick(x.id)} fill={colors[x.id] || "#d4d4d4"}></path>
+          );
+        })}
+      </svg>
+    </div>
   );
 }
 

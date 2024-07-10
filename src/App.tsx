@@ -1,12 +1,12 @@
 import React from 'react';
-// import './App.css';
+import Dashboard from './Dashboard';
 
-import Map from './Map';
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Map />
+    <div className="viewport">
+      <Dashboard />
     </div>
   );
 }
