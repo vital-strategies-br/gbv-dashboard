@@ -1,0 +1,41 @@
+.section-header {
+	display: flex;
+    flex: 0 1;
+    align-items: center;
+    justify-content: center;
+    max-height: 150px;
+	background-color: #c7dcff; 
+}
+
+.section-header-content {
+    display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 22px 10% 22px 10%;
+    gap: 12px;
+}
+
+.section-header-content img {
+    height: 24px;
+    padding-bottom: 8px;
+}
+
+.section-header-text {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 8px;
+}
+.section-header-text > h3 {
+    font: normal normal normal 22px/22px Larsseit;
+}
+.section-header-text > span {
+    text-align: left;
+    font: normal normal normal 16px/20px Larsseit;
+    letter-spacing: 0px;
+    color: #222222B3;
+    opacity: 1;
+}

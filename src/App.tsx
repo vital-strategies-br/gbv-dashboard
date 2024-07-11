@@ -1,12 +1,12 @@
 import React from 'react';
-import Dashboard from './Dashboard';
+import MapView from './mapview/MapView';
 
 import './App.css';
 
 function App() {
   return (
     <div className="viewport">
-      <Dashboard />
+      <MapView />
     </div>
   );
 }

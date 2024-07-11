@@ -1,7 +1,7 @@
 import React from 'react';
 
-import './Map.css';
-import shapes from './res/shapes-recife.json';
+import './SVGMap.css';
+import shapes from './shapes/recife-4098pts.json';
 
 interface MapProps {
   // The 'id' of the selected shape

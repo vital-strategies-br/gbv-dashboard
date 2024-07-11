@@ -8,19 +8,6 @@
   /* background-color: mediumaquamarine; */
 }
 
-.dashboard-header {
-	display: flex;
-	align-items: center;
-	height: auto;
-	background-color: #c7dcff;
-	padding: 30px 10% 30px 10%; 
-}
-
-.dashboard-header h2 {
-	margin: 0;
-	padding: 0;
-}
-
 .dashboard-content {
 	flex: 1;
 	display: flex;
