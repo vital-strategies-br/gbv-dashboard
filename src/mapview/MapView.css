@@ -1,18 +1,25 @@
-.dashboard-viewport {
+.mapview-container {
   flex: 1;
   display: flex;
 	flex-direction: column;
   justify-content: center;
-	height: 100%;
+	/* align-items: center; */
+	min-height: 100%;
   box-sizing: border-box;
-  /* background-color: mediumaquamarine; */
+  background-color: #E5F0FF;
 }
 
 .dashboard-content {
 	flex: 1;
 	display: flex;
-	padding: 0 10% 0 10%;
-	background-color: #e5f0ff;
+	justify-content: center;
+}
+
+.dashboard-content-inner {
+	flex: 1;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 32px;
 }
 
 .dashboard-block {
@@ -20,7 +27,12 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	/* background-color: beige; */
+	min-width: 500px;
+	background-color: beige;
+}
+
+.dashboard-block:last-child {
+	align-items: center;
 }
 
 .dashboard-block > div {
@@ -30,4 +42,10 @@
 }
 .dashboard-block > div:last-child {
 	flex: 10;
+}
+
+@media (max-width: 720px) {
+  .dashboard-block {
+    min-width: 350px;
+  }
 }
