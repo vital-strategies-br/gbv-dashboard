@@ -1,19 +1,34 @@
-import React from 'react';
-import Demographic from '../icons/demographic.svg';
-import './SectionHeader.css';
+import React from "react";
+import "./SectionHeader.css";
 
-function SectionHeader() {
-    return (
-        <div className="section-header">
-            <div className="section-header-content">
-                <img src={Demographic} alt="Demographic icon" />
-                <div className="section-header-text">
-                    <h3>Subnotificação de violência contra mulher no município de Recife</h3>
-                    <span>Estimativa de Subnotificação por 10.000 usuárias das atenção básica.</span>
-                </div>
-            </div>
+type SectionHeaderProps = {
+  // The main title of the section
+  title: string;
+  // This is the second-level title of the section
+  subtitle: string;
+  // 'src' for the icon showed in the left side of the section
+  iconSrc: string;
+  // 'alt' for the icon
+  iconAlt: string;
+};
+
+function SectionHeader({
+  title,
+  subtitle,
+  iconSrc,
+  iconAlt,
+}: SectionHeaderProps) {
+  return (
+    <div className="section-header">
+      <div className="section-header-content content">
+        <img src={iconSrc} alt={iconAlt} data-testid="section-header-item" />
+        <div className="section-header-text">
+          <h3   data-testid="section-header-item">{title}</h3>
+          <span data-testid="section-header-item">{subtitle}</span>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default SectionHeader;

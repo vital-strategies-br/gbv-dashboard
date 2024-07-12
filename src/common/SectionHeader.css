@@ -4,18 +4,18 @@
     align-items: center;
     justify-content: center;
     max-height: 150px;
-	background-color: #c7dcff; 
+	background-color: #c7dcff;
+    padding: 22px 0 22px 0;
 }
 
 .section-header-content {
     display: flex;
-	flex-direction: row;
+    flex: 1;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    padding: 22px 10% 22px 10%;
     gap: 12px;
 }
-
 .section-header-content img {
     height: 24px;
     padding-bottom: 8px;
