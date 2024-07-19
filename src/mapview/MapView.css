@@ -1,51 +1,75 @@
 .mapview-container {
-  flex: 1;
-  display: flex;
+	flex: 1;
+	display: flex;
 	flex-direction: column;
-  justify-content: center;
+	justify-content: center;
 	/* align-items: center; */
 	min-height: 100%;
-  box-sizing: border-box;
-  background-color: #E5F0FF;
+	box-sizing: border-box;
+	background-color: #E5F0FF;
 }
 
-.dashboard-content {
+.mapview-body {
 	flex: 1;
 	display: flex;
 	justify-content: center;
 }
 
-.dashboard-content-inner {
+.mapview-content {
 	flex: 1;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 32px;
 }
 
-.dashboard-block {
+.mapview-section {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	/* justify-content: center; */
+	padding: 32px 0;
 	min-width: 500px;
-	background-color: beige;
+	/* background-color: beige; */
+	gap: 32px;
 }
-
-.dashboard-block:last-child {
+.mapview-section:last-child {
 	align-items: center;
 }
 
-.dashboard-block > div {
+/* FILTER STYLES */
+.mapview-filter-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 24px;
+}
+.mapview-filter-field-container {
 	flex: 1;
 	display: flex;
-	/* background-color: turquoise; */
+	flex-direction: column;
+	gap: 4px;
 }
-.dashboard-block > div:last-child {
-	flex: 10;
+.mapview-filter-field-container > span {
+	margin-left: 1px;
+	font-size: 13px;
+	color: #464646;
+}
+/* MAP CONTAINER */
+.mapview-map-container {
+	display: flex;
+	flex: 1;
+}
+
+.mapview-instructions {
+	font-size: 15px;
+	color: #222222;
 }
 
 @media (max-width: 720px) {
-  .dashboard-block {
-    min-width: 350px;
-  }
+	.mapview-content {
+		gap: 0;
+	}
+	.mapview-section {
+		min-width: 350px;
+	}
 }

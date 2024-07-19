@@ -14,7 +14,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
 }
 .section-header-content img {
     height: 24px;

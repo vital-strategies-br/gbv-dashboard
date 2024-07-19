@@ -18,18 +18,18 @@ const PALETTE = [
 ];
 const NULL_COLOR = "#d4d4d4";
 
-interface ShapeData {
+type PathData = {
   name: string,
   value: number | null,
 }
 
-interface SVGMapProps {
-  // A mapping of shape 'id' to color
-  data: { [index: number]: ShapeData },
-  // The 'id' of the selected shape
+type SVGMapProps = {
+  // A mapping of path 'id' to color
+  data: { [index: number]: PathData },
+  // The 'id' of the selected path
   selectedShape: number | null,
   // The onShapeClick callback
-  onShapeClick: (id: number) => void;
+  onPathClick: (id: number) => void;
 }
 
 function valueToHex(value: number | null, range: number = 1): string {
@@ -44,16 +44,10 @@ function valueToHex(value: number | null, range: number = 1): string {
   return PALETTE[index];
 }
 
-function SVGMap({ data, selectedShape, onShapeClick }: SVGMapProps) {
-
-  function onPathClick(id: number): void {
-    if (onShapeClick) {
-      onShapeClick(id);
-    }
-  }
+function SVGMap({ data, selectedShape, onPathClick }: SVGMapProps) {
 
   return (
-    <div className="wrapper">
+    <div className="svg-map-wrapper">
       <svg
         className="svg-map"
         xmlns="http://www.w3.org/2000/svg"
@@ -62,15 +56,24 @@ function SVGMap({ data, selectedShape, onShapeClick }: SVGMapProps) {
         viewBox={shapes.viewBox}
         stroke-linecap="round"
         stroke-linejoin="round"
+        width={350}  
       >
         {shapes.locations.map(x => {
-          let shapeData = data[x.id];
-          let fill = (!selectedShape || selectedShape === x.id) ? valueToHex(shapeData.value) : NULL_COLOR
+          const pathData = data[x.id];
+          const pathValue = pathData.value;
+          const fill = (!selectedShape || selectedShape === x.id) ? valueToHex(pathValue) : NULL_COLOR;
+          const onClick = pathValue && onPathClick ? () => onPathClick(x.id) : undefined;
+
           return (
-            <path d={x.path} onClick={() => onPathClick(x.id)} stroke="white" fill={fill}></path>
+            <path d={x.path} onClick={onClick} fill={fill} stroke="white" style={{
+              cursor: pathValue ? "pointer" : "auto"
+            }}></path>
           );
         })}
       </svg>
+      <div className="svg-map-instructions">
+        <strong>PASSE O MOUSE</strong> sobre cada bairro para destacar bairros com estimativas similares. <strong>CLIQUE</strong> sobre o bairro escolhido para saber mais sobre aquela localidade.
+      </div>
     </div>
   );
 }

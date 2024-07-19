@@ -1,16 +1,21 @@
-.wrapper {
-	flex: 1;
+.svg-map-wrapper {
+	position: relative;
 	display: flex;
-	align-items: center;
+	flex: 1;
 	justify-content: center;
-	/* background-color: purple; */
 }
 
-.svg-map {
-	width: 80%;
-	height: 80%;
+.svg-map-instructions {
+	position: absolute;
+	bottom: 50px;
+	left: 20px;
+	width: 210px;
+	font-size: 12px;
 }
 
-.svg-map path {
-	cursor: pointer;
+@media (max-width: 600px) {
+	.svg-map-instructions {
+		left: 0px;
+		width: 100px;
+	}
 }
