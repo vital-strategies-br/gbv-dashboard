@@ -1,47 +1,22 @@
 import React, { useState } from "react";
-import Select, { CSSObjectWithLabel } from "react-select";
+import Select from "react-select";
 
+// Components
+import BarChart from "./BarChart";
 import SVGMap from "./SVGMap";
 import SectionHeader from "../common/SectionHeader";
-
-import DashboardDataJson from "./data/dashboard.json";
+// Types
+import { NeighborhoodData } from "./types";
+// Image
 import Demographic from "../icons/demographic.svg";
-
+// Data
+import DashboardDataJson from "./data/dashboard.json";
+// CSS
 import "./MapView.css";
 
-type SubnotificationData = {
-  year: number,
-  esus: number | null,
-  sinan: number | null,
-  subnotification_rate: number | null,
-  subnotification_rate_zscore: number | null,
-  relative_subnotification_index: number | null,
-  relative_subnotification_category: string | null
-}
-
-type NeighborhoodData = {
-  // Simplified name of the neighborhood
-  neighborhood: string,
-  // The UI name of the neighborhood
-  name: string,
-  id_shape: number,
-  id_sinan: number,
-  id_geojson: number,
-  id_district: number,
-  district_name: string,
-  // Different data points for possible UI filters
-  data: Array<SubnotificationData>;
-}
-
 const data: Array<NeighborhoodData> = DashboardDataJson;
-
-const options = [
-  { value: 2018, label: '2018' },
-  { value: 2019, label: '2019' },
-  { value: 2020, label: '2020' },
-  { value: 2021, label: '2021' },
-  { value: 2022, label: '2022' },
-];
+const yearsSet = new Set(data.map(x => x.data.map(y => y.year)).flat());
+const yearOptions = Array.from(yearsSet).map(x => ({ value: x, label: x.toString() }));
 
 function MapView() {
   let [selectedNeighborhood, setSelectedNeighborhood] = useState<number | null>(
@@ -92,7 +67,7 @@ function MapView() {
             <div className="mapview-filter-container">
               <div className="mapview-filter-field-container">
                 <span>Selecione o período</span>
-                <Select options={options} onChange={onYearChange} placeholder="Selecione..." />
+                <Select options={yearOptions} onChange={onYearChange} placeholder="Selecione..." />
               </div>
               <div className="mapview-filter-field-container">
                 <span>Selecione a faixa etária</span>
@@ -111,15 +86,18 @@ function MapView() {
             {selectedNeighborhood ? (
               <h3>{name}</h3>
             ) : (
-              <span className="mapview-instructions">
-                  O mapa do Recife à esquerda mostra a estimativa de
-                  subnotificação de casos de violência contra a mulher para cada
-                  10.000 usuárias de atenção básica (AB) em cada bairro. O
-                  gráfico de barras agrupa bairros em faixa de estimativa
-                  similares. Ao passar o mouse sobre cada barra, destacam-se os
-                  bairros com quantidades similares de possíveis casos de
-                  violência não identficados pelo sistema de saúde para aquelas
-              </span>
+              <>
+                <span className="mapview-instructions">
+                    O mapa do Recife à esquerda mostra a estimativa de
+                    subnotificação de casos de violência contra a mulher para cada
+                    10.000 usuárias de atenção básica (AB) em cada bairro. O
+                    gráfico de barras agrupa bairros em faixa de estimativa
+                    similares. Ao passar o mouse sobre cada barra, destacam-se os
+                    bairros com quantidades similares de possíveis casos de
+                    violência não identficados pelo sistema de saúde para aquelas
+                </span>
+                <BarChart data={filtered} />
+              </>
             )}
           </div>
         </div>

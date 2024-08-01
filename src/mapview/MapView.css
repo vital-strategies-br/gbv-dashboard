@@ -19,7 +19,7 @@
 	flex: 1;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 32px;
+	gap: 64px;
 }
 
 .mapview-section {

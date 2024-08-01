@@ -1,7 +1,11 @@
 import React from 'react';
 
-import './SVGMap.css';
+// Types
+import { SVGMapProps } from "./types";
+// Data
 import shapes from './shapes/recife-4098pts.json';
+// CSS
+import './SVGMap.css';
 
 const PALETTE = [
   "#FFF0F0",
@@ -17,20 +21,6 @@ const PALETTE = [
   "#480708"
 ];
 const NULL_COLOR = "#d4d4d4";
-
-type PathData = {
-  name: string,
-  value: number | null,
-}
-
-type SVGMapProps = {
-  // A mapping of path 'id' to color
-  data: { [index: number]: PathData },
-  // The 'id' of the selected path
-  selectedShape: number | null,
-  // The onShapeClick callback
-  onPathClick: (id: number) => void;
-}
 
 function valueToHex(value: number | null, range: number = 1): string {
   if (value === null) return NULL_COLOR;
@@ -54,8 +44,8 @@ function SVGMap({ data, selectedShape, onPathClick }: SVGMapProps) {
         version="1.2"
         baseProfile="tiny"
         viewBox={shapes.viewBox}
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         width={350}  
       >
         {shapes.locations.map(x => {
@@ -65,7 +55,7 @@ function SVGMap({ data, selectedShape, onPathClick }: SVGMapProps) {
           const onClick = pathValue && onPathClick ? () => onPathClick(x.id) : undefined;
 
           return (
-            <path d={x.path} onClick={onClick} fill={fill} stroke="white" style={{
+            <path key={x.id} d={x.path} onClick={onClick} fill={fill} stroke="white" style={{
               cursor: pathValue ? "pointer" : "auto"
             }}></path>
           );
