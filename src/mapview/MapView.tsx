@@ -9,6 +9,7 @@ import SectionHeader from "../common/SectionHeader";
 import { NeighborhoodData } from "./types";
 // Image
 import Demographic from "../icons/demographic.svg";
+import Document from "../icons/document.svg";
 // Data
 import DashboardDataJson from "./data/dashboard.json";
 // CSS
@@ -59,7 +60,7 @@ function MapView() {
         title="Subnotificação de violência contra mulher no município de Recife"
         subtitle="Estimativa de Subnotificação por 10.000 usuárias das atenção básica."
         iconSrc={Demographic}
-        iconAlt="Icon of a group of people"
+        iconAlt=""
       />
       <div className="mapview-body">
         <div className="mapview-content content">
@@ -87,7 +88,8 @@ function MapView() {
               <h3>{name}</h3>
             ) : (
               <>
-                <span className="mapview-instructions">
+                <div className="mapview-instructions-wrapper">
+                  <span className="mapview-instructions">
                     O mapa do Recife à esquerda mostra a estimativa de
                     subnotificação de casos de violência contra a mulher para cada
                     10.000 usuárias de atenção básica (AB) em cada bairro. O
@@ -95,8 +97,15 @@ function MapView() {
                     similares. Ao passar o mouse sobre cada barra, destacam-se os
                     bairros com quantidades similares de possíveis casos de
                     violência não identficados pelo sistema de saúde para aquelas
-                </span>
-                <BarChart data={filtered} />
+                  </span>
+                </div>
+		<BarChart data={filtered} />
+                <div className="report-button-wrapper">
+                  <button className="report-button">
+                    <img alt="" src={Document} />
+                    <span>Saiba mais sobre a pesquisa que deu origem a estes dados</span>
+                  </button>
+                </div>
               </>
             )}
           </div>

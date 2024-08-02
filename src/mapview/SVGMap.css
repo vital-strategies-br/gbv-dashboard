@@ -5,9 +5,13 @@
 	justify-content: center;
 }
 
+.svg-map {
+	width: 80%;
+}
+
 .svg-map-instructions {
 	position: absolute;
-	bottom: 50px;
+	bottom: 2vh;
 	left: 20px;
 	width: 210px;
 	font-size: 12px;
@@ -15,6 +19,7 @@
 
 @media (max-width: 600px) {
 	.svg-map-instructions {
+		bottom: 0px;
 		left: 0px;
 		width: 100px;
 	}

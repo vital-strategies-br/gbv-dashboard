@@ -44,7 +44,7 @@ function BarChart({ data, width = 500, height = 350 }: BarChartProps) {
                 />
             ))} */}
             {linspace(YLIM[0], YLIM[1], 5).map(value => (
-                <g className="y-tick">
+                <g key={value} className="y-tick">
 
                     <line key={value} x1="70" y1={height - (value * (height / YLIM[1]))} x2={width} y2={height - (value * (height / YLIM[1]))} stroke="#B1B1B1" />
                     <text x="40" y={height - (value * (height / YLIM[1]))} fontSize={14}>{value}</text>
