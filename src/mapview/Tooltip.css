@@ -1,0 +1,15 @@
+.tooltip-box {
+    position: fixed;
+    padding: 12px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.tooltip-title {
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.tooltip-data {
+    font-size: 14px;
+}

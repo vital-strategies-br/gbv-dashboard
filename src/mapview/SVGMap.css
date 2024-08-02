@@ -1,5 +1,4 @@
 .svg-map-wrapper {
-	position: relative;
 	display: flex;
 	flex: 1;
 	justify-content: center;
@@ -7,6 +6,10 @@
 
 .svg-map {
 	width: 80%;
+}
+
+.svg-map path:hover {
+	filter: brightness(95%);
 }
 
 .svg-map-instructions {

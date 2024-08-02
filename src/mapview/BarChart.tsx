@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Bar from './Bar';
+// import Bar from './Bar';
 import { BarChartProps } from "./types";
 import "./BarChart.css";
 
@@ -18,7 +18,7 @@ function linspace(start: number, end: number, num: number): number[] {
 }
 
 function BarChart({ data, width = 500, height = 350 }: BarChartProps) {
-    const values = Object.values(data).map(x => x.value);
+    const values = Object.values(data).map(x => x.subnotification_rate);
 
     let nullCount = 0;
     const binSize = MAX_VALUE / BINS;

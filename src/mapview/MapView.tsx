@@ -5,8 +5,9 @@ import Select from "react-select";
 import BarChart from "./BarChart";
 import SVGMap from "./SVGMap";
 import SectionHeader from "../common/SectionHeader";
+import Tooltip from "./Tooltip";
 // Types
-import { NeighborhoodData } from "./types";
+import { NeighborhoodData, UISubnotificationData } from "./types";
 // Image
 import Demographic from "../icons/demographic.svg";
 import Document from "../icons/document.svg";
@@ -15,7 +16,7 @@ import DashboardDataJson from "./data/dashboard.json";
 // CSS
 import "./MapView.css";
 
-const data: Array<NeighborhoodData> = DashboardDataJson;
+const data: NeighborhoodData[] = DashboardDataJson;
 const yearsSet = new Set(data.map(x => x.data.map(y => y.year)).flat());
 const yearOptions = Array.from(yearsSet).map(x => ({ value: x, label: x.toString() }));
 
@@ -23,6 +24,7 @@ function MapView() {
   let [selectedNeighborhood, setSelectedNeighborhood] = useState<number | null>(
     null
   );
+  let [hoveredNeighborhood, setHoveredNeighborhood] = useState<number | null>(null);
   let [filterYear, setFilterYear] = useState<number | null>(null);
 
   function onPathClick(id: number) {
@@ -33,18 +35,19 @@ function MapView() {
     }
   }
 
-  let filtered = Object.fromEntries(
+
+  const filtered = Object.fromEntries(
     data.map((neighborhood) => {
       const yearData = neighborhood.data.find(x => x.year === filterYear);
-      const value = yearData?.subnotification_rate || null
 
       return [
         neighborhood.id_shape,
         {
           name: neighborhood.name,
-          value: value,
-        },
+          ...yearData
+        } as UISubnotificationData,
       ];
+
     })
   );
 
@@ -76,30 +79,29 @@ function MapView() {
               </div>
             </div>
             <div className="mapview-map-container">
+              {(filterYear && hoveredNeighborhood != null) &&
+                <Tooltip data={filtered[hoveredNeighborhood]} />
+              }
               <SVGMap
-                selectedShape={selectedNeighborhood}
-                onPathClick={onPathClick}
                 data={filtered}
+                selectedShapeId={selectedNeighborhood}
+                onPathClick={onPathClick}
+                onPathMouseEnter={id => setHoveredNeighborhood(id)}
+                onMapMouseLeave={() => setHoveredNeighborhood(null)}
               />
             </div>
           </div>
           <div className="mapview-section">
+            <div className="mapview-instructions-wrapper">
+              <span className="mapview-instructions">
+                O mapa do Recife à esquerda mostra a estimativa de subnotificação de casos de violência contra a mulher para cada 10.000 usuárias da atenção básica (AB) em cada bairro. O gráfico de barras agrupa bairros em faixas de estimativa similares. Ao passar o mouse sobre cada barra, destacam-se os bairros com quantidades similares de possíveis casos de violência não identificados pelo sistema de saúde para aquelas localidades.
+              </span>
+            </div>
             {selectedNeighborhood ? (
               <h3>{name}</h3>
             ) : (
               <>
-                <div className="mapview-instructions-wrapper">
-                  <span className="mapview-instructions">
-                    O mapa do Recife à esquerda mostra a estimativa de
-                    subnotificação de casos de violência contra a mulher para cada
-                    10.000 usuárias de atenção básica (AB) em cada bairro. O
-                    gráfico de barras agrupa bairros em faixa de estimativa
-                    similares. Ao passar o mouse sobre cada barra, destacam-se os
-                    bairros com quantidades similares de possíveis casos de
-                    violência não identficados pelo sistema de saúde para aquelas
-                  </span>
-                </div>
-		<BarChart data={filtered} />
+                <BarChart data={filtered} />
                 <div className="report-button-wrapper">
                   <button className="report-button">
                     <img alt="" src={Document} />

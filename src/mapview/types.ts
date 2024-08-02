@@ -1,4 +1,4 @@
-type SubnotificationData = {
+interface SubnotificationData {
     year: number,
     esus: number | null,
     sinan: number | null,
@@ -8,36 +8,48 @@ type SubnotificationData = {
     relative_subnotification_category: string | null
 }
 
-export type NeighborhoodData = {
+export interface NeighborhoodData {
     // Simplified name of the neighborhood
     neighborhood: string,
     // The UI name of the neighborhood
     name: string,
+    // Different IDs for the neighborhood
     id_shape: number,
     id_sinan: number,
     id_geojson: number,
     id_district: number,
+    // The UI name of the district
     district_name: string,
     // Different data points for possible UI filters
     data: Array<SubnotificationData>;
 }
 
-export type PathData = {
-    name: string,
-    value: number | null,
+export interface UISubnotificationData extends SubnotificationData {
+    name: string
 }
 
-export type SVGMapProps = {
+export interface SVGMapProps {
     // A mapping of path 'id' to color
-    data: { [index: number]: PathData },
+    data: { [index: string]: UISubnotificationData },
     // The 'id' of the selected path
-    selectedShape: number | null,
-    // The onShapeClick callback
+    selectedShapeId: number | null,
+    // Callback for click on a region of the map
+    // Invoked with the 'id' of the path as argument
     onPathClick: (id: number) => void;
+    // Callback for hovering a region of the map.
+    // Invoked with the 'id' of the path as argument
+    onPathMouseEnter: (id: number) => void;
+    // When mouse leaves the WHOLE MAP.
+    onMapMouseLeave: () => void;
 }
 
-export type BarChartProps = {
-    data: { [index: number]: PathData },
+export interface TooltipProps {
+    // The data to be displayed
+    data: UISubnotificationData;
+}
+
+export interface BarChartProps {
+    data: { [index: number]: UISubnotificationData },
     width?: number,
     height?: number,
 }
