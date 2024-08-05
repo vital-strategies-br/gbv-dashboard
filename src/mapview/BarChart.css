@@ -1,0 +1,11 @@
+g.x-grid-ticks text,
+g.y-grid-ticks text {
+	text-anchor: end;
+	font-size: 14px;
+	fill: #909090;
+}
+
+g.x-grid-ticks line,
+g.y-grid-ticks line {
+	stroke: #B1B1B1;
+}
