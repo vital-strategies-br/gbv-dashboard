@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 
 // Components
-import BarChart from "./BarChart";
+import HistogramChart from "./HistogramChart";
 import SVGMap from "./SVGMap";
 import SectionHeader from "../common/SectionHeader";
 import Tooltip from "./Tooltip";
@@ -101,7 +101,7 @@ function MapView() {
               <h3>{name}</h3>
             ) : (
               <>
-                <BarChart data={filtered} xAxisLimits={[0, 1]} yAxisLimits={[0, 30]}/>
+                <HistogramChart data={filtered} bins={15} xAxisLimits={[0.1, .9]} yAxisLimits={[0, 30]}/>
                 <div className="report-button-wrapper">
                   <button className="report-button">
                     <img alt="" src={Document} />

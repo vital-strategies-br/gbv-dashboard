@@ -50,8 +50,30 @@ export interface TooltipProps {
 
 export interface BarChartProps {
     data: { [index: number]: UISubnotificationData },
-    width?: number,
-    height?: number,
+    bins: number;
     xAxisLimits: [number, number];
     yAxisLimits: [number, number];
+    width?: number,
+    height?: number,
+}
+
+export interface AxisGridTicksProps {
+    axis: "x" | "y";
+    limits: [number, number];
+    numTicks?: number;
+    axisLength: number;
+    otherLength: number;
+    startMargin: number;
+    axisStartOffset?: number;
+    axisEndOffset?: number;
+    showLines?: boolean;
+    roundSteps?: boolean;
+}
+
+export interface HistogramBarProps {
+    x: number;
+    y: number;
+    width: number;
+    value: number;
+    scale: number;
 }
