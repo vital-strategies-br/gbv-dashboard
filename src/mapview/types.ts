@@ -52,4 +52,6 @@ export interface BarChartProps {
     data: { [index: number]: UISubnotificationData },
     width?: number,
     height?: number,
+    xAxisLimits: [number, number];
+    yAxisLimits: [number, number];
 }

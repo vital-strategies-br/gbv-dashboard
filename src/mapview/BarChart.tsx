@@ -3,9 +3,7 @@ import React from "react";
 import { BarChartProps } from "./types";
 import "./BarChart.css";
 
-const MAX_VALUE = 1;
-const BINS = 25;
-const YLIM: [number, number] = [0, 30];
+const BINS = 20;
 
 function linspace(
   start: number,
@@ -98,11 +96,11 @@ function AxisGridTicks({
   );
 }
 
-function BarChart({ data, width = 600, height = 350 }: BarChartProps) {
+function BarChart({ data, width = 600, height = 350, xAxisLimits, yAxisLimits }: BarChartProps) {
   const values = Object.values(data).map((x) => x.subnotification_rate);
 
   let nullCount = 0;
-  const binSize = MAX_VALUE / BINS;
+  const binSize = (xAxisLimits[1] - xAxisLimits[0]) / BINS;
   const binCounts = new Array(BINS).fill(0);
 
   for (const value of values) {
@@ -117,7 +115,11 @@ function BarChart({ data, width = 600, height = 350 }: BarChartProps) {
   const chartAreaWidth = width - chartMarginLeft;
   const chartAreaHeight = height - chartMarginBottom;
 
-  const naBarHeight = nullCount * (chartAreaHeight / YLIM[1]);
+  const naBarHeight = nullCount * (chartAreaHeight / (yAxisLimits[1] - yAxisLimits[0]));
+  const binWidth = (chartAreaWidth - (16+32+48+32)) / BINS;
+
+  console.log(nullCount);
+  console.log(binCounts);
 
   return (
     <svg
@@ -128,16 +130,17 @@ function BarChart({ data, width = 600, height = 350 }: BarChartProps) {
     >
       <AxisGridTicks
         axis="x"
-        limits={[0, MAX_VALUE]}
+        limits={xAxisLimits}
         axisLength={chartAreaWidth}
         otherLength={chartAreaHeight}
         startMargin={chartMarginBottom}
         axisStartOffset={16 + 32 + 48}
         axisEndOffset={32}
+        showLines
       />
       <AxisGridTicks
         axis="y"
-        limits={[YLIM[0], YLIM[1] - 5]}
+        limits={yAxisLimits}
         axisLength={chartAreaHeight}
         otherLength={chartAreaWidth}
         startMargin={chartMarginLeft}
@@ -158,6 +161,12 @@ function BarChart({ data, width = 600, height = 350 }: BarChartProps) {
         >
           n.d.
         </text>
+      </g>
+      <g className="barchar-bars">
+        {binCounts.map((count, index) => {
+          const height = count * (chartAreaHeight / (yAxisLimits[1] - yAxisLimits[0]));
+          return <rect key={index} x={chartMarginLeft+16+32+48+(index * binWidth)} y={chartAreaHeight-height} width={binWidth} height={height} />
+        })}
       </g>
       <text
         x={chartAreaWidth / 2 + chartMarginLeft}

@@ -101,7 +101,7 @@ function MapView() {
               <h3>{name}</h3>
             ) : (
               <>
-                <BarChart data={filtered} />
+                <BarChart data={filtered} xAxisLimits={[0, 1]} yAxisLimits={[0, 30]}/>
                 <div className="report-button-wrapper">
                   <button className="report-button">
                     <img alt="" src={Document} />
