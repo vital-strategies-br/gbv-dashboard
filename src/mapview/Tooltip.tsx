@@ -25,7 +25,7 @@ function Tooltip({ data }: TooltipProps) {
         >
             <h4 className="tooltip-title">{data.name}</h4>
             <div className="tooltip-data">Taxa de subnotificação: <strong>{asPercentageString(data.subnotification_rate) || "n.d."}</strong></div>
-            <div className="tooltip-data">Categoria: <strong>{data.relative_subnotification_category || "n.d."}</strong></div>
+            <div className="tooltip-data">Categoria: <strong>{data.category || "n.d."}</strong></div>
         </div>
     )
 }

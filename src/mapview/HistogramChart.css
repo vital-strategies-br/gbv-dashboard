@@ -1,22 +1,19 @@
 g.x-grid-ticks text,
 g.y-grid-ticks text {
-	font-size: 14px;
-	fill: #909090;
+  font-size: 14px;
+  fill: #909090;
 }
 
 g.x-grid-ticks line,
 g.y-grid-ticks line {
-	stroke: #B1B1B1;
+  stroke: #b1b1b1;
 }
 
-g.barchart-bar-na > rect {
-	fill: #d4d4d4;
-}
 g.barchart-bar-na > text {
-	fill: #909090;
+  fill: #909090;
 }
 
 .barchart-label {
-	text-anchor: middle;
-	font-size: 14px;
+  text-anchor: middle;
+  font-size: 14px;
 }

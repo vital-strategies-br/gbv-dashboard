@@ -1,49 +1,15 @@
 import React from "react";
 
-import { BarChartProps, HistogramBarProps, AxisGridTicksProps } from "./types";
+// Types
+import {
+  HistogramChartProps,
+  HistogramBarProps,
+  AxisGridTicksProps,
+} from "./types";
+// Utils
+import { generateLinearSpace, getColorForCategory } from "./utils";
+// CSS
 import "./HistogramChart.css";
-
-function generateLinearSpace(
-  startValue: number,
-  endValue: number,
-  numPoints: number,
-  shouldRoundSteps: boolean = false
-): number[] {
-  const pointsArray = [];
-  const range = endValue - startValue;
-  let stepSize = range / (numPoints - 1);
-  if (shouldRoundSteps) {
-    stepSize = Math.round(stepSize);
-  }
-  for (let pointIndex = 0; pointIndex < numPoints; pointIndex++) {
-    pointsArray.push(startValue + stepSize * pointIndex);
-  }
-  return pointsArray;
-}
-
-function getHistogramData(
-  values: Array<number | null>,
-  bins: number,
-  limits: [number, number]
-): [number[], number] {
-  let nullCount = 0;
-  const binSize = (limits[1] - limits[0]) / bins;
-  const binCounts = new Array(bins).fill(0);
-
-  for (const value of values) {
-    if (value === null) {
-      nullCount++;
-    } else if (value >= limits[1]) {
-      binCounts[bins - 1]++;
-    } else if (value <= limits[0]) {
-      binCounts[0]++;
-    } else {
-      binCounts[Math.floor((value - limits[0]) / binSize)]++;
-    }
-  }
-
-  return [binCounts, nullCount];
-}
 
 function AxisGridTicks({
   axis,
@@ -110,19 +76,49 @@ function AxisGridTicks({
   );
 }
 
-function HistogramBar({ x, y, width, value, scale }: HistogramBarProps) {
+function HistogramBar({
+  x,
+  y,
+  width,
+  scale,
+  value,
+  category = null,
+  isActive = true,
+  onMouseEnter,
+  onMouseLeave,
+}: HistogramBarProps) {
   const height = value * scale;
-  return <rect x={x} y={y - height} width={width} height={height} />;
+  const color = getColorForCategory(category);
+
+  return (
+    <rect
+      x={x}
+      y={y - height}
+      width={width}
+      height={height}
+      fill={color}
+      stroke="transparent"
+      onMouseEnter={() => onMouseEnter && onMouseEnter(category)}
+      onMouseLeave={onMouseLeave}
+      style={!isActive ? {
+        filter: "opacity(30%)"
+      } : undefined}
+    />
+  );
 }
 
 function HistogramChart({
-  data,
-  bins,
+  binCounts,
+  binCategories,
+  nullCount,
   xAxisLimits,
   yAxisLimits,
   width = 600,
   height = 350,
-}: BarChartProps) {
+  highlightedCategory,
+  onBarMouseEnter,
+  onBarMouseLeave,
+}: HistogramChartProps) {
   // These are the margins of the drawable area (excluding labels)
   const chartMarginLeft = 70;
   const chartMarginBottom = 70;
@@ -137,15 +133,8 @@ function HistogramChart({
   const xAxisMarginRight = 32;
 
   const binWidth =
-    (chartAreaWidth - (xAxisMarginLeft + xAxisMarginRight)) / bins;
+    (chartAreaWidth - (xAxisMarginLeft + xAxisMarginRight)) / binCounts.length;
   const yAxisScale = chartAreaHeight / (yAxisLimits[1] - yAxisLimits[0]);
-
-  const dataValues = Object.values(data).map((x) => x.subnotification_rate);
-  const [binCounts, nullCount] = getHistogramData(
-    dataValues,
-    bins,
-    xAxisLimits
-  );
 
   return (
     <svg
@@ -188,17 +177,24 @@ function HistogramChart({
           n.d.
         </text>
       </g>
-      <g className="barchar-bars">
-        {binCounts.map((count, index) => (
-          <HistogramBar
+      <g className="barchar-bars" >
+        {binCounts.map((count, index) => {
+          const category = binCategories ? binCategories[index] : null;
+          const isActive = !highlightedCategory || highlightedCategory === category;
+
+          return <HistogramBar
             key={index}
             x={chartMarginLeft + xAxisMarginLeft + index * binWidth}
             y={chartAreaHeight}
             width={binWidth}
-            value={count}
             scale={yAxisScale}
+            value={count}
+            category={category}
+            isActive={isActive}
+            onMouseEnter={onBarMouseEnter}
+            onMouseLeave={onBarMouseLeave}
           />
-        ))}
+        })}
       </g>
       <text
         x={chartAreaWidth / 2 + chartMarginLeft}
