@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // Types
 import {
@@ -87,8 +87,12 @@ function HistogramBar({
   onMouseEnter,
   onMouseLeave,
 }: HistogramBarProps) {
-  const height = value * scale;
+  const [height, setHeight] = useState(0);
   const color = getColorForCategory(category);
+
+  useEffect(() => {
+    setHeight(value * scale);
+  }, [value, scale]);
 
   return (
     <rect
@@ -100,9 +104,10 @@ function HistogramBar({
       stroke="transparent"
       onMouseEnter={() => onMouseEnter && onMouseEnter(category)}
       onMouseLeave={onMouseLeave}
-      style={!isActive ? {
-        filter: "opacity(30%)"
-      } : undefined}
+      style={{
+        transition: "all .2s ease-in",
+        filter: !isActive ? "opacity(30%)" : undefined,
+      }}
     />
   );
 }
@@ -177,23 +182,26 @@ function HistogramChart({
           n.d.
         </text>
       </g>
-      <g className="barchar-bars" >
+      <g className="barchar-bars">
         {binCounts.map((count, index) => {
           const category = binCategories ? binCategories[index] : null;
-          const isActive = !highlightedCategory || highlightedCategory === category;
+          const isActive =
+            !highlightedCategory || highlightedCategory === category;
 
-          return <HistogramBar
-            key={index}
-            x={chartMarginLeft + xAxisMarginLeft + index * binWidth}
-            y={chartAreaHeight}
-            width={binWidth}
-            scale={yAxisScale}
-            value={count}
-            category={category}
-            isActive={isActive}
-            onMouseEnter={onBarMouseEnter}
-            onMouseLeave={onBarMouseLeave}
-          />
+          return (
+            <HistogramBar
+              key={index}
+              x={chartMarginLeft + xAxisMarginLeft + index * binWidth}
+              y={chartAreaHeight}
+              width={binWidth}
+              scale={yAxisScale}
+              value={count}
+              category={category}
+              isActive={isActive}
+              onMouseEnter={onBarMouseEnter}
+              onMouseLeave={onBarMouseLeave}
+            />
+          );
         })}
       </g>
       <text

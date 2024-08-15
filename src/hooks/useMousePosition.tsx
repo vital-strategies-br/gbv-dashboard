@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { Coordinate } from '../common/types';
-
 const useMousePosition = () => {
     const [
         mousePosition,
         setMousePosition
-    ] = useState<Coordinate | null>(null);
+    ] = useState<Nullable<Coordinate>>(null);
 
     useEffect(() => {
         const updateMousePosition = (ev: MouseEvent) => {

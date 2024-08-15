@@ -38,7 +38,7 @@ export function assignCategories(neighborhoods: NeighborhoodData[]): Neighborhoo
     const categories = allCategories.slice(1, -1); // Exclude EXTREME categories
 
     // Helper function to get the category based on z-score
-    const getCategory = (zScore: number | null): RelativeCategory | null => {
+    const getCategory = (zScore: Nullable<number>): Nullable<RelativeCategory> => {
         if (zScore === null) return null;
 
         if (zScore <= -3) return allCategories[0];
@@ -88,7 +88,7 @@ function getMajorityCategory(
     counts: { [category: string]: number },
     total: number,
     binIndex: number
-): RelativeCategory | null {
+): Nullable<RelativeCategory> {
     const sortedCategories = Object.entries(counts).sort((a, b) => b[1] - a[1]);
 
     if (sortedCategories.length > 0) {
@@ -113,7 +113,7 @@ export function getHistogramData(
     data: UISubnotificationData[],
     bins: number,
     limits: [number, number]
-): [number[], (RelativeCategory | null)[], number] {
+): [number[], (Nullable<RelativeCategory>)[], number] {
     const binSize = (limits[1] - limits[0]) / bins;
     const binCounts = new Array(bins).fill(0);
 
@@ -155,7 +155,7 @@ export function getHistogramData(
  * This function maps a RelativeCategory to an index in the SEQ_PALETTE array.
  * If the category is null, not mapped, or the index is out of bounds, it returns a default color (NA_COLOR).
  * 
- * @param {RelativeCategory | null} category - The relative category to be mapped to a color.
+ * @param {Nullable<RelativeCategory>} category - The relative category to be mapped to a color.
  * @returns {string} The color associated with the given category. If the category is null, returns the default NA_COLOR.
  * 
  * @example
@@ -166,7 +166,7 @@ export function getHistogramData(
  * // Returns the default NA_COLOR ("#d4d4d4")
  * getColorForCategory(null);
  */
-export function getColorForCategory(category: RelativeCategory | null | undefined): string {
+export function getColorForCategory(category: Nullable<RelativeCategory>): string {
     // Return NA_COLOR if category is null
     if (category === null || category === undefined) {
         return NA_COLOR;

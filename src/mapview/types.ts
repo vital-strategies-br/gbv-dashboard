@@ -1,3 +1,5 @@
+export type TerritoryId = number;
+
 export enum RelativeCategory {
     MINIMAL = "Relative minimal",
     LOW = "Deviant low",
@@ -10,11 +12,11 @@ export enum RelativeCategory {
 
 export interface SubnotificationData {
     year: number,
-    esus: number | null,
-    sinan: number | null,
-    subnotification_rate: number | null,
-    subnotification_rate_zscore: number | null,
-    category? : RelativeCategory | null;
+    esus: Nullable<number>,
+    sinan: Nullable<number>,
+    subnotification_rate: Nullable<number>,
+    subnotification_rate_zscore: Nullable<number>,
+    category?: Nullable<RelativeCategory>;
 }
 
 export interface NeighborhoodData {
@@ -23,7 +25,7 @@ export interface NeighborhoodData {
     // The UI name of the neighborhood
     name: string,
     // Different IDs for the neighborhood
-    id_shape: number,
+    id_shape: TerritoryId,
     id_sinan: number,
     id_geojson: number,
     id_district: number,
@@ -42,9 +44,9 @@ export interface SVGMapProps {
     // A mapping of path 'id' to color
     data: { [index: string]: UISubnotificationData },
     // The 'id' of the selected path
-    selectedShapeId: number | null,
+    selectedShapeId: Nullable<number>,
     // The territory category to be highlighted
-    highlightedCategory: RelativeCategory | null;
+    highlightedCategory: Nullable<RelativeCategory>;
     // Callback for click on a region of the map
     // Invoked with the 'id' of the path as argument
     onPathClick: (id: number) => void;
@@ -62,14 +64,14 @@ export interface TooltipProps {
 
 export interface HistogramChartProps {
     binCounts: number[];
-    binCategories?: (RelativeCategory | null)[];
+    binCategories?: Nullable<RelativeCategory>[];
     nullCount: number;
     xAxisLimits: [number, number];
     yAxisLimits: [number, number];
     width?: number,
     height?: number,
-    highlightedCategory: RelativeCategory | null;
-    onBarMouseEnter: (category: RelativeCategory | null) => void;
+    highlightedCategory: Nullable<RelativeCategory>;
+    onBarMouseEnter: (category: Nullable<RelativeCategory>) => void;
     onBarMouseLeave: () => void;
 }
 
@@ -79,9 +81,9 @@ export interface HistogramBarProps {
     width: number;
     scale: number;
     value: number;
-    category?: RelativeCategory | null;
+    category?: Nullable<RelativeCategory>;
     isActive?: boolean;
-    onMouseEnter?: (category: RelativeCategory | null) => void;
+    onMouseEnter?: (category: Nullable<RelativeCategory>) => void;
     onMouseLeave?: () => void;
 }
 
@@ -96,4 +98,8 @@ export interface AxisGridTicksProps {
     axisEndOffset?: number;
     showLines?: boolean;
     roundSteps?: boolean;
+}
+
+export interface TerritoryDetailProps {
+    data: UISubnotificationData;
 }

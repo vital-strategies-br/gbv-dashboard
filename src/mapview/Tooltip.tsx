@@ -5,7 +5,7 @@ import { TooltipProps } from "./types";
 
 import "./Tooltip.css";
 
-function asPercentageString(float: number | null) {
+function asPercentageString(float: Nullable<number>) {
     if (!float) return "";
     return (float * 100).toFixed(2) + "%"
 }

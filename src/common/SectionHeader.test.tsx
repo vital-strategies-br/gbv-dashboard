@@ -14,6 +14,8 @@ test("renders title, subtitle, and icon in the correct order", () => {
       subtitle={subtitle}
       iconSrc={iconSrc}
       iconAlt={iconAlt}
+      isSectionOpen={true}
+      onClick={() => alert()}
     />
   );
 

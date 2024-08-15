@@ -41,7 +41,7 @@ function SVGMap({
             if (pathData) {
               pathValue = pathData.subnotification_rate;
               const pathCategory = pathData.category;
-              const pathColor = getColorForCategory(pathCategory);
+              const pathColor = getColorForCategory(pathCategory || null);
               const isNotSelectedShape = selectedShapeId !== x.id;
               const isNotHighlightedCategory =
                 highlightedCategory && highlightedCategory !== pathCategory;
