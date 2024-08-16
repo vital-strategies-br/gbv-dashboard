@@ -117,7 +117,7 @@ function MapView() {
       </div>
       <div className="mapview-section">
         <div className="mapview-instructions-wrapper">
-          <span className="mapview-instructions">
+          <p className="mapview-instructions">
             O mapa do Recife à esquerda mostra a estimativa de subnotificação de
             casos de violência contra a mulher para cada 10.000 usuárias da
             atenção básica (AB) em cada bairro. O gráfico de barras agrupa
@@ -125,7 +125,7 @@ function MapView() {
             cada barra, destacam-se os bairros com quantidades similares de
             possíveis casos de violência não identificados pelo sistema de saúde
             para aquelas localidades.
-          </span>
+          </p>
         </div>
         {selectedNeighborhood ? (
           <TerritoryDetail data={filteredDataById[selectedNeighborhood]} />

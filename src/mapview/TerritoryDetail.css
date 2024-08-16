@@ -1,0 +1,65 @@
+.territory-detail-container {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.territory-detail-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.territory-detail-header > h3 {
+    font-weight: bold;
+}
+.territory-detail-header > img {
+    cursor: pointer;
+}
+
+.territory-detail-info-box {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 2px;
+    background-color: white;
+}
+
+.territory-detail-row {
+    display: flex;
+    justify-content: space-between;
+}
+.territory-detail-row > span:last-child{
+    font-weight: bold;
+}
+
+.territory-detail-help-box {
+    position: absolute;
+    top: 12px;
+    left: 340px;
+    max-width: calc(300px);
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.territory-detail-help-box-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 8px;
+}
+
+.territory-detail-help-box p {
+    font-size: 12px;
+}
+
+.territory-detail-help-box-close-wrapper img {
+
+    cursor: pointer;
+}

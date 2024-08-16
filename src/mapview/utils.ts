@@ -223,3 +223,8 @@ export function generateLinearSpace(
     }
     return pointsArray;
 }
+
+export function formatPercentage(float: Nullable<number>) {
+    if (float === null) return "n.d.";
+    return (float * 100).toFixed(2) + "%"
+}

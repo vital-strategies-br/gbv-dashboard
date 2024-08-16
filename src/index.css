@@ -30,6 +30,12 @@ h4 {
   font: normal normal normal 16px/16px Larsseit;
 }
 
+p {
+  margin: 0;
+  font-size: 15px;
+  color: #222222;
+}
+
 .content {
   max-width: 1280px;
 }

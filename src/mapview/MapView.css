@@ -38,16 +38,7 @@
   flex: 1;
 }
 
-.mapview-instructions-wrapper {
-  flex: 1;
-}
-.mapview-instructions {
-  font-size: 15px;
-  color: #222222;
-}
-
 .report-button-wrapper {
-  flex: 1;
   display: flex;
   align-items: flex-start;
   justify-content: center;

@@ -1,6 +1,9 @@
 .tooltip-box {
     position: fixed;
     padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     background-color: white;
     border-radius: 2px;
     z-index: 2;

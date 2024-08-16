@@ -7,7 +7,7 @@ import {
   AxisGridTicksProps,
 } from "./types";
 // Utils
-import { generateLinearSpace, getColorForCategory } from "./utils";
+import { generateLinearSpace, getColorForCategory, NA_COLOR } from "./utils";
 // CSS
 import "./HistogramChart.css";
 
@@ -100,13 +100,12 @@ function HistogramBar({
       y={y - height}
       width={width}
       height={height}
-      fill={color}
+      fill={isActive ? color : NA_COLOR}
       stroke="transparent"
       onMouseEnter={() => onMouseEnter && onMouseEnter(category)}
       onMouseLeave={onMouseLeave}
       style={{
         transition: "all .2s ease-in",
-        filter: !isActive ? "opacity(30%)" : undefined,
       }}
     />
   );
