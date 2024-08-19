@@ -1,0 +1,75 @@
+.homepage {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+  background-color: #001a65;
+}
+
+.header {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6rem;
+  height: 120px;
+  color: white;
+}
+
+.logo img {
+  width: 220px;
+}
+
+.nav {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.nav a {
+  padding: 8px 0;
+  margin-left: 2rem;
+  font-size: 1.125rem;
+  color: white;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: #a3c4f3;
+}
+
+.hero {
+  display: flex;
+  flex: 1;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+.text-content {
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  padding: 2rem 6rem;
+  max-width: 50vw;
+}
+
+.hero h1 {
+  max-width: 40vw;
+}
+
+.hero img {
+  height: 50vh;
+}
+
+.explore {
+  padding: 2rem 6rem;
+  background-color: #ffffff;
+  color: #121e86;
+  text-align: left;
+}
+.explore h2 {
+  margin: 0;
+}
+.explore p {
+  margin: 8px 0 0;
+}

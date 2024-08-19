@@ -1,13 +1,13 @@
 export type TerritoryId = number;
 
 export enum RelativeCategory {
-    MINIMAL = "Relative minimal",
-    LOW = "Deviant low",
-    BELOW_AVERAGE = "Below average",
-    AVERAGE = "City average",
-    ABOVE_AVERAGE = "Above average",
-    HIGH = "Deviant high",
-    EXTREME = "Relative extreme",
+    MINIMAL = "Mínimo relativo",
+    LOW = "Baixa",
+    BELOW_AVERAGE = "Abaixo da média",
+    AVERAGE = "Média da cidade",
+    ABOVE_AVERAGE = "Acima da média",
+    HIGH = "Alta",
+    EXTREME = "Extremo relativo",
 }
 
 export interface SubnotificationData {
@@ -102,4 +102,10 @@ export interface AxisGridTicksProps {
 
 export interface TerritoryDetailProps {
     data: UISubnotificationData;
+}
+
+export interface HealthUnitData {
+    name: string;
+    suspectCases: number;
+    esusUsers: number;
 }

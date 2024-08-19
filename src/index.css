@@ -13,15 +13,21 @@ body {
   font-family: 'Larsseit Regular', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #001a65;
 }
 
-h3, h4 {
+h1, h2, h3, h4 {
   text-align: left;
-  letter-spacing: 0px;
-  color: #222222;
   opacity: 1;
   padding: 0;
   margin: 0;
+}
+h1 {
+  font: normal normal normal 2.6rem/3.12rem "Tiempos Headline";
+  letter-spacing: 0.5px;
+}
+h2 {
+  font: normal normal normal 1.8rem/2.16rem "Tiempos Headline";
 }
 h3 {
   font: normal normal normal 22px/22px Larsseit;
@@ -32,8 +38,8 @@ h4 {
 
 p {
   margin: 0;
-  font-size: 15px;
-  color: #222222;
+  font-size: 1rem;
+  line-height: 1.33rem;
 }
 
 .content {

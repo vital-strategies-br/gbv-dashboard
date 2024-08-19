@@ -6,6 +6,7 @@ import SectionHeader from "./SectionHeader";
 import "./Section.css";
 
 interface SectionProps {
+  id: string,
   // The main title of the section
   title: string;
   // This is the second-level title of the section
@@ -20,16 +21,16 @@ interface SectionProps {
   children: ReactNode;
 }
 
-function Section({ children, defaultOpen, ...headerProps }: SectionProps) {
+function Section({ children, id, defaultOpen, ...headerProps }: SectionProps) {
   const [isOpen, setIsOpen] = useState<boolean>(defaultOpen || false);
 
   return (
-    <div className="section">
+    <section id={id} className="section">
       <SectionHeader {...headerProps} isSectionOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
       <div className={`section-content ${isOpen ? "open" : "closed"}`}>
         {children}
       </div>
-    </div>
+    </section>
   );
 }
 

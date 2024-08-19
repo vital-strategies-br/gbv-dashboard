@@ -80,6 +80,7 @@ function MapView() {
             <span>Busca por bairro</span>
             <Select
               options={neighborhoodOptions}
+              value={neighborhoodOptions.find(x => x.value === selectedNeighborhood)}
               onChange={(option: any) => setSelectedNeighborhood(option?.value)}
               isDisabled={filterYear === null}
               isSearchable

@@ -1,30 +1,31 @@
 .svg-map-wrapper {
-	position: relative;
-	display: flex;
-	flex: 1;
-	justify-content: center;
+  position: relative;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  /* max-width: 50vh; */
 }
 
 .svg-map {
-	width: 80%;
+  height: calc(100vh - 224px);
 }
 
 .svg-map path:hover {
-	filter: brightness(92%);
+  filter: brightness(92%);
 }
 
 .svg-map-instructions {
-	position: absolute;
-	bottom: 2vh;
-	left: 20px;
-	width: 210px;
-	font-size: 12px;
+  position: absolute;
+  bottom: 2vh;
+  left: 20px;
+  width: 210px;
+  font-size: 0.875rem;
 }
 
 @media (max-width: 600px) {
-	.svg-map-instructions {
-		bottom: 0px;
-		left: 0px;
-		width: 100px;
-	}
+  .svg-map-instructions {
+    bottom: 0px;
+    left: 0px;
+    width: 100px;
+  }
 }

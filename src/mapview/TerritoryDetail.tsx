@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // Types
-import { TerritoryDetailProps } from "./types";
+import { HealthUnitData, TerritoryDetailProps } from "./types";
 // Utils
 import { formatPercentage } from "./utils";
 // Image
@@ -10,13 +10,26 @@ import Help from "../icons/help.svg";
 // CSS
 import "./TerritoryDetail.css";
 
+const fakeUnits: HealthUnitData[] = [
+  {
+    name: "UBS Central",
+    suspectCases: 15,
+    esusUsers: 230,
+  },
+  {
+    name: "UBS Norte",
+    suspectCases: 24,
+    esusUsers: 112,
+  },
+];
+
 function TerritoryDetail({ data }: TerritoryDetailProps) {
   const [isHelpOpen, setIsHelpOpen] = useState<boolean>(false);
 
   return (
     <div className="territory-detail-container">
       <div className="territory-detail-info-box">
-        <div className="territory-detail-header">
+        <div className="territory-detail-info-box-header">
           <h3>{`Bairro ${data.name}`}</h3>
           <img
             src={Help}
@@ -24,22 +37,46 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
             onClick={() => setIsHelpOpen(!isHelpOpen)}
           />
         </div>
-        <div className="territory-detail-row">
+        <div className="territory-detail-info-box-body">
+        <div className="territory-detail-info-box-row">
           <span>Taxa de subnotificação</span>
           <span>{formatPercentage(data.subnotification_rate)}</span>
         </div>
-        <div className="territory-detail-row">
+        <div className="territory-detail-info-box-row">
           <span>Categoria</span>
           <span>{data.category}</span>
         </div>
-        <div className="territory-detail-row">
+        <div className="territory-detail-info-box-row">
           <span>Notificações</span>
           <span>{data.sinan}</span>
         </div>
-        <div className="territory-detail-row">
+        <div className="territory-detail-info-box-row">
           <span>População feminina</span>
           <span>n.d.</span>
         </div>
+        </div>
+      </div>
+
+      <div className="territory-detail-units-table">
+        <div className="territory-detail-units-table-header">
+          <div>Unidades de Saúde</div>
+          <div>Casos Suspeitos</div>
+          <div>Usuárias</div>
+          <div>% Casos / Usuárias</div>
+        </div>
+        {fakeUnits.map((healthUnitData) => (
+          <div className="territory-detail-units-table-row" key={healthUnitData.name}>
+            <div>{healthUnitData.name}</div>
+            <div>{healthUnitData.suspectCases}</div>
+            <div>{healthUnitData.esusUsers}</div>
+            <div>
+              {formatPercentage(
+                healthUnitData.suspectCases / healthUnitData.esusUsers,
+                1
+              )}
+            </div>
+          </div>
+        ))}
       </div>
 
       {isHelpOpen && (

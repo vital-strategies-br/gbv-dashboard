@@ -1,18 +1,35 @@
 import { RelativeCategory, NeighborhoodData, SubnotificationData, UISubnotificationData } from "./types";
 
-export const SEQ_PALETTE = [
-    "#FFF0F0",
-    "#FFE1E2",
-    // "#FFC7C8",
-    "#FFA0A2",
-    "#FF5054",
-    // "#F53D40",
-    "#E61E21",
-    "#B62023",
-    // "#931F21",
-    "#7E2021",
-    // "#480708",
+// export const SEQUENTIAL_PALETTE = [
+//     '#c7caff', // Lightest shade
+//     '#a0a9ff',
+//     '#7989ff',
+//     '#4766ff', // Base color
+//     '#3f5cd4',
+//     '#374caa',
+//     '#2f3d80'  // Darkest shade
+// ];
+
+export const SEQUENTIAL_PALETTE = [
+    '#fbb6b7', // Lightest shade
+    '#f99093',
+    '#f76a6c',
+    '#F53D40', // Base color
+    '#dc3739',
+    '#c33032',
+    '#aa292a'  // Darkest shade
 ];
+
+export const DIVERGENT_PALETTE = [
+    '#2f3d80',  // Darkest shade
+    '#4766ff', // Base color
+    '#c7caff', // Lightest shade
+    '#909090',
+    '#fbb6b7', // Lightest shade
+    '#F53D40', // Base color
+    '#aa292a'  // Darkest shade
+]
+
 export const NA_COLOR = "#d4d4d4"
 
 export function applyFilter(data: NeighborhoodData[], filterFn: (obj: SubnotificationData) => boolean): UISubnotificationData[] {
@@ -150,9 +167,9 @@ export function getHistogramData(
 }
 
 /**
- * Returns the corresponding color from the SEQ_PALETTE for a given RelativeCategory.
+ * Returns the corresponding color from the SEQUENTIAL_PALETTE for a given RelativeCategory.
  * 
- * This function maps a RelativeCategory to an index in the SEQ_PALETTE array.
+ * This function maps a RelativeCategory to an index in the SEQUENTIAL_PALETTE array.
  * If the category is null, not mapped, or the index is out of bounds, it returns a default color (NA_COLOR).
  * 
  * @param {Nullable<RelativeCategory>} category - The relative category to be mapped to a color.
@@ -183,7 +200,7 @@ export function getColorForCategory(category: Nullable<RelativeCategory>): strin
         [RelativeCategory.EXTREME]: 6,
     };
 
-    return SEQ_PALETTE[categoryToPaletteIndex[category]];
+    return SEQUENTIAL_PALETTE[categoryToPaletteIndex[category]];
 }
 
 /**
@@ -224,7 +241,7 @@ export function generateLinearSpace(
     return pointsArray;
 }
 
-export function formatPercentage(float: Nullable<number>) {
+export function formatPercentage(float: Nullable<number>, decimalPoints: number = 2) {
     if (float === null) return "n.d.";
-    return (float * 100).toFixed(2) + "%"
+    return (float * 100).toFixed(decimalPoints) + "%"
 }

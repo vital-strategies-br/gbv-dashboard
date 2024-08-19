@@ -101,9 +101,10 @@ function HistogramBar({
       width={width}
       height={height}
       fill={isActive ? color : NA_COLOR}
-      stroke="transparent"
+      stroke="white"
       onMouseEnter={() => onMouseEnter && onMouseEnter(category)}
       onMouseLeave={onMouseLeave}
+      className="histogram-bar"
       style={{
         transition: "all .2s ease-in",
       }}

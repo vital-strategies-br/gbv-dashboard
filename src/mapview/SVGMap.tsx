@@ -27,7 +27,6 @@ function SVGMap({
         viewBox={shapes.viewBox}
         strokeLinecap="round"
         strokeLinejoin="round"
-        width={350}
       >
         <g
           onMouseLeave={() => {
