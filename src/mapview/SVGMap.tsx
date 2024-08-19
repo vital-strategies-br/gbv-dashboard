@@ -76,11 +76,11 @@ function SVGMap({
           })}
         </g>
       </svg>
-      <div className="svg-map-instructions">
+      <p className="svg-map-instructions">
         <strong>PASSE O MOUSE</strong> sobre cada bairro para destacar bairros
         com estimativas similares. <strong>CLIQUE</strong> sobre o bairro
         escolhido para saber mais sobre aquela localidade.
-      </div>
+      </p>
     </div>
   );
 }

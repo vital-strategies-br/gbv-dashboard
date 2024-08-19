@@ -1,22 +1,26 @@
 @font-face {
-  font-family: 'Larsseit';
-  src: local('Larsseit'), url(./fonts/Larsseit.woff2) format('woff2');
+  font-family: "Larsseit";
+  src: local("Larsseit"), url(./fonts/Larsseit.woff2) format("woff2");
 }
 
 @font-face {
-  font-family: 'Tiempos Headline';
-  src: local('Tiempos Headline'), url(./fonts/TiemposHeadlineWeb-Regular.woff2) format('woff2');
+  font-family: "Tiempos Headline";
+  src: local("Tiempos Headline"),
+    url(./fonts/TiemposHeadlineWeb-Regular.woff2) format("woff2");
 }
 
 body {
   margin: 0;
-  font-family: 'Larsseit Regular', sans-serif;
+  font-family: "Larsseit", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #001a65;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   text-align: left;
   opacity: 1;
   padding: 0;
@@ -33,13 +37,14 @@ h3 {
   font: normal normal normal 1.375rem/1.375rem Larsseit;
 }
 h4 {
-  font: normal normal normal 1rem/1rem Larsseit;
+  font: normal normal normal 1.25rem/1.75rem Larsseit;
 }
 
 p {
   margin: 0;
   font-size: 1rem;
   line-height: 1.33rem;
+  /* color: #464646; */
 }
 
 .content {

@@ -1,6 +1,5 @@
 g.x-grid-ticks text,
 g.y-grid-ticks text {
-  font-size: 0.875rem;
   fill: #909090;
 }
 
@@ -15,5 +14,5 @@ g.barchart-bar-na > text {
 
 .barchart-label {
   text-anchor: middle;
-  font-size: 0.875rem;
+  fill: #464646;
 }

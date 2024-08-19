@@ -29,7 +29,6 @@
 }
 .mapview-filter-field-container > span {
   margin-left: 1px;
-  font-size: 0.875rem;
   color: #464646;
 }
 /* MAP CONTAINER */
@@ -59,7 +58,6 @@
 }
 .report-button > span {
   color: #000000;
-  font-size: 0.875rem;
   line-height: 20px;
 }
 .report-button > img {

@@ -94,7 +94,8 @@
   position: absolute;
   top: 12px;
   left: 340px;
-  max-width: calc(300px);
+  /* max-width: calc(300px); */
+  width: 500px;
   padding: 16px;
   display: flex;
   flex-direction: row;

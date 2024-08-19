@@ -8,6 +8,7 @@
 
 .svg-map {
   height: calc(100vh - 224px);
+  max-height: 700px;
 }
 
 .svg-map path:hover {
@@ -20,6 +21,7 @@
   left: 20px;
   width: 210px;
   font-size: 0.875rem;
+  line-height: 00.875rem;
 }
 
 @media (max-width: 600px) {

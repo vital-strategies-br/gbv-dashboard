@@ -16,5 +16,8 @@
 }
 
 .tooltip-data {
-    font-size: 0.875rem;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    gap: 24px;
 }

@@ -73,3 +73,10 @@
 .explore p {
   margin: 8px 0 0;
 }
+
+
+@media (max-width: 1280px) {
+  .hero h1 {
+    max-width: 50vw;
+  }
+}
