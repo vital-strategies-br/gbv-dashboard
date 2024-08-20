@@ -20,7 +20,7 @@ function Homepage() {
       </header>
 
       <section className="hero">
-        <div className="text-content">
+        <div className="hero-text">
           <h1>
             Pesquisas e dados que auxiliam na prevenção da violência de gênero
             contra mulheres.

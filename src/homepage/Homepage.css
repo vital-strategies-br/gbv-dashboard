@@ -1,7 +1,7 @@
 .homepage {
   display: flex;
   flex-flow: column nowrap;
-  min-height: 100vh;
+  min-height: min(100vh, 995px);
   background-color: #001a65;
 }
 
@@ -39,26 +39,27 @@
 .hero {
   display: flex;
   flex: 1;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
   color: white;
 }
 
-.text-content {
+.hero-text {
   display: flex;
   flex-flow: column;
   gap: 2rem;
   padding: 2rem 6rem;
-  max-width: 50vw;
+  max-width: min(50vw, 900px);
 }
 
 .hero h1 {
-  max-width: 40vw;
+  max-width: min(40vw, 720px);
 }
 
 .hero img {
-  height: 50vh;
+  height: 40vmin;
+  max-height: 500px;
 }
 
 .explore {
@@ -74,9 +75,35 @@
   margin: 8px 0 0;
 }
 
-
 @media (max-width: 1280px) {
-  .hero h1 {
-    max-width: 50vw;
+  .header {
+    padding: 0 3rem;
+  }
+  .hero-text {
+    padding: 2rem 3rem;
+  }
+  .explore {
+    padding: 2rem 3rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .header {
+    padding: 0 20px;
+  }
+  .hero {
+    flex-flow: row wrap;
+    justify-content: flex-end;
+  }
+  .hero-text {
+    padding: 2rem 20px;
+    max-width: unset;
+  }
+  .hero-text h1 {
+    font: normal normal normal 2rem/2.4rem "Tiempos Headline";
+    max-width: unset;
+  }
+  .explore {
+    padding: 2rem 20px;
   }
 }
