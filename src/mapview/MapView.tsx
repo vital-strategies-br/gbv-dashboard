@@ -40,7 +40,7 @@ function MapView() {
     useState<Nullable<TerritoryId>>(null);
   let [highlightedCategory, setHighlightedCategory] =
     useState<Nullable<RelativeCategory>>(null);
-  let [filterYear, setFilterYear] = useState<Nullable<number>>(null);
+  let [filterYear, setFilterYear] = useState<number>(yearOptions[yearOptions.length-1].value);
 
   // Compute derived data
   const filteredData = useMemo(
@@ -65,6 +65,7 @@ function MapView() {
             <span>Selecione o período</span>
             <Select
               options={yearOptions}
+              value={yearOptions.find(x => x.value === filterYear)}
               onChange={(option: any) => setFilterYear(option.value)}
               placeholder="Selecione..."
             />
