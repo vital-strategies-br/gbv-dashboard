@@ -1,22 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 
 import VitalLogo from "../img/vital_logo_white.png";
 import HeroBackground from "../img/hero_background_v2.png";
+import ShowMenu from "../icons/show-menu.svg";
 import "./Homepage.css";
 
 function Homepage() {
+  const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
+
   return (
     <div className="homepage">
       <header className="header">
         <div className="logo">
           <img src={VitalLogo} alt="Vital Strategies Logo" />
         </div>
-        <nav className="nav">
-          <a href="#">Início</a>
-          <a href="#dashboard">Dashboard</a>
-          <a href="#">Glossário</a>
-          <a href="#">Quem Somos</a>
+        <nav className={`nav ${!isNavMenuOpen ? "closed" : ""}`}>
+          <a href="#" onClick={() => setIsNavMenuOpen(false)}>
+            Início
+          </a>
+          <a href="#dashboard" onClick={() => setIsNavMenuOpen(false)}>
+            Dashboard
+          </a>
+          <a href="#" onClick={() => setIsNavMenuOpen(false)}>
+            Glossário
+          </a>
+          <a href="#" onClick={() => setIsNavMenuOpen(false)}>
+            Quem Somos
+          </a>
         </nav>
+        <img
+          className="hamburguer-menu-icon"
+          src={ShowMenu}
+          alt="Show menu"
+          onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
+        />
       </header>
 
       <section className="hero">

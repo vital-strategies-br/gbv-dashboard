@@ -12,16 +12,17 @@
   justify-content: space-between;
   padding: 0 6rem;
   height: 120px;
-  color: white;
 }
 
 .logo img {
-  width: 220px;
+  width: 200px;
 }
 
 .nav {
+  flex: 1;
   display: flex;
   flex-flow: row wrap;
+  justify-content: flex-end;
 }
 
 .nav a {
@@ -34,6 +35,12 @@
 
 .nav a:hover {
   color: #a3c4f3;
+}
+
+.hamburguer-menu-icon {
+  display: none;
+  width: 30px;
+  cursor: pointer;
 }
 
 .hero {
@@ -50,11 +57,11 @@
   flex-flow: column;
   gap: 2rem;
   padding: 2rem 6rem;
-  max-width: min(50vw, 900px);
+  max-width: min(60vw, 900px);
 }
 
 .hero h1 {
-  max-width: min(40vw, 720px);
+  max-width: min(50vw, 720px);
 }
 
 .hero img {
@@ -79,6 +86,9 @@
   .header {
     padding: 0 3rem;
   }
+  .logo img {
+    width: 150px;
+  }
   .hero-text {
     padding: 2rem 3rem;
   }
@@ -91,10 +101,6 @@
   .header {
     padding: 0 20px;
   }
-  .hero {
-    flex-flow: row wrap;
-    justify-content: flex-end;
-  }
   .hero-text {
     padding: 2rem 20px;
     max-width: unset;
@@ -105,5 +111,39 @@
   }
   .explore {
     padding: 2rem 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    top: 100px;
+    right: 0;
+    width: 200px;
+    z-index: 999;
+    padding: 20px;
+    border-radius: 4px 0 4px 0;
+    background-color: #333;
+    transition: right 0.3s ease-in-out;
+  }
+
+  .nav.closed {
+    display: none;
+  }
+
+  .nav a {
+    margin: 10px 0;
+    padding: 10px 20px;
+    width: 100%;
+  }
+  .hamburguer-menu-icon {
+    display: flex;
+  }
+
+  .hero img {
+    display: none;
   }
 }
