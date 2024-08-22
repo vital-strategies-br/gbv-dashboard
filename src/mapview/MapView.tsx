@@ -7,7 +7,7 @@ import SVGMap from "./SVGMap";
 import TerritoryDetail from "./TerritoryDetail";
 import Tooltip from "./Tooltip";
 // Types
-import { NeighborhoodData, RelativeCategory, TerritoryId } from "./types";
+import { TerritoryData, RelativeCategory, TerritoryId } from "./types";
 // Utils
 import { applyFilter, assignCategories, getHistogramData } from "./utils";
 // Image
@@ -22,8 +22,8 @@ const HISTOGRAM_BINS = 20;
 const HISTOGRAM_X_AXIS_LIMITS: [number, number] = [0.2, 0.8];
 const HISTOGRAM_Y_AXIS_LIMITS: [number, number] = [0, 25];
 // Derived
-const data: NeighborhoodData[] = assignCategories(DashboardDataJson); // all data
-const neighborhoodOptions = data.map((obj) => ({
+const data: TerritoryData[] = assignCategories(DashboardDataJson); // all data
+const territoryOptions = data.map((obj) => ({
   value: obj.id_shape,
   label: obj.name,
 }));
@@ -34,13 +34,14 @@ const yearOptions = Array.from(yearsSet).map((x) => ({
 }));
 
 function MapView() {
-  let [selectedNeighborhood, setSelectedNeighborhood] =
+  let [selectedTerritory, setSelectedTerritory] =
     useState<Nullable<TerritoryId>>(null);
-  let [hoveredNeighborhood, setHoveredNeighborhood] =
+  let [hoveredTerritory, setHoveredTerritory] =
     useState<Nullable<TerritoryId>>(null);
-  let [highlightedCategory, setHighlightedCategory] =
-    useState<Nullable<RelativeCategory>>(null);
-  let [filterYear, setFilterYear] = useState<number>(yearOptions[yearOptions.length-1].value);
+  let [highlightedBin, setHighlightedBin] = useState<Nullable<number>>();
+  let [filterYear, setFilterYear] = useState<number>(
+    yearOptions[yearOptions.length - 1].value
+  );
 
   // Compute derived data
   const filteredData = useMemo(
@@ -51,9 +52,19 @@ function MapView() {
     () => Object.fromEntries(filteredData.map((obj) => [obj.id_shape, obj])),
     [filteredData]
   );
-  const [binCounts, binCategories, nullCount] = useMemo(
-    () =>
-      getHistogramData(filteredData, HISTOGRAM_BINS, HISTOGRAM_X_AXIS_LIMITS),
+  const [binData, binCategories, nullCount, territoryBins] = useMemo(
+    () => {
+      const [binData, binCategories, nullCount] = getHistogramData(filteredData, HISTOGRAM_BINS, HISTOGRAM_X_AXIS_LIMITS);
+      const territoryBins:{ [key: number]: number} = {};
+
+      binData.forEach((territories, index) => {
+        territories.forEach(obj => {
+          territoryBins[obj.id_shape] = index;
+        })
+      })
+
+      return [binData, binCategories, nullCount, territoryBins]
+    },
     [filteredData]
   );
 
@@ -65,7 +76,7 @@ function MapView() {
             <span>Selecione o período</span>
             <Select
               options={yearOptions}
-              value={yearOptions.find(x => x.value === filterYear)}
+              value={yearOptions.find((x) => x.value === filterYear)}
               onChange={(option: any) => setFilterYear(option.value)}
               placeholder="Selecione..."
             />
@@ -80,9 +91,11 @@ function MapView() {
           <div className="mapview-filter-field-container">
             <span>Busca por bairro</span>
             <Select
-              options={neighborhoodOptions}
-              value={neighborhoodOptions.find(x => x.value === selectedNeighborhood)}
-              onChange={(option: any) => setSelectedNeighborhood(option?.value)}
+              options={territoryOptions}
+              value={territoryOptions.find(
+                (x) => x.value === selectedTerritory
+              )}
+              onChange={(option: any) => setSelectedTerritory(option?.value)}
               isDisabled={filterYear === null}
               isSearchable
               isClearable
@@ -92,27 +105,28 @@ function MapView() {
           </div>
         </div>
         <div className="mapview-map-container">
-          {filterYear && hoveredNeighborhood != null && (
-            <Tooltip data={filteredDataById[hoveredNeighborhood]} />
+          {filterYear && hoveredTerritory != null && (
+            <Tooltip data={filteredDataById[hoveredTerritory]} />
           )}
           <SVGMap
             data={filteredDataById}
-            selectedShapeId={selectedNeighborhood}
-            highlightedCategory={highlightedCategory}
+            selectedShapeId={selectedTerritory}
+            // highlightedCategory={highlightedCategory}
+            highlightedTerritories={highlightedBin ? binData[highlightedBin].map(obj => obj.id_shape) : []}
             onPathClick={(id: number) => {
-              if (id === selectedNeighborhood) {
-                setSelectedNeighborhood(null);
+              if (id === selectedTerritory) {
+                setSelectedTerritory(null);
               } else {
-                setSelectedNeighborhood(id);
+                setSelectedTerritory(id);
               }
             }}
             onPathMouseEnter={(id) => {
-              setHoveredNeighborhood(id);
-              setHighlightedCategory(filteredDataById[id]?.category || null);
+              setHoveredTerritory(id);
+              setHighlightedBin(territoryBins[id]);
             }}
             onMapMouseLeave={() => {
-              setHoveredNeighborhood(null);
-              setHighlightedCategory(null);
+              setHoveredTerritory(null);
+              setHighlightedBin(null);
             }}
           />
         </div>
@@ -129,18 +143,18 @@ function MapView() {
             para aquelas localidades.
           </p>
         </div>
-        {selectedNeighborhood ? (
-          <TerritoryDetail data={filteredDataById[selectedNeighborhood]} />
+        {selectedTerritory ? (
+          <TerritoryDetail data={filteredDataById[selectedTerritory]} />
         ) : (
           <HistogramChart
-            binCounts={binCounts}
+            binCounts={binData.map((x) => x.length)}
             binCategories={binCategories}
             nullCount={nullCount}
             xAxisLimits={HISTOGRAM_X_AXIS_LIMITS}
             yAxisLimits={HISTOGRAM_Y_AXIS_LIMITS}
-            highlightedCategory={highlightedCategory}
-            onBarMouseEnter={(cat) => setHighlightedCategory(cat)}
-            onBarMouseLeave={() => setHighlightedCategory(null)}
+            highlightedBin={highlightedBin}
+            onBarMouseEnter={(index) => setHighlightedBin(index)}
+            onBarMouseLeave={() => setHighlightedBin(null)}
           />
         )}
         <div className="report-button-wrapper">

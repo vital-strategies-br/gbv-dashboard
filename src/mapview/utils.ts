@@ -1,4 +1,4 @@
-import { RelativeCategory, NeighborhoodData, SubnotificationData, UISubnotificationData } from "./types";
+import { RelativeCategory, TerritoryData, SubnotificationData, UISubnotificationData } from "./types";
 
 // export const SEQUENTIAL_PALETTE = [
 //     '#c7caff', // Lightest shade
@@ -32,7 +32,7 @@ export const DIVERGENT_PALETTE = [
 
 export const NA_COLOR = "#d4d4d4"
 
-export function applyFilter(data: NeighborhoodData[], filterFn: (obj: SubnotificationData) => boolean): UISubnotificationData[] {
+export function applyFilter(data: TerritoryData[], filterFn: (obj: SubnotificationData) => boolean): UISubnotificationData[] {
     return data.map((neighborhood) => {
         const yearData = neighborhood.data.find(filterFn);
 
@@ -49,7 +49,7 @@ export function applyFilter(data: NeighborhoodData[], filterFn: (obj: Subnotific
     });
 }
 
-export function assignCategories(neighborhoods: NeighborhoodData[]): NeighborhoodData[] {
+export function assignCategories(neighborhoods: TerritoryData[]): TerritoryData[] {
     // Get the categories dynamically, excluding the first and last
     const allCategories = Object.values(RelativeCategory);
     const categories = allCategories.slice(1, -1); // Exclude EXTREME categories
@@ -97,16 +97,15 @@ function initializeCategoryCounts(bins: number): { [binIndex: number]: { [catego
 /**
  * Determines the majority category for a bin and logs a warning if categories are mixed.
  * @param counts - Category counts for the bin.
- * @param total - Total count of items in the bin.
  * @param binIndex - Index of the bin.
  * @returns The majority category or null if no items.
  */
 function getMajorityCategory(
     counts: { [category: string]: number },
-    total: number,
     binIndex: number
 ): Nullable<RelativeCategory> {
     const sortedCategories = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+    const total = sortedCategories.map(x => x[1]).reduce((a, b) => a+b);
 
     if (sortedCategories.length > 0) {
         const [majorityCategory, majorityCount] = sortedCategories[0];
@@ -120,26 +119,26 @@ function getMajorityCategory(
 }
 
 /**
- * Computes histogram data including bin counts, majority category per bin, and null count.
+ * Computes histogram data including bin counts, majority category per bin, null count, and items in each bin.
  * @param data - Array of UISubnotificationData objects to process.
  * @param bins - Number of bins in the histogram.
  * @param limits - Tuple defining the range of values for the bins ([min, max]).
- * @returns An array containing arrays of bin counts and categories, and null count.
+ * @returns An array containing arrays of bin counts, categories, null count, and data points for each bin.
  */
-export function getHistogramData(
+ export function getHistogramData(
     data: UISubnotificationData[],
     bins: number,
     limits: [number, number]
-): [number[], (Nullable<RelativeCategory>)[], number] {
+): [UISubnotificationData[][], (Nullable<RelativeCategory>)[], number] {
     const binSize = (limits[1] - limits[0]) / bins;
-    const binCounts = new Array(bins).fill(0);
 
-    // Initialize category counts for each bin
+    // Initialize category counts and data points for each bin
     const categoryCountsByBin: { [binIndex: number]: { [category: string]: number } } = initializeCategoryCounts(bins);
+    const binData: UISubnotificationData[][] = Array.from({ length: bins }, () => []);
 
     let nullCount = 0;
 
-    // Update counts for each data entry
+    // Update counts and data points for each data entry
     data.forEach(obj => {
         let value = obj.subnotification_rate;
 
@@ -154,16 +153,17 @@ export function getHistogramData(
                 ? 0
                 : Math.floor((value - limits[0]) / binSize);
 
-        binCounts[binIndex]++;
+        binData[binIndex].push(obj);
+
         if (obj.category) {
             categoryCountsByBin[binIndex][obj.category]++;
         }
     });
 
     // Determine the majority category for each bin
-    const binCategories = binCounts.map((_, i) => getMajorityCategory(categoryCountsByBin[i], binCounts[i], i));
+    const binCategories = binData.map(x => x.length).map((_, i) => getMajorityCategory(categoryCountsByBin[i], i));
 
-    return [binCounts, binCategories, nullCount];
+    return [binData, binCategories, nullCount];
 }
 
 /**

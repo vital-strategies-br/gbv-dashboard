@@ -19,12 +19,12 @@ export interface SubnotificationData {
     category?: Nullable<RelativeCategory>;
 }
 
-export interface NeighborhoodData {
-    // Simplified name of the neighborhood
+export interface TerritoryData {
+    // Simplified name of the territory
     neighborhood: string,
-    // The UI name of the neighborhood
+    // The UI name of the territory
     name: string,
-    // Different IDs for the neighborhood
+    // Different IDs for the territory
     id_shape: TerritoryId,
     id_sinan: number,
     id_geojson: number,
@@ -46,7 +46,9 @@ export interface SVGMapProps {
     // The 'id' of the selected path
     selectedShapeId: Nullable<number>,
     // The territory category to be highlighted
-    highlightedCategory: Nullable<RelativeCategory>;
+    highlightedCategory?: Nullable<RelativeCategory>;
+    // The territories to be highlighted
+    highlightedTerritories?: Nullable<number>[];
     // Callback for click on a region of the map
     // Invoked with the 'id' of the path as argument
     onPathClick: (id: number) => void;
@@ -70,8 +72,9 @@ export interface HistogramChartProps {
     yAxisLimits: [number, number];
     width?: number,
     height?: number,
-    highlightedCategory: Nullable<RelativeCategory>;
-    onBarMouseEnter: (category: Nullable<RelativeCategory>) => void;
+    highlightedCategory?: Nullable<RelativeCategory>;
+    highlightedBin?: Nullable<number>;
+    onBarMouseEnter: (index: number | undefined) => void;
     onBarMouseLeave: () => void;
 }
 
@@ -81,9 +84,10 @@ export interface HistogramBarProps {
     width: number;
     scale: number;
     value: number;
+    index?: number;
     category?: Nullable<RelativeCategory>;
     isActive?: boolean;
-    onMouseEnter?: (category: Nullable<RelativeCategory>) => void;
+    onMouseEnter?: (index: number | undefined) => void;
     onMouseLeave?: () => void;
 }
 

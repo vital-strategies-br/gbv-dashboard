@@ -82,6 +82,7 @@ function HistogramBar({
   width,
   scale,
   value,
+  index,
   category = null,
   isActive = true,
   onMouseEnter,
@@ -102,7 +103,7 @@ function HistogramBar({
       height={height}
       fill={isActive ? color : NA_COLOR}
       stroke="white"
-      onMouseEnter={() => onMouseEnter && onMouseEnter(category)}
+      onMouseEnter={() => onMouseEnter && onMouseEnter(index)}
       onMouseLeave={onMouseLeave}
       className="histogram-bar"
       style={{
@@ -121,6 +122,7 @@ function HistogramChart({
   width = 600,
   height = 350,
   highlightedCategory,
+  highlightedBin,
   onBarMouseEnter,
   onBarMouseLeave,
 }: HistogramChartProps) {
@@ -186,7 +188,9 @@ function HistogramChart({
         {binCounts.map((count, index) => {
           const category = binCategories ? binCategories[index] : null;
           const isActive =
-            !highlightedCategory || highlightedCategory === category;
+            (!highlightedCategory && !highlightedBin) ||
+            highlightedCategory === category ||
+            highlightedBin === index;
 
           return (
             <HistogramBar
@@ -196,6 +200,7 @@ function HistogramChart({
               width={binWidth}
               scale={yAxisScale}
               value={count}
+              index={index}
               category={category}
               isActive={isActive}
               onMouseEnter={onBarMouseEnter}

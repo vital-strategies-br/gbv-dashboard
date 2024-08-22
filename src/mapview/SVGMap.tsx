@@ -13,6 +13,7 @@ function SVGMap({
   data,
   selectedShapeId,
   highlightedCategory,
+  highlightedTerritories = [],
   onPathClick,
   onPathMouseEnter,
   onMapMouseLeave,
@@ -41,15 +42,18 @@ function SVGMap({
               pathValue = pathData.subnotification_rate;
               const pathCategory = pathData.category;
               const pathColor = getColorForCategory(pathCategory || null);
-              const isNotSelectedShape = selectedShapeId !== x.id;
-              const isNotHighlightedCategory =
-                highlightedCategory && highlightedCategory !== pathCategory;
 
-              fill = (
-                selectedShapeId ? isNotSelectedShape : isNotHighlightedCategory
-              )
-                ? NA_COLOR
-                : pathColor;
+              if (
+                (!selectedShapeId && !highlightedCategory && highlightedTerritories.length === 0) ||
+                (selectedShapeId && selectedShapeId === x.id) ||
+                (highlightedTerritories || []).indexOf(x.id) > -1 ||
+                (highlightedCategory && highlightedCategory === pathCategory)
+              ) {
+                fill = pathColor
+              } else {
+                fill = NA_COLOR
+              }
+
               onClick =
                 pathValue && onPathClick ? () => onPathClick(x.id) : undefined;
             } else {
