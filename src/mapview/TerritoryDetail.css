@@ -119,3 +119,8 @@
 .territory-detail-help-box-close-wrapper img {
   cursor: pointer;
 }
+
+.territory-detail-message-no-unit {
+  font-style: italic;
+  color: #222222b3;
+}

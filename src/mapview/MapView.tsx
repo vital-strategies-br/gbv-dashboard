@@ -7,7 +7,7 @@ import SVGMap from "./SVGMap";
 import TerritoryDetail from "./TerritoryDetail";
 import Tooltip from "./Tooltip";
 // Types
-import { TerritoryData, RelativeCategory, TerritoryId } from "./types";
+import { TerritoryData, TerritoryId } from "./types";
 // Utils
 import { applyFilter, assignCategories, getHistogramData } from "./utils";
 // Image
@@ -19,7 +19,7 @@ import "./MapView.css";
 
 // Constants
 const HISTOGRAM_BINS = 20;
-const HISTOGRAM_X_AXIS_LIMITS: [number, number] = [0.2, 0.8];
+const HISTOGRAM_X_AXIS_LIMITS: [number, number] = [0, 4000];
 const HISTOGRAM_Y_AXIS_LIMITS: [number, number] = [0, 25];
 // Derived
 const data: TerritoryData[] = assignCategories(DashboardDataJson); // all data
@@ -27,7 +27,7 @@ const territoryOptions = data.map((obj) => ({
   value: obj.id_shape,
   label: obj.name,
 }));
-const yearsSet = new Set(data.map((x) => x.data.map((y) => y.year)).flat());
+const yearsSet = new Set(data.map((x) => x.periods.map((y) => y.year)).flat());
 const yearOptions = Array.from(yearsSet).map((x) => ({
   value: x,
   label: x.toString(),
@@ -52,21 +52,23 @@ function MapView() {
     () => Object.fromEntries(filteredData.map((obj) => [obj.id_shape, obj])),
     [filteredData]
   );
-  const [binData, binCategories, nullCount, territoryBins] = useMemo(
-    () => {
-      const [binData, binCategories, nullCount] = getHistogramData(filteredData, HISTOGRAM_BINS, HISTOGRAM_X_AXIS_LIMITS);
-      const territoryBins:{ [key: number]: number} = {};
+  const [binData, binCategories, nullCount, territoryBins] = useMemo(() => {
+    const [binData, binCategories, nullCount] = getHistogramData(
+      filteredData,
+      obj => obj.subnotification_rate ? obj.subnotification_rate * 10 * 1000 : null,
+      HISTOGRAM_BINS,
+      HISTOGRAM_X_AXIS_LIMITS
+    );
+    const territoryBins: { [key: number]: number } = {};
 
-      binData.forEach((territories, index) => {
-        territories.forEach(obj => {
-          territoryBins[obj.id_shape] = index;
-        })
-      })
+    binData.forEach((territories, index) => {
+      territories.forEach((obj) => {
+        territoryBins[obj.id_shape] = index;
+      });
+    });
 
-      return [binData, binCategories, nullCount, territoryBins]
-    },
-    [filteredData]
-  );
+    return [binData, binCategories, nullCount, territoryBins];
+  }, [filteredData]);
 
   return (
     <div className="mapview-content content">
@@ -82,12 +84,12 @@ function MapView() {
             />
           </div>
           {/* <div className="mapview-filter-field-container">
-                <span>Selecione a faixa etária</span>
-                <Select
-                  placeholder="Selecione..."
-                  noOptionsMessage={() => "Sem opções"}
-                />
-              </div> */}
+            <span>Selecione a faixa etária</span>
+            <Select
+              placeholder="Selecione..."
+              noOptionsMessage={() => "Sem opções"}
+            />
+          </div> */}
           <div className="mapview-filter-field-container">
             <span>Busca por bairro</span>
             <Select
@@ -112,7 +114,11 @@ function MapView() {
             data={filteredDataById}
             selectedShapeId={selectedTerritory}
             // highlightedCategory={highlightedCategory}
-            highlightedTerritories={highlightedBin ? binData[highlightedBin].map(obj => obj.id_shape) : []}
+            highlightedTerritories={
+              highlightedBin
+                ? binData[highlightedBin].map((obj) => obj.id_shape)
+                : []
+            }
             onPathClick={(id: number) => {
               if (id === selectedTerritory) {
                 setSelectedTerritory(null);

@@ -34,7 +34,7 @@ export const NA_COLOR = "#d4d4d4"
 
 export function applyFilter(data: TerritoryData[], filterFn: (obj: SubnotificationData) => boolean): UISubnotificationData[] {
     return data.map((neighborhood) => {
-        const yearData = neighborhood.data.find(filterFn);
+        const yearData = neighborhood.periods.find(filterFn);
 
         if (yearData === undefined) {
             throw new Error(`Neighborhood ${neighborhood.name} is missing data for filter ${filterFn}!`)
@@ -73,7 +73,7 @@ export function assignCategories(neighborhoods: TerritoryData[]): TerritoryData[
     // Create a new object with updated categories
     return neighborhoods.map(neighborhood => ({
         ...neighborhood,
-        data: neighborhood.data.map(data => ({
+        periods: neighborhood.periods.map(data => ({
             ...data,
             category: getCategory(data.subnotification_rate_zscore)
         }))
@@ -121,12 +121,14 @@ function getMajorityCategory(
 /**
  * Computes histogram data including bin counts, majority category per bin, null count, and items in each bin.
  * @param data - Array of UISubnotificationData objects to process.
+ * @param extractorFn - Function to get the 'value' of each record to be used for histogram.
  * @param bins - Number of bins in the histogram.
  * @param limits - Tuple defining the range of values for the bins ([min, max]).
  * @returns An array containing arrays of bin counts, categories, null count, and data points for each bin.
  */
  export function getHistogramData(
     data: UISubnotificationData[],
+    extractorFn: (obj: UISubnotificationData) => Nullable<number>,
     bins: number,
     limits: [number, number]
 ): [UISubnotificationData[][], (Nullable<RelativeCategory>)[], number] {
@@ -140,7 +142,7 @@ function getMajorityCategory(
 
     // Update counts and data points for each data entry
     data.forEach(obj => {
-        let value = obj.subnotification_rate;
+        let value = extractorFn(obj);
 
         if (value === null) {
             nullCount++;

@@ -10,12 +10,22 @@ export enum RelativeCategory {
     EXTREME = "Extremo relativo",
 }
 
+export interface HealthUnitData {
+    unit_name: string;
+    esus_users: number;
+    sinan_notifications: number;
+    suspected_cases: number;
+}
+
 export interface SubnotificationData {
     year: number,
-    esus: Nullable<number>,
-    sinan: Nullable<number>,
+    population: number,
+    resident_esus_users: Nullable<number>,
+    resident_sinan_notifications: Nullable<number>,
+    resident_suspected_cases: Nullable<number>,
     subnotification_rate: Nullable<number>,
     subnotification_rate_zscore: Nullable<number>,
+    units: HealthUnitData[];
     category?: Nullable<RelativeCategory>;
 }
 
@@ -32,7 +42,7 @@ export interface TerritoryData {
     // The UI name of the district
     district_name: string,
     // Different data points for possible UI filters
-    data: Array<SubnotificationData>;
+    periods: Array<SubnotificationData>;
 }
 
 export interface UISubnotificationData extends SubnotificationData {
@@ -108,8 +118,3 @@ export interface TerritoryDetailProps {
     data: UISubnotificationData;
 }
 
-export interface HealthUnitData {
-    name: string;
-    suspectCases: number;
-    esusUsers: number;
-}
