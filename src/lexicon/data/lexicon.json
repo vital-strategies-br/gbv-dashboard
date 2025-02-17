@@ -1,0 +1,42 @@
+[
+    {
+        "notification_type": "Autoprovocada",
+        "frame": "Condições em saúde",
+        "year": 2022
+    },
+    {
+        "notification_type": "Externa",
+        "frame": "Condições em saúde",
+        "year": 2022
+    },
+    {
+        "notification_type": "Autoprovocada",
+        "frame": "Medicamentos",
+        "year": 2022
+    },
+    {
+        "notification_type": "Externa",
+        "frame": "Medicamentos",
+        "year": 2022
+    },
+    {
+        "notification_type": "Autoprovocada",
+        "frame": "Condições em saúde",
+        "year": 2021
+    },
+    {
+        "notification_type": "Externa",
+        "frame": "Condições em saúde",
+        "year": 2021
+    },
+    {
+        "notification_type": "Autoprovocada",
+        "frame": "Medicamentos",
+        "year": 2021
+    },
+    {
+        "notification_type": "Externa",
+        "frame": "Medicamentos",
+        "year": 2021
+    }
+]

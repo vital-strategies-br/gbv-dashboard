@@ -1,8 +1,7 @@
 /* Section.css */
 .section-content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   background-color: #e5f0ff;
   height: 0;
   opacity: 0;
