@@ -1,18 +1,12 @@
-g.x-grid-ticks text,
-g.y-grid-ticks text {
+.mapview-histogram > g {
+  transform: translateY(12px);
+}
+
+g.histogram-bar-na > text {
   fill: #909090;
 }
 
-g.x-grid-ticks line,
-g.y-grid-ticks line {
-  stroke: #b1b1b1;
-}
-
-g.barchart-bar-na > text {
-  fill: #909090;
-}
-
-.barchart-label {
+.histogram-label {
   text-anchor: middle;
   fill: #464646;
 }

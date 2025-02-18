@@ -2,41 +2,377 @@
     {
         "notification_type": "Autoprovocada",
         "frame": "Condições em saúde",
-        "year": 2022
+        "year": 2022,
+        "data": [
+            {
+                "lu": "esquizofrenia",
+                "keyness": 10.3
+            },
+            {
+                "lu": "ansiedade",
+                "keyness": 9.1
+            },
+            {
+                "lu": "depressão",
+                "keyness": 8.7
+            },
+            {
+                "lu": "transtorno",
+                "keyness": 7.2
+            },
+            {
+                "lu": "psicose",
+                "keyness": 6.5
+            },
+            {
+                "lu": "insônia",
+                "keyness": 4.8
+            },
+            {
+                "lu": "alucinação",
+                "keyness": 2.1
+            },
+            {
+                "lu": "edema",
+                "keyness": -3.2
+            },
+            {
+                "lu": "cisto",
+                "keyness": -5.0
+            },
+            {
+                "lu": "infecção",
+                "keyness": -6.2
+            }
+        ]
     },
     {
         "notification_type": "Externa",
         "frame": "Condições em saúde",
-        "year": 2022
+        "year": 2022,
+        "data": [
+            {
+                "lu": "fratura",
+                "keyness": 12.1
+            },
+            {
+                "lu": "contusão",
+                "keyness": 10.4
+            },
+            {
+                "lu": "luxação",
+                "keyness": 9.2
+            },
+            {
+                "lu": "entorse",
+                "keyness": 8.8
+            },
+            {
+                "lu": "laceração",
+                "keyness": 7.5
+            },
+            {
+                "lu": "abrasão",
+                "keyness": 6.3
+            },
+            {
+                "lu": "hematoma",
+                "keyness": 4.9
+            },
+            {
+                "lu": "queimadura",
+                "keyness": 3.2
+            },
+            {
+                "lu": "concussão",
+                "keyness": 2.1
+            },
+            {
+                "lu": "escoriação",
+                "keyness": 1.8
+            }
+        ]
     },
     {
         "notification_type": "Autoprovocada",
         "frame": "Medicamentos",
-        "year": 2022
+        "year": 2022,
+        "data": [
+            {
+                "lu": "antidepressivo",
+                "keyness": 9.7
+            },
+            {
+                "lu": "ansiolítico",
+                "keyness": 8.5
+            },
+            {
+                "lu": "psicotrópico",
+                "keyness": 7.8
+            },
+            {
+                "lu": "sedativo",
+                "keyness": 6.9
+            },
+            {
+                "lu": "antipsicótico",
+                "keyness": 5.4
+            },
+            {
+                "lu": "estabilizador",
+                "keyness": 3.2
+            },
+            {
+                "lu": "hipnótico",
+                "keyness": 1.5
+            },
+            {
+                "lu": "analgésico",
+                "keyness": -2.8
+            },
+            {
+                "lu": "anti-inflamatório",
+                "keyness": -4.6
+            },
+            {
+                "lu": "antibiótico",
+                "keyness": -5.9
+            }
+        ]
     },
     {
         "notification_type": "Externa",
         "frame": "Medicamentos",
-        "year": 2022
+        "year": 2022,
+        "data": [
+            {
+                "lu": "antibiótico",
+                "keyness": 8.9
+            },
+            {
+                "lu": "anti-inflamatório",
+                "keyness": 8.2
+            },
+            {
+                "lu": "analgésico",
+                "keyness": 7.6
+            },
+            {
+                "lu": "antialérgico",
+                "keyness": 6.4
+            },
+            {
+                "lu": "anti-séptico",
+                "keyness": 5.8
+            },
+            {
+                "lu": "anticoagulante",
+                "keyness": 4.3
+            },
+            {
+                "lu": "corticóide",
+                "keyness": 3.7
+            },
+            {
+                "lu": "antitérmico",
+                "keyness": 2.9
+            },
+            {
+                "lu": "anestésico",
+                "keyness": 2.1
+            },
+            {
+                "lu": "relaxante",
+                "keyness": 1.5
+            }
+        ]
     },
     {
         "notification_type": "Autoprovocada",
         "frame": "Condições em saúde",
-        "year": 2021
+        "year": 2021,
+        "data": [
+            {
+                "lu": "depressão",
+                "keyness": 11.2
+            },
+            {
+                "lu": "ansiedade",
+                "keyness": 9.8
+            },
+            {
+                "lu": "insônia",
+                "keyness": 8.8
+            },
+            {
+                "lu": "paranoia",
+                "keyness": 7.5
+            },
+            {
+                "lu": "bipolaridade",
+                "keyness": 6.2
+            },
+            {
+                "lu": "delírio",
+                "keyness": 4.7
+            },
+            {
+                "lu": "fobia",
+                "keyness": 2.3
+            },
+            {
+                "lu": "tontura",
+                "keyness": -2.9
+            },
+            {
+                "lu": "náusea",
+                "keyness": -4.5
+            },
+            {
+                "lu": "febre",
+                "keyness": -5.8
+            }
+        ]
     },
     {
         "notification_type": "Externa",
         "frame": "Condições em saúde",
-        "year": 2021
+        "year": 2021,
+        "data": [
+            {
+                "lu": "traumatismo",
+                "keyness": 10.8
+            },
+            {
+                "lu": "escoriação",
+                "keyness": 9.9
+            },
+            {
+                "lu": "hematoma",
+                "keyness": 8.4
+            },
+            {
+                "lu": "queimadura",
+                "keyness": 7.1
+            },
+            {
+                "lu": "perfuração",
+                "keyness": 6.3
+            },
+            {
+                "lu": "contusão",
+                "keyness": 5.5
+            },
+            {
+                "lu": "lesão",
+                "keyness": 4.2
+            },
+            {
+                "lu": "corte",
+                "keyness": 3.1
+            },
+            {
+                "lu": "entorse",
+                "keyness": 2.4
+            },
+            {
+                "lu": "abrasão",
+                "keyness": 1.7
+            }
+        ]
     },
     {
         "notification_type": "Autoprovocada",
         "frame": "Medicamentos",
-        "year": 2021
+        "year": 2021,
+        "data": [
+            {
+                "lu": "psicotrópico",
+                "keyness": 9.1
+            },
+            {
+                "lu": "antidepressivo",
+                "keyness": 8.4
+            },
+            {
+                "lu": "sedativo",
+                "keyness": 7.7
+            },
+            {
+                "lu": "ansiolítico",
+                "keyness": 6.9
+            },
+            {
+                "lu": "estabilizador",
+                "keyness": 5.2
+            },
+            {
+                "lu": "antipsicótico",
+                "keyness": 4.1
+            },
+            {
+                "lu": "hipnótico",
+                "keyness": 2.8
+            },
+            {
+                "lu": "anticonvulsivante",
+                "keyness": -3.1
+            },
+            {
+                "lu": "analgésico",
+                "keyness": -4.8
+            },
+            {
+                "lu": "antibiótico",
+                "keyness": -5.6
+            }
+        ]
     },
     {
         "notification_type": "Externa",
         "frame": "Medicamentos",
-        "year": 2021
+        "year": 2021,
+        "data": [
+            {
+                "lu": "anti-infeccioso",
+                "keyness": 8.3
+            },
+            {
+                "lu": "antitérmico",
+                "keyness": 7.5
+            },
+            {
+                "lu": "anti-inflamatório",
+                "keyness": 6.9
+            },
+            {
+                "lu": "anestésico",
+                "keyness": 6.2
+            },
+            {
+                "lu": "antibiótico",
+                "keyness": 5.7
+            },
+            {
+                "lu": "analgésico",
+                "keyness": 4.8
+            },
+            {
+                "lu": "anti-séptico",
+                "keyness": 3.9
+            },
+            {
+                "lu": "corticóide",
+                "keyness": 3.1
+            },
+            {
+                "lu": "anticoagulante",
+                "keyness": 2.4
+            },
+            {
+                "lu": "relaxante",
+                "keyness": 1.8
+            }
+        ]
     }
 ]

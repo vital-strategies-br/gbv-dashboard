@@ -1,0 +1,9 @@
+g.x-grid-ticks text,
+g.y-grid-ticks text {
+  fill: #909090;
+}
+
+g.x-grid-ticks line,
+g.y-grid-ticks line {
+  stroke: #b1b1b1;
+}

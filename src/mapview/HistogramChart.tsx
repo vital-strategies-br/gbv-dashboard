@@ -1,80 +1,16 @@
 import React, { useState, useEffect } from "react";
 
+// Components
+import AxisGridTicks from "../common/AxisGridTicks";
 // Types
 import {
   HistogramChartProps,
   HistogramBarProps,
-  AxisGridTicksProps,
 } from "./types";
 // Utils
-import { generateLinearSpace, getColorForCategory, NA_COLOR } from "./utils";
+import { getColorForCategory, NA_COLOR } from "./utils";
 // CSS
 import "./HistogramChart.css";
-
-function AxisGridTicks({
-  axis,
-  limits,
-  numTicks = 5,
-  axisLength,
-  otherLength,
-  startMargin,
-  axisStartOffset = 0,
-  axisEndOffset = 0,
-  showLines = false,
-  roundSteps = false,
-}: AxisGridTicksProps) {
-  const tickPositions = generateLinearSpace(
-    limits[0],
-    limits[1],
-    numTicks,
-    roundSteps
-  );
-
-  return (
-    <g className={`${axis}-grid-ticks`}>
-      {tickPositions.map((value) => {
-        const lengthPercentage = (value - limits[0]) / (limits[1] - limits[0]);
-        const lengthInPixels =
-          lengthPercentage * (axisLength - axisStartOffset - axisEndOffset) +
-          axisStartOffset;
-        let x1: number,
-          y1: number,
-          x2: number,
-          y2: number,
-          textOffsetX: number,
-          textOffsetY: number,
-          anchor: string;
-
-        if (axis === "x") {
-          x1 = lengthInPixels + startMargin;
-          x2 = x1;
-          y1 = otherLength;
-          y2 = 0;
-          textOffsetX = 0;
-          textOffsetY = 30;
-          anchor = "middle";
-        } else {
-          x1 = startMargin;
-          x2 = startMargin + otherLength;
-          y1 = axisLength - lengthInPixels;
-          y2 = y1;
-          textOffsetX = -10;
-          textOffsetY = 0;
-          anchor = "end";
-        }
-
-        return (
-          <g key={value}>
-            {showLines && <line x1={x1} y1={y1} x2={x2} y2={y2} />}
-            <text x={x1 + textOffsetX} y={y1 + textOffsetY} textAnchor={anchor}>
-              {roundSteps ? value : value.toFixed(2).replace(/(\.00)|0$/, "")}
-            </text>
-          </g>
-        );
-      })}
-    </g>
-  );
-}
 
 function HistogramBar({
   x,
@@ -146,9 +82,10 @@ function HistogramChart({
   return (
     <svg
       width="100%"
-      height={350}
+      height={height}
       viewBox={`0 0 ${width} ${height}`}
       preserveAspectRatio="xMidYMin"
+      className="mapview-histogram"
     >
       <AxisGridTicks
         axis="x"
@@ -158,17 +95,19 @@ function HistogramChart({
         startMargin={chartMarginBottom}
         axisStartOffset={xAxisMarginLeft}
         axisEndOffset={xAxisMarginRight}
+        roundingMode="integer"
       />
       <AxisGridTicks
         axis="y"
+        numTicks={6}
         limits={yAxisLimits}
         axisLength={chartAreaHeight}
         otherLength={chartAreaWidth}
         startMargin={chartMarginLeft}
+        roundingMode="integer"
         showLines
-        roundSteps
       />
-      <g className="barchart-bar-na">
+      <g className="histogram-bar-na">
         <HistogramBar
           x={chartMarginLeft + nullBarMarginLeft}
           y={chartAreaHeight}
@@ -184,7 +123,7 @@ function HistogramChart({
           n.d.
         </text>
       </g>
-      <g className="barchar-bars">
+      <g className="histogram-bars">
         {binCounts.map((count, index) => {
           const category = binCategories ? binCategories[index] : null;
           const isActive =
@@ -212,7 +151,7 @@ function HistogramChart({
       <text
         x={chartAreaWidth / 2 + chartMarginLeft}
         y={height - 4}
-        className="barchart-label"
+        className="histogram-label"
       >
         Número estimado de casos subnotificados por 10 mil usuárias AB
       </text>
@@ -220,7 +159,7 @@ function HistogramChart({
         x={-height / 2}
         y={16}
         transform="rotate(-90)"
-        className="barchart-label"
+        className="histogram-label"
       >
         Número de Bairros
       </text>
@@ -229,3 +168,7 @@ function HistogramChart({
 }
 
 export default HistogramChart;
+
+export {
+  AxisGridTicks
+};

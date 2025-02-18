@@ -205,44 +205,6 @@ export function getColorForCategory(category: Nullable<RelativeCategory>): strin
     return SEQUENTIAL_PALETTE[categoryToPaletteIndex[category]];
 }
 
-/**
- * Generates an array of linearly spaced numbers between a start and end value.
- *
- * @param {number} startValue - The first value in the generated sequence.
- * @param {number} endValue - The last value in the generated sequence.
- * @param {number} numPoints - The number of values to generate in the sequence.
- * @param {boolean} [shouldRoundSteps=false] - If true, rounds the step size to the nearest integer.
- * @returns {number[]} An array of `numPoints` linearly spaced values between `startValue` and `endValue`.
- *
- * @example
- * // Generates 5 points between 0 and 10
- * generateLinearSpace(0, 10, 5);
- * // Returns [0, 2.5, 5, 7.5, 10]
- *
- * @example
- * // Generates 4 points between 0 and 8 with rounded step sizes
- * generateLinearSpace(0, 8, 4, true);
- * // Returns [0, 3, 6, 9]
- */
-
-export function generateLinearSpace(
-    startValue: number,
-    endValue: number,
-    numPoints: number,
-    shouldRoundSteps: boolean = false
-): number[] {
-    const pointsArray = [];
-    const range = endValue - startValue;
-    let stepSize = range / (numPoints - 1);
-    if (shouldRoundSteps) {
-        stepSize = Math.round(stepSize);
-    }
-    for (let pointIndex = 0; pointIndex < numPoints; pointIndex++) {
-        pointsArray.push(startValue + stepSize * pointIndex);
-    }
-    return pointsArray;
-}
-
 export function formatPercentage(float: Nullable<number>, decimalPoints: number = 2) {
     if (float === null) return "n.d.";
     return (float * 100).toFixed(decimalPoints) + "%"

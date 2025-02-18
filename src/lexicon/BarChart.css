@@ -1,0 +1,7 @@
+.lexicon-barchart > g {
+  transform: translateY(12px);
+}
+
+.barchart-label {
+  fill: #464646;
+}

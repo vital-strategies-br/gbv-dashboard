@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Select from "react-select";
 
+// Components
+import BarChart from "./BarChart";
 // Types
 import { KeynessData } from "./types";
 // Data
@@ -25,6 +27,13 @@ function Lexicon() {
   let [filterFrame, setFilterFrame] = useState<string>(frameOptions[0].value);
   let [filterYear, setFilterYear] = useState<number>(yearOptions[0].value);
 
+  let entry = data.find(
+    (x) =>
+      x.notification_type === filterType &&
+      x.frame === filterFrame &&
+      x.year === filterYear
+  );
+
   return (
     <div className="lexicon-content content">
       <div className="lexicon-filter-container">
@@ -42,7 +51,7 @@ function Lexicon() {
           <Select
             options={frameOptions}
             value={frameOptions.find((x) => x.value === filterFrame)}
-            onChange={(option: any) => setFilterType(option.value)}
+            onChange={(option: any) => setFilterFrame(option.value)}
             placeholder="Selecione..."
           />
         </div>
@@ -59,19 +68,22 @@ function Lexicon() {
       <div className="lexicon-main-container">
         <div className="lexicon-text-wrapper">
           <p>
-            O gráfico ao lado mostra a distribuição etária de vítimas de
-            violência interpessoal em relação a diferentes condições de saúde. O
-            eixo X representa essas condições, enquanto o eixo Y indica a
-            relevância de cada uma para esse tipo de violência; cada barra
-            empilhada é segmentada por faixas etárias, permitindo visualizar
-            como determinadas condições, como gravidez, surto psiquiátrico ou
-            varizes, estão distribuídas entre diferentes grupos de idade,
-            possibilitando a identificação de padrões e auxiliando na formulação
-            de estratégias de prevenção e intervenção mais eficazes.
+            O gráfico ao lado mostra os itens lexicais mais relevantes nos
+            registros de vítimas de violência no e-SUS APS. A visualização pode
+            ser customizada para o tipo de violência sofrida, o período e um
+            determinado tópico e apresenta valores para diferentes faixas
+            etárias. Enquanto o eixo X apresenta o nome dos itens lexicais, o
+            eixo Y indica a relevância de cada item em relação a população geral
+            na mesma faixa etária. Portanto, um item lexical com relevância 5
+            deve ser entendido como 5 vezes MAIS frequente nos registros de
+            vítimas. Já valores negativos, como por exemplo -3, indicariam que o
+            item lexical é três vezes MENOS frequente nos registros de vítimas.
           </p>
           <p>Clique nas barras para mais detalhes.</p>
         </div>
-        <div className="lexicon-chart-wrapper"></div>
+        <div className="lexicon-chart-wrapper">
+          <BarChart data={entry?.data || []} />
+        </div>
       </div>
     </div>
   );
