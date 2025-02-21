@@ -2,26 +2,20 @@ import React from "react"
 
 // Types
 import { AxisGridTicksProps } from "./types";
-// Utils
-import { generateLinearSpace } from "./utils";
 // CSS
 import "./AxisGridTicks.css";
 
 function AxisGridTicks({
   axis,
-  limits,
-  numTicks = 5,
+  ticks,
   axisLength,
   otherLength,
   startMargin,
   axisStartOffset = 0,
   axisEndOffset = 0,
   showLines = false,
-  roundingMode = "none",
+  roundingMode = "none"
 }: AxisGridTicksProps) {
-  let tickPositions = generateLinearSpace(limits[0], limits[1], numTicks);
-
-  // Custom half rounding function to nearest x.5 or integer
   const roundToHalf = (value: number) => {
     const remainder = value % 1;
     return remainder < 0.25 ? Math.floor(value) :
@@ -29,10 +23,16 @@ function AxisGridTicks({
            Math.floor(value) + 0.5;
   };
 
+  const isVertical = axis === "y";
+  const effectiveLength = isVertical ? axisLength : otherLength;
+  
+  // Calculate positions based on provided ticks
+  const valueRange = ticks[ticks.length - 1] - ticks[0];
+
   return (
     <g className={`${axis}-grid-ticks`}>
-      {tickPositions.map((value) => {
-        const lengthPercentage = (value - limits[0]) / (limits[1] - limits[0]);
+      {ticks.map((value: number) => {
+        const lengthPercentage = (value - ticks[0]) / valueRange;
         const lengthInPixels =
           lengthPercentage * (axisLength - axisStartOffset - axisEndOffset) +
           axisStartOffset;

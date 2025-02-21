@@ -1,0 +1,33 @@
+.barchart-popup {
+  background: white;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.barchart-popup-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.barchart-popup-stat-row {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.color-square {
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+.barchart-popup-container {
+  width: fit-content;
+  height: fit-content;
+  pointer-events: none;
+}
+
+.barchart-popup {
+  pointer-events: auto;
+} 

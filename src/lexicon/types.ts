@@ -14,10 +14,17 @@ export interface KeynessDataPoint {
     lu: string;
     // Keyness score
     keyness: number;
+    age_groups: AgeGroupKeynessDataPoint[];
+}
+
+export interface AgeGroupKeynessDataPoint {
+    n: number;
+    keyness: number;
 }
 
 export interface BarChartProps {
     data: KeynessDataPoint[];
+    ageGroupLabels: string[];
     width?: number;
     height?: number;
   }

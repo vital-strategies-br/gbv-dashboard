@@ -1,378 +1,781 @@
-[
+{
+  "labels": ["De 0 a 14 anos", "De 15 a 50 anos", "Mais de 50 anos"],
+  "visualization_data": [
     {
-        "notification_type": "Autoprovocada",
-        "frame": "Condições em saúde",
-        "year": 2022,
-        "data": [
-            {
-                "lu": "esquizofrenia",
-                "keyness": 10.3
-            },
-            {
-                "lu": "ansiedade",
-                "keyness": 9.1
-            },
-            {
-                "lu": "depressão",
-                "keyness": 8.7
-            },
-            {
-                "lu": "transtorno",
-                "keyness": 7.2
-            },
-            {
-                "lu": "psicose",
-                "keyness": 6.5
-            },
-            {
-                "lu": "insônia",
-                "keyness": 4.8
-            },
-            {
-                "lu": "alucinação",
-                "keyness": 2.1
-            },
-            {
-                "lu": "edema",
-                "keyness": -3.2
-            },
-            {
-                "lu": "cisto",
-                "keyness": -5.0
-            },
-            {
-                "lu": "infecção",
-                "keyness": -6.2
-            }
-        ]
+      "notification_type": "Autoprovocada",
+      "frame": "Condições em saúde",
+      "year": 2022,
+      "data": [
+        {
+          "lu": "esquizofrenia",
+          "keyness": 10.3,
+          "age_groups": [
+            { "n": 505, "keyness": 7.6 },
+            { "n": 1011, "keyness": 15.3 },
+            { "n": 428, "keyness": 7.2 }
+          ]
+        },
+        {
+          "lu": "ansiedade",
+          "keyness": 9.1,
+          "age_groups": [
+            { "n": 423, "keyness": 6.8 },
+            { "n": 892, "keyness": 12.4 },
+            { "n": 385, "keyness": 8.1 }
+          ]
+        },
+        {
+          "lu": "depressão",
+          "keyness": 8.7,
+          "age_groups": [
+            { "n": 412, "keyness": 6.5 },
+            { "n": 856, "keyness": 11.9 },
+            { "n": 367, "keyness": 7.7 }
+          ]
+        },
+        {
+          "lu": "transtorno",
+          "keyness": 7.2,
+          "age_groups": [
+            { "n": 345, "keyness": 5.4 },
+            { "n": 715, "keyness": 9.8 },
+            { "n": 312, "keyness": 6.4 }
+          ]
+        },
+        {
+          "lu": "psicose",
+          "keyness": 6.5,
+          "age_groups": [
+            { "n": 315, "keyness": 4.9 },
+            { "n": 645, "keyness": 8.8 },
+            { "n": 289, "keyness": 5.8 }
+          ]
+        },
+        {
+          "lu": "insônia",
+          "keyness": 4.8,
+          "age_groups": [
+            { "n": 234, "keyness": 3.6 },
+            { "n": 478, "keyness": 6.5 },
+            { "n": 215, "keyness": 4.3 }
+          ]
+        },
+        {
+          "lu": "alucinação",
+          "keyness": 2.1,
+          "age_groups": [
+            { "n": 156, "keyness": 1.6 },
+            { "n": 312, "keyness": 2.8 },
+            { "n": 134, "keyness": 1.9 }
+          ]
+        },
+        {
+          "lu": "edema",
+          "keyness": -3.2,
+          "age_groups": [
+            { "n": 89, "keyness": -2.4 },
+            { "n": 178, "keyness": -4.3 },
+            { "n": 76, "keyness": -2.9 }
+          ]
+        },
+        {
+          "lu": "cisto",
+          "keyness": -5.0,
+          "age_groups": [
+            { "n": 67, "keyness": -3.8 },
+            { "n": 134, "keyness": -6.8 },
+            { "n": 58, "keyness": -4.4 }
+          ]
+        },
+        {
+          "lu": "infecção",
+          "keyness": -6.2,
+          "age_groups": [
+            { "n": 56, "keyness": -4.7 },
+            { "n": 112, "keyness": -8.4 },
+            { "n": 48, "keyness": -5.5 }
+          ]
+        }
+      ]
     },
     {
-        "notification_type": "Externa",
-        "frame": "Condições em saúde",
-        "year": 2022,
-        "data": [
-            {
-                "lu": "fratura",
-                "keyness": 12.1
-            },
-            {
-                "lu": "contusão",
-                "keyness": 10.4
-            },
-            {
-                "lu": "luxação",
-                "keyness": 9.2
-            },
-            {
-                "lu": "entorse",
-                "keyness": 8.8
-            },
-            {
-                "lu": "laceração",
-                "keyness": 7.5
-            },
-            {
-                "lu": "abrasão",
-                "keyness": 6.3
-            },
-            {
-                "lu": "hematoma",
-                "keyness": 4.9
-            },
-            {
-                "lu": "queimadura",
-                "keyness": 3.2
-            },
-            {
-                "lu": "concussão",
-                "keyness": 2.1
-            },
-            {
-                "lu": "escoriação",
-                "keyness": 1.8
-            }
-        ]
+      "notification_type": "Externa",
+      "frame": "Condições em saúde",
+      "year": 2022,
+      "data": [
+        {
+          "lu": "fratura",
+          "keyness": 12.1,
+          "age_groups": [
+            { "n": 589, "keyness": 9.1 },
+            { "n": 1178, "keyness": 16.4 },
+            { "n": 498, "keyness": 10.8 }
+          ]
+        },
+        {
+          "lu": "contusão",
+          "keyness": 10.4,
+          "age_groups": [
+            { "n": 512, "keyness": 7.8 },
+            { "n": 1024, "keyness": 14.1 },
+            { "n": 434, "keyness": 9.3 }
+          ]
+        },
+        {
+          "lu": "luxação",
+          "keyness": 9.2,
+          "age_groups": [
+            { "n": 456, "keyness": 6.9 },
+            { "n": 912, "keyness": 12.5 },
+            { "n": 387, "keyness": 8.2 }
+          ]
+        },
+        {
+          "lu": "entorse",
+          "keyness": 8.8,
+          "age_groups": [
+            { "n": 434, "keyness": 6.6 },
+            { "n": 868, "keyness": 11.9 },
+            { "n": 369, "keyness": 7.9 }
+          ]
+        },
+        {
+          "lu": "laceração",
+          "keyness": 7.5,
+          "age_groups": [
+            { "n": 378, "keyness": 5.6 },
+            { "n": 756, "keyness": 10.2 },
+            { "n": 321, "keyness": 6.7 }
+          ]
+        },
+        {
+          "lu": "abrasão",
+          "keyness": 6.3,
+          "age_groups": [
+            { "n": 312, "keyness": 4.7 },
+            { "n": 624, "keyness": 8.5 },
+            { "n": 265, "keyness": 5.7 }
+          ]
+        },
+        {
+          "lu": "hematoma",
+          "keyness": 4.9,
+          "age_groups": [
+            { "n": 245, "keyness": 3.7 },
+            { "n": 490, "keyness": 6.6 },
+            { "n": 208, "keyness": 4.4 }
+          ]
+        },
+        {
+          "lu": "queimadura",
+          "keyness": 3.2,
+          "age_groups": [
+            { "n": 167, "keyness": 2.4 },
+            { "n": 334, "keyness": 4.3 },
+            { "n": 142, "keyness": 2.9 }
+          ]
+        },
+        {
+          "lu": "concussão",
+          "keyness": 2.1,
+          "age_groups": [
+            { "n": 123, "keyness": 1.6 },
+            { "n": 246, "keyness": 2.8 },
+            { "n": 105, "keyness": 1.9 }
+          ]
+        },
+        {
+          "lu": "escoriação",
+          "keyness": 1.8,
+          "age_groups": [
+            { "n": 112, "keyness": 1.4 },
+            { "n": 224, "keyness": 2.4 },
+            { "n": 95, "keyness": 1.6 }
+          ]
+        }
+      ]
     },
     {
-        "notification_type": "Autoprovocada",
-        "frame": "Medicamentos",
-        "year": 2022,
-        "data": [
-            {
-                "lu": "antidepressivo",
-                "keyness": 9.7
-            },
-            {
-                "lu": "ansiolítico",
-                "keyness": 8.5
-            },
-            {
-                "lu": "psicotrópico",
-                "keyness": 7.8
-            },
-            {
-                "lu": "sedativo",
-                "keyness": 6.9
-            },
-            {
-                "lu": "antipsicótico",
-                "keyness": 5.4
-            },
-            {
-                "lu": "estabilizador",
-                "keyness": 3.2
-            },
-            {
-                "lu": "hipnótico",
-                "keyness": 1.5
-            },
-            {
-                "lu": "analgésico",
-                "keyness": -2.8
-            },
-            {
-                "lu": "anti-inflamatório",
-                "keyness": -4.6
-            },
-            {
-                "lu": "antibiótico",
-                "keyness": -5.9
-            }
-        ]
+      "notification_type": "Autoprovocada",
+      "frame": "Medicamentos",
+      "year": 2022,
+      "data": [
+        {
+          "lu": "antidepressivo",
+          "keyness": 9.7,
+          "age_groups": [
+            { "n": 478, "keyness": 7.3 },
+            { "n": 956, "keyness": 13.1 },
+            { "n": 406, "keyness": 8.7 }
+          ]
+        },
+        {
+          "lu": "ansiolítico",
+          "keyness": 8.5,
+          "age_groups": [
+            { "n": 423, "keyness": 6.4 },
+            { "n": 846, "keyness": 11.5 },
+            { "n": 359, "keyness": 7.6 }
+          ]
+        },
+        {
+          "lu": "psicotrópico",
+          "keyness": 7.8,
+          "age_groups": [
+            { "n": 389, "keyness": 5.9 },
+            { "n": 778, "keyness": 10.5 },
+            { "n": 331, "keyness": 7.0 }
+          ]
+        },
+        {
+          "lu": "sedativo",
+          "keyness": 6.9,
+          "age_groups": [
+            { "n": 345, "keyness": 5.2 },
+            { "n": 690, "keyness": 9.3 },
+            { "n": 293, "keyness": 6.2 }
+          ]
+        },
+        {
+          "lu": "antipsicótico",
+          "keyness": 5.4,
+          "age_groups": [
+            { "n": 278, "keyness": 4.1 },
+            { "n": 556, "keyness": 7.3 },
+            { "n": 236, "keyness": 4.8 }
+          ]
+        },
+        {
+          "lu": "estabilizador",
+          "keyness": 3.2,
+          "age_groups": [
+            { "n": 167, "keyness": 2.4 },
+            { "n": 334, "keyness": 4.3 },
+            { "n": 142, "keyness": 2.9 }
+          ]
+        },
+        {
+          "lu": "hipnótico",
+          "keyness": 1.5,
+          "age_groups": [
+            { "n": 89, "keyness": 1.1 },
+            { "n": 178, "keyness": 2.0 },
+            { "n": 76, "keyness": 1.3 }
+          ]
+        },
+        {
+          "lu": "analgésico",
+          "keyness": -2.8,
+          "age_groups": [
+            { "n": 78, "keyness": -2.1 },
+            { "n": 156, "keyness": -3.8 },
+            { "n": 66, "keyness": -2.5 }
+          ]
+        },
+        {
+          "lu": "anti-inflamatório",
+          "keyness": -4.6,
+          "age_groups": [
+            { "n": 67, "keyness": -3.5 },
+            { "n": 134, "keyness": -6.2 },
+            { "n": 57, "keyness": -4.1 }
+          ]
+        },
+        {
+          "lu": "antibiótico",
+          "keyness": -5.9,
+          "age_groups": [
+            { "n": 56, "keyness": -4.4 },
+            { "n": 112, "keyness": -8.0 },
+            { "n": 48, "keyness": -5.3 }
+          ]
+        }
+      ]
     },
     {
-        "notification_type": "Externa",
-        "frame": "Medicamentos",
-        "year": 2022,
-        "data": [
-            {
-                "lu": "antibiótico",
-                "keyness": 8.9
-            },
-            {
-                "lu": "anti-inflamatório",
-                "keyness": 8.2
-            },
-            {
-                "lu": "analgésico",
-                "keyness": 7.6
-            },
-            {
-                "lu": "antialérgico",
-                "keyness": 6.4
-            },
-            {
-                "lu": "anti-séptico",
-                "keyness": 5.8
-            },
-            {
-                "lu": "anticoagulante",
-                "keyness": 4.3
-            },
-            {
-                "lu": "corticóide",
-                "keyness": 3.7
-            },
-            {
-                "lu": "antitérmico",
-                "keyness": 2.9
-            },
-            {
-                "lu": "anestésico",
-                "keyness": 2.1
-            },
-            {
-                "lu": "relaxante",
-                "keyness": 1.5
-            }
-        ]
+      "notification_type": "Externa",
+      "frame": "Medicamentos",
+      "year": 2022,
+      "data": [
+        {
+          "lu": "antibiótico",
+          "keyness": 8.9,
+          "age_groups": [
+            { "n": 445, "keyness": 6.7 },
+            { "n": 890, "keyness": 12.0 },
+            { "n": 378, "keyness": 8.0 }
+          ]
+        },
+        {
+          "lu": "anti-inflamatório",
+          "keyness": 8.2,
+          "age_groups": [
+            { "n": 412, "keyness": 6.2 },
+            { "n": 824, "keyness": 11.1 },
+            { "n": 350, "keyness": 7.3 }
+          ]
+        },
+        {
+          "lu": "analgésico",
+          "keyness": 7.6,
+          "age_groups": [
+            { "n": 378, "keyness": 5.7 },
+            { "n": 756, "keyness": 10.3 },
+            { "n": 321, "keyness": 6.8 }
+          ]
+        },
+        {
+          "lu": "antialérgico",
+          "keyness": 6.4,
+          "age_groups": [
+            { "n": 323, "keyness": 4.8 },
+            { "n": 646, "keyness": 8.6 },
+            { "n": 274, "keyness": 5.7 }
+          ]
+        },
+        {
+          "lu": "anti-séptico",
+          "keyness": 5.8,
+          "age_groups": [
+            { "n": 289, "keyness": 4.4 },
+            { "n": 578, "keyness": 7.8 },
+            { "n": 246, "keyness": 5.2 }
+          ]
+        },
+        {
+          "lu": "anticoagulante",
+          "keyness": 4.3,
+          "age_groups": [
+            { "n": 223, "keyness": 3.2 },
+            { "n": 446, "keyness": 5.8 },
+            { "n": 189, "keyness": 3.8 }
+          ]
+        },
+        {
+          "lu": "corticóide",
+          "keyness": 3.7,
+          "age_groups": [
+            { "n": 189, "keyness": 2.8 },
+            { "n": 378, "keyness": 5.0 },
+            { "n": 161, "keyness": 3.3 }
+          ]
+        },
+        {
+          "lu": "antitérmico",
+          "keyness": 2.9,
+          "age_groups": [
+            { "n": 156, "keyness": 2.2 },
+            { "n": 312, "keyness": 3.9 },
+            { "n": 133, "keyness": 2.6 }
+          ]
+        },
+        {
+          "lu": "anestésico",
+          "keyness": 2.1,
+          "age_groups": [
+            { "n": 123, "keyness": 1.6 },
+            { "n": 246, "keyness": 2.8 },
+            { "n": 105, "keyness": 1.9 }
+          ]
+        },
+        {
+          "lu": "relaxante",
+          "keyness": 1.5,
+          "age_groups": [
+            { "n": 89, "keyness": 1.1 },
+            { "n": 178, "keyness": 2.0 },
+            { "n": 76, "keyness": 1.3 }
+          ]
+        }
+      ]
     },
     {
-        "notification_type": "Autoprovocada",
-        "frame": "Condições em saúde",
-        "year": 2021,
-        "data": [
-            {
-                "lu": "depressão",
-                "keyness": 11.2
-            },
-            {
-                "lu": "ansiedade",
-                "keyness": 9.8
-            },
-            {
-                "lu": "insônia",
-                "keyness": 8.8
-            },
-            {
-                "lu": "paranoia",
-                "keyness": 7.5
-            },
-            {
-                "lu": "bipolaridade",
-                "keyness": 6.2
-            },
-            {
-                "lu": "delírio",
-                "keyness": 4.7
-            },
-            {
-                "lu": "fobia",
-                "keyness": 2.3
-            },
-            {
-                "lu": "tontura",
-                "keyness": -2.9
-            },
-            {
-                "lu": "náusea",
-                "keyness": -4.5
-            },
-            {
-                "lu": "febre",
-                "keyness": -5.8
-            }
-        ]
+      "notification_type": "Autoprovocada",
+      "frame": "Condições em saúde",
+      "year": 2021,
+      "data": [
+        {
+          "lu": "depressão",
+          "keyness": 11.2,
+          "age_groups": [
+            { "n": 545, "keyness": 8.4 },
+            { "n": 1090, "keyness": 15.1 },
+            { "n": 463, "keyness": 10.1 }
+          ]
+        },
+        {
+          "lu": "ansiedade",
+          "keyness": 9.8,
+          "age_groups": [
+            { "n": 478, "keyness": 7.4 },
+            { "n": 956, "keyness": 13.2 },
+            { "n": 406, "keyness": 8.8 }
+          ]
+        },
+        {
+          "lu": "insônia",
+          "keyness": 8.8,
+          "age_groups": [
+            { "n": 434, "keyness": 6.6 },
+            { "n": 868, "keyness": 11.9 },
+            { "n": 369, "keyness": 7.9 }
+          ]
+        },
+        {
+          "lu": "paranoia",
+          "keyness": 7.5,
+          "age_groups": [
+            { "n": 378, "keyness": 5.6 },
+            { "n": 756, "keyness": 10.1 },
+            { "n": 321, "keyness": 6.7 }
+          ]
+        },
+        {
+          "lu": "bipolaridade",
+          "keyness": 6.2,
+          "age_groups": [
+            { "n": 312, "keyness": 4.7 },
+            { "n": 624, "keyness": 8.4 },
+            { "n": 265, "keyness": 5.5 }
+          ]
+        },
+        {
+          "lu": "delírio",
+          "keyness": 4.7,
+          "age_groups": [
+            { "n": 234, "keyness": 3.5 },
+            { "n": 468, "keyness": 6.3 },
+            { "n": 199, "keyness": 4.2 }
+          ]
+        },
+        {
+          "lu": "fobia",
+          "keyness": 2.3,
+          "age_groups": [
+            { "n": 123, "keyness": 1.7 },
+            { "n": 246, "keyness": 3.1 },
+            { "n": 105, "keyness": 2.1 }
+          ]
+        },
+        {
+          "lu": "tontura",
+          "keyness": -2.9,
+          "age_groups": [
+            { "n": 78, "keyness": -2.2 },
+            { "n": 156, "keyness": -3.9 },
+            { "n": 66, "keyness": -2.6 }
+          ]
+        },
+        {
+          "lu": "náusea",
+          "keyness": -4.5,
+          "age_groups": [
+            { "n": 67, "keyness": -3.4 },
+            { "n": 134, "keyness": -6.1 },
+            { "n": 57, "keyness": -4.0 }
+          ]
+        },
+        {
+          "lu": "febre",
+          "keyness": -5.8,
+          "age_groups": [
+            { "n": 56, "keyness": -4.4 },
+            { "n": 112, "keyness": -7.8 },
+            { "n": 48, "keyness": -5.2 }
+          ]
+        }
+      ]
     },
     {
-        "notification_type": "Externa",
-        "frame": "Condições em saúde",
-        "year": 2021,
-        "data": [
-            {
-                "lu": "traumatismo",
-                "keyness": 10.8
-            },
-            {
-                "lu": "escoriação",
-                "keyness": 9.9
-            },
-            {
-                "lu": "hematoma",
-                "keyness": 8.4
-            },
-            {
-                "lu": "queimadura",
-                "keyness": 7.1
-            },
-            {
-                "lu": "perfuração",
-                "keyness": 6.3
-            },
-            {
-                "lu": "contusão",
-                "keyness": 5.5
-            },
-            {
-                "lu": "lesão",
-                "keyness": 4.2
-            },
-            {
-                "lu": "corte",
-                "keyness": 3.1
-            },
-            {
-                "lu": "entorse",
-                "keyness": 2.4
-            },
-            {
-                "lu": "abrasão",
-                "keyness": 1.7
-            }
-        ]
+      "notification_type": "Externa",
+      "frame": "Condições em saúde",
+      "year": 2021,
+      "data": [
+        {
+          "lu": "traumatismo",
+          "keyness": 10.8,
+          "age_groups": [
+            { "n": 534, "keyness": 8.1 },
+            { "n": 1068, "keyness": 14.6 },
+            { "n": 454, "keyness": 9.7 }
+          ]
+        },
+        {
+          "lu": "escoriação",
+          "keyness": 9.9,
+          "age_groups": [
+            { "n": 489, "keyness": 7.4 },
+            { "n": 978, "keyness": 13.4 },
+            { "n": 415, "keyness": 8.9 }
+          ]
+        },
+        {
+          "lu": "hematoma",
+          "keyness": 8.4,
+          "age_groups": [
+            { "n": 423, "keyness": 6.3 },
+            { "n": 846, "keyness": 11.3 },
+            { "n": 359, "keyness": 7.5 }
+          ]
+        },
+        {
+          "lu": "queimadura",
+          "keyness": 7.1,
+          "age_groups": [
+            { "n": 356, "keyness": 5.3 },
+            { "n": 712, "keyness": 9.6 },
+            { "n": 302, "keyness": 6.4 }
+          ]
+        },
+        {
+          "lu": "perfuração",
+          "keyness": 6.3,
+          "age_groups": [
+            { "n": 312, "keyness": 4.7 },
+            { "n": 624, "keyness": 8.5 },
+            { "n": 265, "keyness": 5.6 }
+          ]
+        },
+        {
+          "lu": "contusão",
+          "keyness": 5.5,
+          "age_groups": [
+            { "n": 278, "keyness": 4.1 },
+            { "n": 556, "keyness": 7.4 },
+            { "n": 236, "keyness": 4.9 }
+          ]
+        },
+        {
+          "lu": "lesão",
+          "keyness": 4.2,
+          "age_groups": [
+            { "n": 212, "keyness": 3.2 },
+            { "n": 424, "keyness": 5.7 },
+            { "n": 180, "keyness": 3.8 }
+          ]
+        },
+        {
+          "lu": "corte",
+          "keyness": 3.1,
+          "age_groups": [
+            { "n": 156, "keyness": 2.3 },
+            { "n": 312, "keyness": 4.2 },
+            { "n": 133, "keyness": 2.8 }
+          ]
+        },
+        {
+          "lu": "entorse",
+          "keyness": 2.4,
+          "age_groups": [
+            { "n": 123, "keyness": 1.8 },
+            { "n": 246, "keyness": 3.2 },
+            { "n": 105, "keyness": 2.2 }
+          ]
+        },
+        {
+          "lu": "abrasão",
+          "keyness": 1.7,
+          "age_groups": [
+            { "n": 89, "keyness": 1.3 },
+            { "n": 178, "keyness": 2.3 },
+            { "n": 76, "keyness": 1.5 }
+          ]
+        }
+      ]
     },
     {
-        "notification_type": "Autoprovocada",
-        "frame": "Medicamentos",
-        "year": 2021,
-        "data": [
-            {
-                "lu": "psicotrópico",
-                "keyness": 9.1
-            },
-            {
-                "lu": "antidepressivo",
-                "keyness": 8.4
-            },
-            {
-                "lu": "sedativo",
-                "keyness": 7.7
-            },
-            {
-                "lu": "ansiolítico",
-                "keyness": 6.9
-            },
-            {
-                "lu": "estabilizador",
-                "keyness": 5.2
-            },
-            {
-                "lu": "antipsicótico",
-                "keyness": 4.1
-            },
-            {
-                "lu": "hipnótico",
-                "keyness": 2.8
-            },
-            {
-                "lu": "anticonvulsivante",
-                "keyness": -3.1
-            },
-            {
-                "lu": "analgésico",
-                "keyness": -4.8
-            },
-            {
-                "lu": "antibiótico",
-                "keyness": -5.6
-            }
-        ]
+      "notification_type": "Autoprovocada",
+      "frame": "Medicamentos",
+      "year": 2021,
+      "data": [
+        {
+          "lu": "psicotrópico",
+          "keyness": 9.1,
+          "age_groups": [
+            { "n": 456, "keyness": 6.8 },
+            { "n": 912, "keyness": 12.3 },
+            { "n": 387, "keyness": 8.2 }
+          ]
+        },
+        {
+          "lu": "antidepressivo",
+          "keyness": 8.4,
+          "age_groups": [
+            { "n": 423, "keyness": 6.3 },
+            { "n": 846, "keyness": 11.3 },
+            { "n": 359, "keyness": 7.5 }
+          ]
+        },
+        {
+          "lu": "sedativo",
+          "keyness": 7.7,
+          "age_groups": [
+            { "n": 389, "keyness": 5.8 },
+            { "n": 778, "keyness": 10.4 },
+            { "n": 331, "keyness": 6.9 }
+          ]
+        },
+        {
+          "lu": "ansiolítico",
+          "keyness": 6.9,
+          "age_groups": [
+            { "n": 345, "keyness": 5.2 },
+            { "n": 690, "keyness": 9.3 },
+            { "n": 293, "keyness": 6.2 }
+          ]
+        },
+        {
+          "lu": "estabilizador",
+          "keyness": 5.2,
+          "age_groups": [
+            { "n": 267, "keyness": 3.9 },
+            { "n": 534, "keyness": 7.0 },
+            { "n": 227, "keyness": 4.7 }
+          ]
+        },
+        {
+          "lu": "antipsicótico",
+          "keyness": 4.1,
+          "age_groups": [
+            { "n": 212, "keyness": 3.1 },
+            { "n": 424, "keyness": 5.5 },
+            { "n": 180, "keyness": 3.7 }
+          ]
+        },
+        {
+          "lu": "hipnótico",
+          "keyness": 2.8,
+          "age_groups": [
+            { "n": 145, "keyness": 2.1 },
+            { "n": 290, "keyness": 3.8 },
+            { "n": 123, "keyness": 2.5 }
+          ]
+        },
+        {
+          "lu": "anticonvulsivante",
+          "keyness": -3.1,
+          "age_groups": [
+            { "n": 78, "keyness": -2.3 },
+            { "n": 156, "keyness": -4.2 },
+            { "n": 66, "keyness": -2.8 }
+          ]
+        },
+        {
+          "lu": "analgésico",
+          "keyness": -4.8,
+          "age_groups": [
+            { "n": 67, "keyness": -3.6 },
+            { "n": 134, "keyness": -6.5 },
+            { "n": 57, "keyness": -4.3 }
+          ]
+        },
+        {
+          "lu": "antibiótico",
+          "keyness": -5.6,
+          "age_groups": [
+            { "n": 56, "keyness": -4.2 },
+            { "n": 112, "keyness": -7.6 },
+            { "n": 48, "keyness": -5.0 }
+          ]
+        }
+      ]
     },
     {
-        "notification_type": "Externa",
-        "frame": "Medicamentos",
-        "year": 2021,
-        "data": [
-            {
-                "lu": "anti-infeccioso",
-                "keyness": 8.3
-            },
-            {
-                "lu": "antitérmico",
-                "keyness": 7.5
-            },
-            {
-                "lu": "anti-inflamatório",
-                "keyness": 6.9
-            },
-            {
-                "lu": "anestésico",
-                "keyness": 6.2
-            },
-            {
-                "lu": "antibiótico",
-                "keyness": 5.7
-            },
-            {
-                "lu": "analgésico",
-                "keyness": 4.8
-            },
-            {
-                "lu": "anti-séptico",
-                "keyness": 3.9
-            },
-            {
-                "lu": "corticóide",
-                "keyness": 3.1
-            },
-            {
-                "lu": "anticoagulante",
-                "keyness": 2.4
-            },
-            {
-                "lu": "relaxante",
-                "keyness": 1.8
-            }
-        ]
+      "notification_type": "Externa",
+      "frame": "Medicamentos",
+      "year": 2021,
+      "data": [
+        {
+          "lu": "anti-infeccioso",
+          "keyness": 8.3,
+          "age_groups": [
+            { "n": 412, "keyness": 6.2 },
+            { "n": 824, "keyness": 11.2 },
+            { "n": 350, "keyness": 7.4 }
+          ]
+        },
+        {
+          "lu": "antitérmico",
+          "keyness": 7.5,
+          "age_groups": [
+            { "n": 378, "keyness": 5.6 },
+            { "n": 756, "keyness": 10.1 },
+            { "n": 321, "keyness": 6.7 }
+          ]
+        },
+        {
+          "lu": "anti-inflamatório",
+          "keyness": 6.9,
+          "age_groups": [
+            { "n": 345, "keyness": 5.2 },
+            { "n": 690, "keyness": 9.3 },
+            { "n": 293, "keyness": 6.2 }
+          ]
+        },
+        {
+          "lu": "anestésico",
+          "keyness": 6.2,
+          "age_groups": [
+            { "n": 312, "keyness": 4.7 },
+            { "n": 624, "keyness": 8.4 },
+            { "n": 265, "keyness": 5.6 }
+          ]
+        },
+        {
+          "lu": "antibiótico",
+          "keyness": 5.7,
+          "age_groups": [
+            { "n": 289, "keyness": 4.3 },
+            { "n": 578, "keyness": 7.7 },
+            { "n": 246, "keyness": 5.1 }
+          ]
+        },
+        {
+          "lu": "analgésico",
+          "keyness": 4.8,
+          "age_groups": [
+            { "n": 245, "keyness": 3.6 },
+            { "n": 490, "keyness": 6.5 },
+            { "n": 208, "keyness": 4.3 }
+          ]
+        },
+        {
+          "lu": "anti-séptico",
+          "keyness": 3.9,
+          "age_groups": [
+            { "n": 201, "keyness": 2.9 },
+            { "n": 402, "keyness": 5.3 },
+            { "n": 171, "keyness": 3.5 }
+          ]
+        },
+        {
+          "lu": "corticóide",
+          "keyness": 3.1,
+          "age_groups": [
+            { "n": 156, "keyness": 2.3 },
+            { "n": 312, "keyness": 4.2 },
+            { "n": 133, "keyness": 2.8 }
+          ]
+        },
+        {
+          "lu": "anticoagulante",
+          "keyness": 2.4,
+          "age_groups": [
+            { "n": 123, "keyness": 1.8 },
+            { "n": 246, "keyness": 3.2 },
+            { "n": 54, "keyness": 1.3 }
+          ]
+        },
+        {
+          "lu": "relaxante",
+          "keyness": 1.8,
+          "age_groups": [
+            { "n": 321, "keyness": 1.8 },
+            { "n": 42, "keyness": 1.1 },
+            { "n": 13, "keyness": 1.4 }
+          ]
+        }
+      ]
     }
-]
+  ]
+}

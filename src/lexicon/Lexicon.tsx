@@ -10,7 +10,7 @@ import LexiconDataJson from "./data/lexicon.json";
 // CSS
 import "./Lexicon.css";
 
-const data: KeynessData[] = LexiconDataJson;
+const data: KeynessData[] = LexiconDataJson.visualization_data;
 
 const typeSet = new Set(data.map((x) => x.notification_type));
 const typeOptions = Array.from(typeSet).map((x) => ({ value: x, label: x }));
@@ -82,7 +82,7 @@ function Lexicon() {
           <p>Clique nas barras para mais detalhes.</p>
         </div>
         <div className="lexicon-chart-wrapper">
-          <BarChart data={entry?.data || []} />
+          <BarChart data={entry?.data || []} ageGroupLabels={LexiconDataJson.labels} />
         </div>
       </div>
     </div>

@@ -1,61 +1,57 @@
 /**
- * Generates an array of linearly spaced numbers between a start and end value,
- * ensuring 0 is included if it falls within the range.
- *
- * @param {number} startValue - The first value in the generated sequence.
- * @param {number} endValue - The last value in the generated sequence.
- * @param {number} numPoints - The number of values to generate in the sequence.
- * @returns {number[]} An array of linearly spaced values including 0 if within range.
+ * Generates tick values with a consistent step size, ensuring 0 is included
+ * and extending beyond data limits if needed for clean intervals.
  * 
- * @example
- * // Round to nearest 0.5
- * generateLinearSpace(-2, 2, 5, 'half');
- * // Returns [-2, -1.5, 0, 1.5, 2]
- * 
- * @example
- * // Round to nearest integer
- * generateLinearSpace(-2, 2, 5, 'integer');
- * // Returns [-2, -1, 0, 1, 2]
+ * @param {number} dataMin - Minimum value in the data
+ * @param {number} dataMax - Maximum value in the data
+ * @param {number} targetNumTicks - Approximate number of ticks desired (will be adjusted)
+ * @returns {{ 
+ *   ticks: number[],
+ *   min: number,
+ *   max: number,
+ *   step: number
+ * }} Tick values and range information
  */
-export function generateLinearSpace(
-    startValue: number,
-    endValue: number,
-    numPoints: number
-): number[] {
-    // Return early if start and end are the same
-    if (startValue === endValue) {
-        return [startValue];
-    }
-
-    // Ensure start is less than end
-    if (startValue > endValue) {
-        [startValue, endValue] = [endValue, startValue];
-    }
-
-    const generatePoints = (start: number, end: number, count: number): number[] => {
-        const points = [];
-        const step = (end - start) / (count - 1);
-        for (let i = 0; i < count; i++) {
-            points.push(start + i * step);
-        }
-        return points;
-    };
-
-    let result: number[];
+export function generateTickRange(
+  dataMin: number,
+  dataMax: number,
+  targetNumTicks: number = 6
+) {
+  // Simple steps that make sense for -20 to 20 range
+  const possibleSteps = [1, 2, 3, 5, 10];
+  
+  // Find the step size that gives us closest to targetNumTicks
+  let bestStep = possibleSteps[0];
+  let bestTickCount = Infinity;
+  
+  for (const step of possibleSteps) {
+    const minTick = Math.floor(dataMin / step) * step;
+    const maxTick = Math.ceil(dataMax / step) * step;
+    const numTicks = Math.round((maxTick - minTick) / step) + 1;
     
-    // If 0 is within range but not exactly at start or end
-    if (startValue < 0 && endValue > 0) {
-        const negativePoints = Math.floor(numPoints * (Math.abs(startValue) / (Math.abs(startValue) + endValue)));
-        const positivePoints = numPoints - negativePoints - 1; // -1 for zero
-
-        result = [
-            ...generatePoints(startValue, 0, negativePoints + 1).slice(0, -1),
-            0,
-            ...generatePoints(0, endValue, positivePoints + 1).slice(1)
-        ];
-    } else {
-        result = generatePoints(startValue, endValue, numPoints);
+    if (Math.abs(numTicks - targetNumTicks) < Math.abs(bestTickCount - targetNumTicks)) {
+      bestStep = step;
+      bestTickCount = numTicks;
     }
+  }
 
-    return result;
+  // Generate final ticks with best step size
+  const minTick = Math.floor(dataMin / bestStep) * bestStep;
+  const maxTick = Math.ceil(dataMax / bestStep) * bestStep;
+  
+  const ticks: number[] = [];
+  for (let tick = minTick; tick <= maxTick; tick += bestStep) {
+    ticks.push(tick);
+  }
+  if (!ticks.includes(0) && minTick < 0 && maxTick > 0) {
+    ticks.push(0);
+    ticks.sort((a, b) => a - b);
+  }
+
+  return {
+    ticks,
+    min: minTick,
+    max: maxTick,
+    step: bestStep
+  };
 }

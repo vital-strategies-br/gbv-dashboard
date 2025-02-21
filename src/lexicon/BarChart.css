@@ -2,6 +2,16 @@
   transform: translateY(12px);
 }
 
+.legend > rect {
+  fill: white;
+  stroke: #cccccc;
+  stroke-width: 1px;
+}
+
 .barchart-label {
   fill: #464646;
+}
+.legend-label {
+  font-size: 1rem;
+  fill: #4a5568;
 }

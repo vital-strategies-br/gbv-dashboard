@@ -1,15 +1,5 @@
 import { RelativeCategory, TerritoryData, SubnotificationData, UISubnotificationData } from "./types";
 
-// export const SEQUENTIAL_PALETTE = [
-//     '#c7caff', // Lightest shade
-//     '#a0a9ff',
-//     '#7989ff',
-//     '#4766ff', // Base color
-//     '#3f5cd4',
-//     '#374caa',
-//     '#2f3d80'  // Darkest shade
-// ];
-
 export const SEQUENTIAL_PALETTE = [
     '#fbb6b7', // Lightest shade
     '#f99093',

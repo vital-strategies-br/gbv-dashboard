@@ -36,29 +36,23 @@ function SVGMap({
         >
           {shapes.locations.map((x) => {
             const pathData = data[x.id];
-            let pathValue, fill, onClick;
+            let pathValue, fill, onClick, isActive;
 
             if (pathData) {
               pathValue = pathData.subnotification_rate;
               const pathCategory = pathData.category;
-              const pathColor = getColorForCategory(pathCategory || null);
+              fill = getColorForCategory(pathCategory || null);
 
-              if (
-                (!selectedShapeId && !highlightedCategory && highlightedTerritories.length === 0) ||
+              isActive = (!selectedShapeId && !highlightedCategory && highlightedTerritories.length === 0) ||
                 (selectedShapeId && selectedShapeId === x.id) ||
                 (highlightedTerritories || []).indexOf(x.id) > -1 ||
-                (highlightedCategory && highlightedCategory === pathCategory)
-              ) {
-                fill = pathColor
-              } else {
-                fill = NA_COLOR
-              }
+                (highlightedCategory && highlightedCategory === pathCategory);
 
-              onClick =
-                pathValue && onPathClick ? () => onPathClick(x.id) : undefined;
+              onClick = pathValue && onPathClick ? () => onPathClick(x.id) : undefined;
             } else {
               pathValue = false;
               fill = NA_COLOR;
+              isActive = false;
               onClick = undefined;
             }
 
@@ -74,6 +68,8 @@ function SVGMap({
                 stroke="white"
                 style={{
                   cursor: pathValue ? "pointer" : "auto",
+                  transition: 'all .2s ease-in',
+                  filter: isActive ? 'none' : 'grayscale(1)'
                 }}
               ></path>
             );

@@ -8,7 +8,8 @@ import {
   HistogramBarProps,
 } from "./types";
 // Utils
-import { getColorForCategory, NA_COLOR } from "./utils";
+import { getColorForCategory } from "./utils";
+import { generateTickRange } from "../common/utils";
 // CSS
 import "./HistogramChart.css";
 
@@ -37,13 +38,14 @@ function HistogramBar({
       y={y - height}
       width={width}
       height={height}
-      fill={isActive ? color : NA_COLOR}
+      fill={color}
       stroke="white"
       onMouseEnter={() => onMouseEnter && onMouseEnter(index)}
       onMouseLeave={onMouseLeave}
       className="histogram-bar"
       style={{
-        transition: "all .2s ease-in",
+        transition: 'all .2s ease-in',
+        filter: isActive ? 'none' : 'grayscale(1)'
       }}
     />
   );
@@ -75,9 +77,13 @@ function HistogramChart({
   const xAxisMarginLeft = nullBarMarginLeft + nullBarWidth + nullBarMarginRight;
   const xAxisMarginRight = 32;
 
+  // Generate tick ranges for both axes
+  const xTickRange = generateTickRange(xAxisLimits[0], xAxisLimits[1]);
+  const yTickRange = generateTickRange(yAxisLimits[0], yAxisLimits[1]);
+
   const binWidth =
     (chartAreaWidth - (xAxisMarginLeft + xAxisMarginRight)) / binCounts.length;
-  const yAxisScale = chartAreaHeight / (yAxisLimits[1] - yAxisLimits[0]);
+  const yAxisScale = chartAreaHeight / (yTickRange.max - yTickRange.min);
 
   return (
     <svg
@@ -89,7 +95,7 @@ function HistogramChart({
     >
       <AxisGridTicks
         axis="x"
-        limits={xAxisLimits}
+        ticks={xTickRange.ticks}
         axisLength={chartAreaWidth}
         otherLength={chartAreaHeight}
         startMargin={chartMarginBottom}
@@ -99,8 +105,7 @@ function HistogramChart({
       />
       <AxisGridTicks
         axis="y"
-        numTicks={6}
-        limits={yAxisLimits}
+        ticks={yTickRange.ticks}
         axisLength={chartAreaHeight}
         otherLength={chartAreaWidth}
         startMargin={chartMarginLeft}
