@@ -1,17 +1,14 @@
 import React from 'react';
-import { SEQUENTIAL_PALETTE } from './utils';
+
+// Types
+import { BarChartPopupProps } from "./types";
+// CSS
 import './BarChartPopup.css';
 
-interface BarChartPopupProps {
-  data: {
-    keyness: number;
-    lu: string;
-    age_groups: { n: number; keyness: number }[];
-  };
-}
-
-function BarChartPopup({ data }: BarChartPopupProps) {
+function BarChartPopup({ data, colorScale }: BarChartPopupProps) {
   const totalN = data.age_groups.reduce((sum, group) => sum + group.n, 0);
+
+  console.log(data.age_groups);
 
   return (
     <div className={`barchart-popup`}>
@@ -25,7 +22,7 @@ function BarChartPopup({ data }: BarChartPopupProps) {
               <div 
                 className="color-square"
                 style={{ 
-                  backgroundColor: SEQUENTIAL_PALETTE[index],
+                  backgroundColor: colorScale[index],
                   width: '16px',
                   height: '16px',
                   marginRight: '8px'

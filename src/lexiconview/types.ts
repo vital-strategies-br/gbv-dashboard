@@ -27,7 +27,7 @@ export interface BarChartProps {
     ageGroupLabels: string[];
     width?: number;
     height?: number;
-  }
+}
 
 export interface BarProps {
     x: number;
@@ -35,4 +35,13 @@ export interface BarProps {
     width: number;
     height: number;
     fill?: string;
+}
+
+export interface BarChartPopupProps {
+    data: {
+        keyness: number;
+        lu: string;
+        age_groups: { n: number; keyness: number }[];
+    };
+    colorScale: string[];
 }

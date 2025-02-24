@@ -8,7 +8,7 @@ import { KeynessData } from "./types";
 // Data
 import LexiconDataJson from "./data/lexicon.json";
 // CSS
-import "./Lexicon.css";
+import "./LexiconView.css";
 
 const data: KeynessData[] = LexiconDataJson.visualization_data;
 

@@ -4,7 +4,8 @@ import React from "react";
 import Section from "./common/Section";
 import Homepage from "./homepage/Homepage";
 import MapView from "./mapview/MapView";
-import Lexicon from "./lexicon/Lexicon";
+import LexiconView from "./lexiconview/LexiconView";
+// import TimeDistributionView from "./timedistributionview/TimeDistributionView";
 // Icons
 import Demographic from "./icons/demographic.svg";
 import GraphBar from "./icons/graph-bar.svg";
@@ -45,7 +46,7 @@ function App() {
         iconSrc={GraphBar}
         iconAlt=""
       >
-        <Lexicon />
+        <LexiconView />
       </Section>
     </div>
   );

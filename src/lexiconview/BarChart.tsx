@@ -68,10 +68,6 @@ function BarChart({
 }: BarChartProps) {
   const [selectedBarIndex, setSelectedBarIndex] = useState<number | null>(null);
 
-  const POPUP_WIDTH = 300;
-  const POPUP_HEIGHT = 200;
-  const MARGIN = 20; // Buffer from SVG edges
-
   // Get data range and generate ticks
   const allKeyness = data.map((x) => x.keyness);
   const dataMin = Math.min(...allKeyness);
@@ -104,11 +100,11 @@ function BarChart({
   const legendX = width - legendBoxSize; // Position from right
   const legendY = -8;
 
-  // Create a mapping of labels to colors
+  // Create a mapping of labels to colors with even distribution
   const colorScale = Object.fromEntries(
     ageGroupLabels.map((label, i) => [
       label,
-      SEQUENTIAL_PALETTE[i % SEQUENTIAL_PALETTE.length],
+      SEQUENTIAL_PALETTE[Math.floor((i * (SEQUENTIAL_PALETTE.length - 1)) / (ageGroupLabels.length - 1))],
     ])
   );
 
@@ -257,7 +253,7 @@ function BarChart({
                 height={85}
               >
                 <div className="barchart-popup-container">
-                  <BarChartPopup data={data[selectedBarIndex]} />
+                  <BarChartPopup data={data[selectedBarIndex]} colorScale={Object.values(colorScale)} />
                 </div>
               </foreignObject>
             );

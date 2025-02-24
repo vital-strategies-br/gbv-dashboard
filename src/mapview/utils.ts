@@ -1,24 +1,18 @@
 import { RelativeCategory, TerritoryData, SubnotificationData, UISubnotificationData } from "./types";
 
 export const SEQUENTIAL_PALETTE = [
-    '#fbb6b7', // Lightest shade
-    '#f99093',
-    '#f76a6c',
-    '#F53D40', // Base color
-    '#dc3739',
-    '#c33032',
-    '#aa292a'  // Darkest shade
+    // '#fff0f0',
+    '#ffe1e2',
+    '#ffc7c8',
+    '#ffa0a2',
+    '#ff5054',
+    // '#f53d40',
+    '#e61e21',
+    '#b62023',
+    '#931f21',
+    // '#7e2021',
+    // '#480708'
 ];
-
-export const DIVERGENT_PALETTE = [
-    '#2f3d80',  // Darkest shade
-    '#4766ff', // Base color
-    '#c7caff', // Lightest shade
-    '#909090',
-    '#fbb6b7', // Lightest shade
-    '#F53D40', // Base color
-    '#aa292a'  // Darkest shade
-]
 
 export const NA_COLOR = "#d4d4d4"
 
@@ -95,7 +89,7 @@ function getMajorityCategory(
     binIndex: number
 ): Nullable<RelativeCategory> {
     const sortedCategories = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-    const total = sortedCategories.map(x => x[1]).reduce((a, b) => a+b);
+    const total = sortedCategories.map(x => x[1]).reduce((a, b) => a + b);
 
     if (sortedCategories.length > 0) {
         const [majorityCategory, majorityCount] = sortedCategories[0];
@@ -116,7 +110,7 @@ function getMajorityCategory(
  * @param limits - Tuple defining the range of values for the bins ([min, max]).
  * @returns An array containing arrays of bin counts, categories, null count, and data points for each bin.
  */
- export function getHistogramData(
+export function getHistogramData(
     data: UISubnotificationData[],
     extractorFn: (obj: UISubnotificationData) => Nullable<number>,
     bins: number,
