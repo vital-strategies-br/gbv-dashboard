@@ -63,8 +63,8 @@ function Bar({
 function BarChart({
   data,
   ageGroupLabels,
-  width = 900,
-  height = 400,
+  width = 800,
+  height = 450,
 }: BarChartProps) {
   const [selectedBarIndex, setSelectedBarIndex] = useState<number | null>(null);
 
@@ -104,7 +104,11 @@ function BarChart({
   const colorScale = Object.fromEntries(
     ageGroupLabels.map((label, i) => [
       label,
-      SEQUENTIAL_PALETTE[Math.floor((i * (SEQUENTIAL_PALETTE.length - 1)) / (ageGroupLabels.length - 1))],
+      SEQUENTIAL_PALETTE[
+        Math.floor(
+          (i * (SEQUENTIAL_PALETTE.length - 1)) / (ageGroupLabels.length - 1)
+        )
+      ],
     ])
   );
 
@@ -159,8 +163,11 @@ function BarChart({
               onClick={(e) => handleBarClick(e, index)}
               style={{
                 cursor: "pointer",
-                filter: selectedBarIndex === null || selectedBarIndex === index ? "none" : "grayscale(1)",
-                transition: "filter 0.2s ease"
+                filter:
+                  selectedBarIndex === null || selectedBarIndex === index
+                    ? "none"
+                    : "grayscale(1)",
+                transition: "filter 0.2s ease",
               }}
             >
               <Bar
@@ -194,7 +201,7 @@ function BarChart({
         Item lexical
       </text>
       <text
-        x={-height / 2}
+        x={-(height - chartMarginBottom) / 2}
         y={16}
         textAnchor="middle"
         transform="rotate(-90)"
@@ -214,7 +221,7 @@ function BarChart({
           <g
             key={label}
             transform={`translate(${legendX + 12}, ${
-              legendY + 8 + index * 24
+              legendY + 8 + (ageGroupLabels.length - 1 - index) * 24
             })`}
           >
             <rect width={32} height={16} fill={colorScale[label]} />
@@ -253,7 +260,10 @@ function BarChart({
                 height={85}
               >
                 <div className="barchart-popup-container">
-                  <BarChartPopup data={data[selectedBarIndex]} colorScale={Object.values(colorScale)} />
+                  <BarChartPopup
+                    data={data[selectedBarIndex]}
+                    colorScale={Object.values(colorScale)}
+                  />
                 </div>
               </foreignObject>
             );

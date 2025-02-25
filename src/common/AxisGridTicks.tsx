@@ -22,9 +22,6 @@ function AxisGridTicks({
            remainder >= 0.75 ? Math.ceil(value) :
            Math.floor(value) + 0.5;
   };
-
-  const isVertical = axis === "y";
-  const effectiveLength = isVertical ? axisLength : otherLength;
   
   // Calculate positions based on provided ticks
   const valueRange = ticks[ticks.length - 1] - ticks[0];

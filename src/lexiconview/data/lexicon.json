@@ -2,9 +2,21 @@
   "labels": ["De 0 a 14 anos", "De 15 a 50 anos", "Mais de 50 anos"],
   "visualization_data": [
     {
-      "notification_type": "Autoprovocada",
+      "violence_type": "Autoprovocada",
       "frame": "Condições em saúde",
       "year": 2022,
+      "top_lus": [
+        "esquizofrenia",
+        "ansiedade",
+        "depressão",
+        "transtorno",
+        "psicose",
+        "insônia",
+        "alucinação",
+        "edema",
+        "cisto",
+        "infecção"
+      ],
       "data": [
         {
           "lu": "esquizofrenia",
@@ -99,9 +111,21 @@
       ]
     },
     {
-      "notification_type": "Externa",
+      "violence_type": "Externa",
       "frame": "Condições em saúde",
       "year": 2022,
+      "top_lus": [
+        "fratura",
+        "contusão",
+        "luxação",
+        "entorse",
+        "laceração",
+        "abrasão",
+        "hematoma",
+        "queimadura",
+        "concussão",
+        "escoriação"
+      ],
       "data": [
         {
           "lu": "fratura",
@@ -196,9 +220,21 @@
       ]
     },
     {
-      "notification_type": "Autoprovocada",
+      "violence_type": "Autoprovocada",
       "frame": "Medicamentos",
       "year": 2022,
+      "top_lus": [
+        "antidepressivo",
+        "ansiolítico",
+        "psicotrópico",
+        "sedativo",
+        "antipsicótico",
+        "estabilizador",
+        "hipnótico",
+        "analgésico",
+        "anti-inflamatório",
+        "antibiótico"
+      ],
       "data": [
         {
           "lu": "antidepressivo",
@@ -293,9 +329,21 @@
       ]
     },
     {
-      "notification_type": "Externa",
+      "violence_type": "Externa",
       "frame": "Medicamentos",
       "year": 2022,
+      "top_lus": [
+        "antibiótico",
+        "anti-inflamatório",
+        "analgésico",
+        "antialérgico",
+        "anti-séptico",
+        "anticoagulante",
+        "corticóide",
+        "antitérmico",
+        "anestésico",
+        "relaxante"
+      ],
       "data": [
         {
           "lu": "antibiótico",
@@ -390,9 +438,21 @@
       ]
     },
     {
-      "notification_type": "Autoprovocada",
+      "violence_type": "Autoprovocada",
       "frame": "Condições em saúde",
       "year": 2021,
+      "top_lus": [
+        "depressão",
+        "ansiedade",
+        "insônia",
+        "paranoia",
+        "bipolaridade",
+        "delírio",
+        "fobia",
+        "tontura",
+        "náusea",
+        "febre"
+      ],
       "data": [
         {
           "lu": "depressão",
@@ -487,9 +547,21 @@
       ]
     },
     {
-      "notification_type": "Externa",
+      "violence_type": "Externa",
       "frame": "Condições em saúde",
       "year": 2021,
+      "top_lus": [
+        "traumatismo",
+        "escoriação",
+        "hematoma",
+        "queimadura",
+        "perfuração",
+        "contusão",
+        "lesão",
+        "corte",
+        "entorse",
+        "abrasão"
+      ],
       "data": [
         {
           "lu": "traumatismo",
@@ -584,9 +656,21 @@
       ]
     },
     {
-      "notification_type": "Autoprovocada",
+      "violence_type": "Autoprovocada",
       "frame": "Medicamentos",
       "year": 2021,
+      "top_lus": [
+        "psicotrópico",
+        "antidepressivo",
+        "sedativo",
+        "ansiolítico",
+        "estabilizador",
+        "antipsicótico",
+        "hipnótico",
+        "analgésico",
+        "antibiótico",
+        "anti-inflamatório"
+      ],
       "data": [
         {
           "lu": "psicotrópico",
@@ -681,9 +765,21 @@
       ]
     },
     {
-      "notification_type": "Externa",
+      "violence_type": "Externa",
       "frame": "Medicamentos",
       "year": 2021,
+      "top_lus": [
+        "anti-infeccioso",
+        "antitérmico",
+        "anti-inflamatório",
+        "anestésico",
+        "antibiótico",
+        "analgésico",
+        "anti-séptico",
+        "corticóide",
+        "relaxante",
+        "anticoagulante"
+      ],
       "data": [
         {
           "lu": "anti-infeccioso",

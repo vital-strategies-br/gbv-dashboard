@@ -10,6 +10,24 @@
     display: flex;
     gap: 32px;
 }
+.lexicon-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.lexicon-top-lus ol {
+    margin: 0 auto;
+    padding: 0 0 0 16px;
+    list-style-type: decimal;
+    column-count: 3;
+    column-gap: 40px;
+    column-fill: balance;
+    width: 100%;
+}
+.lexicon-top-lus ol li {
+    font-weight: bold;
+    overflow-wrap: break-word;
+}
 
 /* FILTER STYLES */
 .lexicon-filter-container {

@@ -12,7 +12,7 @@ import "./LexiconView.css";
 
 const data: KeynessData[] = LexiconDataJson.visualization_data;
 
-const typeSet = new Set(data.map((x) => x.notification_type));
+const typeSet = new Set(data.map((x) => x.violence_type));
 const typeOptions = Array.from(typeSet).map((x) => ({ value: x, label: x }));
 const frameSet = new Set(data.map((x) => x.frame));
 const frameOptions = Array.from(frameSet).map((x) => ({ value: x, label: x }));
@@ -27,18 +27,19 @@ function Lexicon() {
   let [filterFrame, setFilterFrame] = useState<string>(frameOptions[0].value);
   let [filterYear, setFilterYear] = useState<number>(yearOptions[0].value);
 
-  let entry = data.find(
+  const entry = data.find(
     (x) =>
-      x.notification_type === filterType &&
+      x.violence_type === filterType &&
       x.frame === filterFrame &&
       x.year === filterYear
   );
+  const topLUs = entry?.top_lus;
 
   return (
     <div className="lexicon-content content">
       <div className="lexicon-filter-container">
         <div className="lexicon-filter-field-container">
-          <span>Tipo de violência</span>
+          <span>Natureza da violência</span>
           <Select
             options={typeOptions}
             value={typeOptions.find((x) => x.value === filterType)}
@@ -79,10 +80,27 @@ function Lexicon() {
             vítimas. Já valores negativos, como por exemplo -3, indicariam que o
             item lexical é três vezes MENOS frequente nos registros de vítimas.
           </p>
-          <p>Clique nas barras para mais detalhes.</p>
+          <p>
+            <strong>Clique nas barras para mais detalhes.</strong>
+          </p>
+          <p>
+            Para fins de comparação, essas(es) são as(os){" "}
+            <strong>{filterFrame.toUpperCase()}</strong> mais comuns para
+            usuárias <em>não vítimas de violência</em> no mesmo período:
+          </p>
+          <div className="lexicon-top-lus">
+            <ol>
+              {topLUs?.map((lu, index) => (
+                <li key={index}>{lu}</li>
+              ))}
+            </ol>
+          </div>
         </div>
         <div className="lexicon-chart-wrapper">
-          <BarChart data={entry?.data || []} ageGroupLabels={LexiconDataJson.labels} />
+          <BarChart
+            data={entry?.data || []}
+            ageGroupLabels={LexiconDataJson.labels}
+          />
         </div>
       </div>
     </div>

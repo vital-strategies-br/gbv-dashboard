@@ -1,12 +1,14 @@
 export interface KeynessData {
     // The type of SINAN notification used to obtain a corpus
-    notification_type: string,
+    violence_type: string,
     // The UI name of frame
     frame: string,
     // The year of the analysis
     year: number,
     // The data for the bar chart
     data: KeynessDataPoint[];
+    // The top count LUs for this data
+    top_lus: string[];
 }
 
 export interface KeynessDataPoint {

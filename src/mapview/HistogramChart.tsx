@@ -78,7 +78,7 @@ function HistogramChart({
   const xAxisMarginRight = 32;
 
   // Generate tick ranges for both axes
-  const xTickRange = generateTickRange(xAxisLimits[0], xAxisLimits[1]);
+  const xTickRange = generateTickRange(xAxisLimits[0], xAxisLimits[1], 6, [100, 500, 1000, 2000]);
   const yTickRange = generateTickRange(yAxisLimits[0], yAxisLimits[1]);
 
   const binWidth =

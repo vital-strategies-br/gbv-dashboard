@@ -5,6 +5,7 @@
  * @param {number} dataMin - Minimum value in the data
  * @param {number} dataMax - Maximum value in the data
  * @param {number} targetNumTicks - Approximate number of ticks desired (will be adjusted)
+ * @param {number[]} possibleSteps - Possible step sizes to consider
  * @returns {{ 
  *   ticks: number[],
  *   min: number,
@@ -15,11 +16,9 @@
 export function generateTickRange(
   dataMin: number,
   dataMax: number,
-  targetNumTicks: number = 6
+  targetNumTicks: number = 6,
+  possibleSteps: number[] = [1, 2, 3, 5, 10]
 ) {
-  // Simple steps that make sense for -20 to 20 range
-  const possibleSteps = [1, 2, 3, 5, 10];
-  
   // Find the step size that gives us closest to targetNumTicks
   let bestStep = possibleSteps[0];
   let bestTickCount = Infinity;
