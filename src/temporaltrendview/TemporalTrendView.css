@@ -1,0 +1,45 @@
+.temporal-trend-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 32px 0;
+  gap: 32px;
+}
+.temporal-trend-main-container {
+  flex: 1;
+  display: flex;
+  gap: 32px;
+}
+.temporal-trend-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.carousel-button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: #ced8e5;
+  background-color: #ced8e5;
+  border: 1px solid #ced8e5;
+  cursor: pointer;
+  margin: 0 8px;
+  font-size: 16px;
+  padding: 0 0 2px 0;
+}
+
+.carousel-button.active {
+  border: 1px solid #909090;
+  color: #909090;
+}
+
+.carousel-button:hover {
+  filter: brightness(90%);
+}

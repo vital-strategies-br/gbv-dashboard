@@ -37,8 +37,8 @@ function Lexicon() {
 
   return (
     <div className="lexicon-content content">
-      <div className="lexicon-filter-container">
-        <div className="lexicon-filter-field-container">
+      <div className="filter-container">
+        <div className="filter-field-container">
           <span>Natureza da violência</span>
           <Select
             options={typeOptions}
@@ -47,7 +47,7 @@ function Lexicon() {
             placeholder="Selecione..."
           />
         </div>
-        <div className="lexicon-filter-field-container">
+        <div className="filter-field-container">
           <span>Selecione o tópico</span>
           <Select
             options={frameOptions}
@@ -56,7 +56,7 @@ function Lexicon() {
             placeholder="Selecione..."
           />
         </div>
-        <div className="lexicon-filter-field-container">
+        <div className="filter-field-container">
           <span>Selecione o período</span>
           <Select
             options={yearOptions}

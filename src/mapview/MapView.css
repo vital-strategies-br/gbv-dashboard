@@ -14,24 +14,6 @@
   gap: 32px;
 }
 
-/* FILTER STYLES */
-.mapview-filter-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 24px;
-}
-.mapview-filter-field-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  max-width: 250px;
-}
-.mapview-filter-field-container > span {
-  margin-left: 1px;
-  color: #464646;
-}
 /* MAP CONTAINER */
 .mapview-map-container {
   display: flex;

@@ -51,6 +51,24 @@ p {
   max-width: 1280px;
 }
 
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.filter-field-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 250px;
+}
+.filter-field-container > span {
+  margin-left: 1px;
+  color: #464646;
+}
+
 @media (max-width: 1280px) {
   .content {
     padding: 0 20px;

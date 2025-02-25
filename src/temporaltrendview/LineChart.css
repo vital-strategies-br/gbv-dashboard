@@ -1,0 +1,11 @@
+.linechart {
+  margin-top: -36px;
+}
+
+.linechart > g {
+  transform: translateY(48px);
+}
+
+.linechart-label {
+  fill: #464646;
+}

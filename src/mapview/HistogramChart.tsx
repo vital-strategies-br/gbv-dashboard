@@ -98,7 +98,7 @@ function HistogramChart({
         ticks={xTickRange.ticks}
         axisLength={chartAreaWidth}
         otherLength={chartAreaHeight}
-        startMargin={chartMarginBottom}
+        startMargin={chartMarginLeft}
         axisStartOffset={xAxisMarginLeft}
         axisEndOffset={xAxisMarginRight}
         roundingMode="integer"

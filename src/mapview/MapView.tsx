@@ -13,7 +13,7 @@ import { applyFilter, assignCategories, getHistogramData } from "./utils";
 // Image
 import Document from "../icons/document.svg";
 // Data
-import DashboardDataJson from "./data/dashboard.json";
+import DashboardDataJson from "./data/mapdata.json";
 // CSS
 import "./MapView.css";
 
@@ -73,8 +73,8 @@ function MapView() {
   return (
     <div className="mapview-content content">
       <div className="mapview-section">
-        <div className="mapview-filter-container">
-          <div className="mapview-filter-field-container">
+        <div className="filter-container">
+          <div className="filter-field-container">
             <span>Selecione o período</span>
             <Select
               options={yearOptions}
@@ -83,14 +83,14 @@ function MapView() {
               placeholder="Selecione..."
             />
           </div>
-          {/* <div className="mapview-filter-field-container">
+          {/* <div className="filter-field-container">
             <span>Selecione a faixa etária</span>
             <Select
               placeholder="Selecione..."
               noOptionsMessage={() => "Sem opções"}
             />
           </div> */}
-          <div className="mapview-filter-field-container">
+          <div className="filter-field-container">
             <span>Busca por bairro</span>
             <Select
               options={territoryOptions}
