@@ -3,6 +3,7 @@ export interface TemporalData {
     age_group: number,
     n: number,
     data: number[][];
+    highlightDay: number;
 }
 
 export interface LineChartProps {

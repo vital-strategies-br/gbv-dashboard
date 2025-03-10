@@ -26,27 +26,6 @@
   align-items: flex-start;
   justify-content: center;
 }
-.report-button {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  border: 0px;
-  border-radius: 3px;
-  background-color: #ced8e5;
-  cursor: pointer;
-}
-.report-button:hover {
-  /* background-color: red; */
-  filter: brightness(90%);
-}
-.report-button > span {
-  color: #000000;
-  line-height: 20px;
-}
-.report-button > img {
-  height: 20px;
-  margin-right: 6px;
-}
 
 @media (max-width: 720px) {
   .mapview-content {

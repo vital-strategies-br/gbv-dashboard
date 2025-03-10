@@ -41,17 +41,27 @@ function LineChart({
     [0.1, 0.2, 0.3]
   );
 
-  // Compute the line path
-  const d = data
+  // Step 1: Convert data points to (x, y) coordinates
+  const points = data
     .sort((a, b) => a[0] - b[0])
-    .map((point, index) => {
-      const x =
+    .map((point) => ({
+      x:
         xAxisPixelsPerUnit * (point[0] - xAxisLimits[0]) +
         chartMarginLeft +
-        xAxisOffSet;
-      const y =
-        chartAreaHeight - yAxisPixelsPerUnit * (point[1] - yAxisLimits[0]);
-      return index === 0 ? `M${x} ${y}` : `L${x} ${y}`;
+        xAxisOffSet,
+      y: chartAreaHeight - yAxisPixelsPerUnit * (point[1] - yAxisLimits[0]),
+    }));
+
+  // Step 2: Construct the SVG path string using quadratic Bézier curves
+  const d = points
+    .map((point, index, arr) => {
+      if (index === 0) return `M${point.x} ${point.y}`;
+
+      const prev = arr[index - 1];
+      const midX = (prev.x + point.x) / 2;
+      const midY = (prev.y + point.y) / 2;
+
+      return `Q${prev.x} ${prev.y}, ${midX} ${midY}`;
     })
     .join(" ");
 
@@ -79,12 +89,19 @@ function LineChart({
         <path d={d} stroke="#4766ff" strokeWidth={3} fill="none" />
         {annotations &&
           annotations.map((anno) => {
-            console.log(anno);
             if (typeof anno.xPos === "number") {
               const x =
                 xAxisPixelsPerUnit * (anno.xPos - xAxisLimits[0]) +
                 chartMarginLeft +
                 xAxisOffSet;
+              let anchor, offset;
+              if (anno.xPos >= -50 && anno.xPos < 0) {
+                anchor = "end";
+                offset = -8;
+              } else {
+                anchor = "start";
+                offset = 8;
+              }
               return (
                 <g key={anno.text}>
                   <line
@@ -96,7 +113,12 @@ function LineChart({
                     strokeWidth={3}
                     stroke-dasharray="3 3"
                   />
-                  <text x={x + 8} y={-16} className="linechart-label">
+                  <text
+                    x={x + offset}
+                    y={-16}
+                    className="linechart-label"
+                    textAnchor={anchor}
+                  >
                     {anno.text}
                   </text>
                 </g>

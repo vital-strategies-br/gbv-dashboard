@@ -164,7 +164,7 @@ function MapView() {
           />
         )}
         <div className="report-button-wrapper">
-          <button className="report-button">
+          <button className="button">
             <img alt="" src={Document} />
             <span>
               Saiba mais sobre a pesquisa que deu origem a estes dados

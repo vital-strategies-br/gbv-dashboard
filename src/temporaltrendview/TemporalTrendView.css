@@ -10,10 +10,14 @@
   display: flex;
   gap: 32px;
 }
-.temporal-trend-text-wrapper {
+.temporal-trend-left-container {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+.temporal-trend-button-wrapper {
+  display: flex;
+  justify-content: end;
 }
 
 .carousel-controls {
