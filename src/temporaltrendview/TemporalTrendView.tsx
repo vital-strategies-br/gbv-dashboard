@@ -51,7 +51,7 @@ function TemporalTrendView() {
       </>,
       <>
         <strong>
-          Este gráfico representa um total de {entry?.n} mulheres e meninas
+          Este gráfico representa um total de {entry?.n} mulheres/meninas
         </strong>{" "}
         com os filtros atuais aplicados.
       </>,
@@ -68,9 +68,9 @@ function TemporalTrendView() {
         períodos.
       </>,
       <>
-        <strong>Essa probabilidade já começa alta</strong>: mulheres e meninas em situação de
-        violência tendem a procurar mais os serviços de saúde, mesmo antes de
-        falar sobre a violência explicitamente.
+        <strong>Essa probabilidade já começa alta</strong>: mulheres e meninas
+        em situação de violência tendem a procurar mais os serviços de saúde,
+        mesmo antes de falar sobre a violência explicitamente.
       </>,
     ],
     [
@@ -97,6 +97,10 @@ function TemporalTrendView() {
         Esse padrão apresenta uma possibilidade de se identificar casos antes de
         um agravamento. Esse é um padrão geral e, portanto, deve ser
         relativizado para cada faixa etária para um direcionamento mais preciso.
+      </>,
+      <>
+        As faixas etárias nessa visualização são mais abrangentes porque é
+        necessário um número maior de pontos para observar padrões.
       </>,
     ],
   ];
