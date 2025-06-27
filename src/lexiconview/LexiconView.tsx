@@ -10,28 +10,40 @@ import LexiconDataJson from "./data/lexicon.json";
 // CSS
 import "./LexiconView.css";
 
-const data: KeynessData[] = LexiconDataJson.visualization_data;
+// const transformKeyness = (keyness: number): number => keyness >= 1 ? keyness : -1 / keyness;
+const transformKeyness = (keyness: number): number => (keyness - 1) * 100;
+
+// Load data adapting keyness values
+const data: KeynessData[] = LexiconDataJson.visualization_data.map((entry) => ({
+  ...entry,
+  data: entry.data.map((dataPoint) => ({
+    ...dataPoint,
+    keyness: transformKeyness(dataPoint.keyness),
+    age_groups: dataPoint.age_groups.map((ageGroup) => ({
+      ...ageGroup,
+      keyness: transformKeyness(ageGroup.keyness),
+    })),
+  })),
+}));
 
 const typeSet = new Set(data.map((x) => x.violence_type));
 const typeOptions = Array.from(typeSet).map((x) => ({ value: x, label: x }));
 const frameSet = new Set(data.map((x) => x.frame));
 const frameOptions = Array.from(frameSet).map((x) => ({ value: x, label: x }));
-const yearSet = new Set(data.map((x) => x.year));
-const yearOptions = Array.from(yearSet).map((x) => ({
-  value: x,
-  label: x.toString(),
-}));
+// const yearSet = new Set(data.map((x) => x.year));
+// const yearOptions = Array.from(yearSet).map((x) => ({
+//   value: x,
+//   label: x.toString(),
+// }));
 
 function Lexicon() {
   let [filterType, setFilterType] = useState<string>(typeOptions[0].value);
   let [filterFrame, setFilterFrame] = useState<string>(frameOptions[0].value);
-  let [filterYear, setFilterYear] = useState<number>(yearOptions[0].value);
+  // let [filterYear, setFilterYear] = useState<number>(yearOptions[0].value);
 
   const entry = data.find(
-    (x) =>
-      x.violence_type === filterType &&
-      x.frame === filterFrame &&
-      x.year === filterYear
+    (x) => x.violence_type === filterType && x.frame === filterFrame
+    // & x.year === filterYear
   );
   const topLUs = entry?.top_lus;
 
@@ -56,7 +68,7 @@ function Lexicon() {
             placeholder="Selecione..."
           />
         </div>
-        <div className="filter-field-container">
+        {/* <div className="filter-field-container">
           <span>Selecione o período</span>
           <Select
             options={yearOptions}
@@ -64,29 +76,34 @@ function Lexicon() {
             onChange={(option: any) => setFilterYear(option.value)}
             placeholder="Selecione..."
           />
-        </div>
+        </div> */}
       </div>
       <div className="lexicon-main-container">
         <div className="lexicon-text-wrapper">
           <p>
-            O gráfico ao lado mostra os itens lexicais mais relevantes nos
-            registros de vítimas de violência no e-SUS APS. A visualização pode
-            ser customizada para o tipo de violência sofrida, o período e um
-            determinado tópico e apresenta valores para diferentes faixas
-            etárias. Enquanto o eixo X apresenta o nome dos itens lexicais, o
-            eixo Y indica a relevância de cada item em relação a população geral
-            na mesma faixa etária. Portanto, um item lexical com relevância 5
-            deve ser entendido como 5 vezes MAIS frequente nos registros de
-            vítimas. Já valores negativos, como por exemplo -3, indicariam que o
-            item lexical é três vezes MENOS frequente nos registros de vítimas.
+            Este gráfico mostra os termos mais comuns nos registros do e-SUS APS
+            de mulheres vítimas de violência. Cada barra representa a{" "}
+            <strong>variação percentual</strong> da frequência de um termo em
+            relação à população geral feminina.
           </p>
           <p>
-            <strong>Clique nas barras para mais detalhes.</strong>
+            O <strong>eixo horizontal</strong> mostra os termos, e o{" "}
+            <strong>eixo vertical</strong> indica se eles são mais ou menos
+            frequentes entre mulheres que sofreram violência.{" "}
+            <strong>Valores positivos</strong> indicam maior frequência, e{" "}
+            <strong>valores negativos</strong> indicam menor frequência.As cores
+            representam diferentes faixas etárias.
           </p>
           <p>
-            Para fins de comparação, essas(es) são as(os){" "}
-            <strong>{filterFrame.toUpperCase()}</strong> mais comuns para
-            usuárias <em>não vítimas de violência</em> no mesmo período:
+            <strong>
+              Clique nas barras para ver detalhes sobre as variações por faixa
+              etária.
+            </strong>
+          </p>
+          <p>
+            Para comparação, esses são os (as) 
+            <strong>{filterFrame.toUpperCase()}</strong> mais comuns na
+            população geral no mesmo período:
           </p>
           <div className="lexicon-top-lus">
             <ol>
@@ -96,6 +113,7 @@ function Lexicon() {
             </ol>
           </div>
         </div>
+
         <div className="lexicon-chart-wrapper">
           <BarChart
             data={entry?.data || []}

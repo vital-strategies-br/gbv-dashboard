@@ -7,14 +7,22 @@
 
 .barchart-popup-stats {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   gap: 6px;
+}
+.barchart-popup-stats > .title {
+  font-weight: bold;
+  margin-bottom: 4px;
 }
 
 .barchart-popup-stat-row {
   display: flex;
   align-items: center;
   font-size: 14px;
+}
+.barchart-popup-stat-row > .percentage {
+  font-weight: bold;
+  min-width: 40px;
 }
 
 .color-square {

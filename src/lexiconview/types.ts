@@ -4,7 +4,7 @@ export interface KeynessData {
     // The UI name of frame
     frame: string,
     // The year of the analysis
-    year: number,
+    // year: number,
     // The data for the bar chart
     data: KeynessDataPoint[];
     // The top count LUs for this data

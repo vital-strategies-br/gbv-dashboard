@@ -8,12 +8,21 @@
 .lexicon-main-container {
     flex: 1;
     display: flex;
+    flex-wrap: wrap;
     gap: 32px;
 }
 .lexicon-text-wrapper {
+    flex: 1 0 320px;
+    min-width: 320px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+.lexicon-barchart-wrapper {
+    flex: 1 0 320px;
+    min-width: 320px;
+    box-sizing: border-box;
 }
 .lexicon-top-lus ol {
     margin: 0 auto;

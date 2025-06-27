@@ -25,12 +25,12 @@ function Bar({
   ageGroupLabels: string[];
 }) {
   const totalN = ageGroups.reduce((sum, group) => sum + group.n, 0);
-  const isNegative = height > 0; // In SVG, positive height means going down
+  const isPositive = height < 0; // In SVG, negative height means going up
   let currentY = y;
 
-  // For negative values, reverse the order to maintain consistent visual order
-  const orderedGroups = isNegative ? [...ageGroups].reverse() : ageGroups;
-  const orderedLabels = isNegative
+  // Reverse order for positive bars so the legend matches the stacking
+  const orderedGroups = isPositive ? [...ageGroups].reverse() : ageGroups;
+  const orderedLabels = isPositive
     ? [...ageGroupLabels].reverse()
     : ageGroupLabels;
 
@@ -40,10 +40,10 @@ function Bar({
         const proportion = group.n / totalN;
         const sectionHeight = Math.abs(height) * proportion;
 
-        const sectionY = isNegative ? currentY : currentY - sectionHeight;
-        currentY = isNegative
-          ? currentY + sectionHeight
-          : currentY - sectionHeight;
+        const sectionY = isPositive ? currentY - sectionHeight : currentY;
+        currentY = isPositive
+          ? currentY - sectionHeight
+          : currentY + sectionHeight;
 
         return (
           <rect
@@ -74,6 +74,7 @@ function BarChart({
   const dataMax = Math.max(...allKeyness);
 
   const tickRange = generateTickRange(dataMin, dataMax);
+  console.log("Tick Range:", tickRange);
   const limits: [number, number] = [tickRange.min, tickRange.max];
 
   // These are the margins of the drawable area (excluding labels)
@@ -188,6 +189,18 @@ function BarChart({
               >
                 {keynessData.lu}
               </text>
+              <text
+                x={x + (barWidth / 2) + 3}
+                y={
+                  keynessData.keyness > 0
+                    ? zeroYPosition + barHeight - 4
+                    : zeroYPosition + barHeight + 16
+                }
+                textAnchor="middle"
+                className="barchart-keyness"
+              >
+                {keynessData.keyness.toFixed(1)}%
+              </text>
             </g>
           );
         })}
@@ -198,7 +211,7 @@ function BarChart({
         textAnchor="middle"
         className="barchart-label"
       >
-        Item lexical
+        Termo
       </text>
       <text
         x={-(height - chartMarginBottom) / 2}
@@ -207,7 +220,7 @@ function BarChart({
         transform="rotate(-90)"
         className="barchart-label"
       >
-        Relevância
+        Variação percentual
       </text>
       <g className="legend">
         <rect
@@ -221,7 +234,7 @@ function BarChart({
           <g
             key={label}
             transform={`translate(${legendX + 12}, ${
-              legendY + 8 + (ageGroupLabels.length - 1 - index) * 24
+              legendY + 8 + index * 24
             })`}
           >
             <rect width={32} height={16} fill={colorScale[label]} />
@@ -234,34 +247,44 @@ function BarChart({
       <g>
         {selectedBarIndex !== null &&
           (() => {
-            const POPUP_WIDTH = 260;
+            const POPUP_WIDTH = 320;
+            const POPUP_HEIGHT = ageGroupLabels.length * 24 + 42;
             const barX =
               chartMarginLeft + barGap + selectedBarIndex * (barWidth + barGap);
+            const barData = data[selectedBarIndex];
+            const barHeight = -barData.keyness * pixelsPerUnit;
+            const barY = zeroYPosition + barHeight;
+            const barTop = Math.min(zeroYPosition, barY);
+            const barBottom = Math.max(zeroYPosition, barY);
+            const barCenterY = (barTop + barBottom) / 2;
 
-            // Check if popup would overflow the SVG width
-            const wouldOverflow = barX + barWidth + 8 + POPUP_WIDTH > width;
+            // Default: popup to the right of the bar, vertically centered
+            let xPosition = barX + barWidth + 8;
+            let yPosition = barCenterY - POPUP_HEIGHT / 2;
 
-            // Calculate x position based on overflow
-            const xPosition = wouldOverflow
-              ? barX - 8 - POPUP_WIDTH // Place on left side of bar
-              : barX + barWidth + 16; // Place on right side of bar
+            // If overflowing right, anchor to left of bar (hug the bar)
+            if (xPosition + POPUP_WIDTH > width) {
+              xPosition = barX - POPUP_WIDTH;
+              // If this would put the popup too far left, overlap the bar instead of clamping to 0
+              if (xPosition < 0) {
+                xPosition = barX + barWidth + 8; // fallback: show on right even if overflowing
+              }
+            }
+            // Clamp y if overflowing vertically
+            if (yPosition < 0) yPosition = 0;
+            if (yPosition + POPUP_HEIGHT > height)
+              yPosition = height - POPUP_HEIGHT;
 
             return (
               <foreignObject
                 x={xPosition}
-                y={
-                  data[selectedBarIndex].keyness >= 0
-                    ? zeroYPosition -
-                      data[selectedBarIndex].keyness * pixelsPerUnit -
-                      40
-                    : zeroYPosition - 40
-                }
+                y={yPosition}
                 width={POPUP_WIDTH}
-                height={85}
+                height={POPUP_HEIGHT}
               >
                 <div className="barchart-popup-container">
                   <BarChartPopup
-                    data={data[selectedBarIndex]}
+                    data={barData}
                     colorScale={Object.values(colorScale)}
                   />
                 </div>
