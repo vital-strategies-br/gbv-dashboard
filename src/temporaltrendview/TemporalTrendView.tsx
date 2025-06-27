@@ -28,19 +28,78 @@ function TemporalTrendView() {
   );
   const [currentState, setCurrentState] = useState(0);
 
-  const entry = data.find(
-    (x) => x.violence_type === filterType && x.age_group === filterAgeGroup
-  );
-  const daysBefore = entry?.highlightDay || -180;
+  const entry = data.find((x) => x.violence_type === filterType)?.age_groups?.[
+    filterAgeGroup
+  ];
+  const daysBefore = entry?.highlightDay || -90;
 
   // Define annotations
   const annotations = [];
   if (currentState >= 1) {
-    annotations.push({ text: "Dia do evento de violência", xPos: 0 });
+    annotations.push({ text: "Dia da identificação de violência", xPos: 0 });
   }
   if (currentState >= 2) {
     annotations.push({ text: `${-daysBefore} dias antes`, xPos: daysBefore });
   }
+
+  const texts = [
+    [
+      <>
+        O gráfico ao lado mostra como a chance de uma mulher ou menina procurar
+        atendimento na saúde aumenta nos dias próximos a uma situação de
+        violência.
+      </>,
+      <>
+        <strong>
+          Este gráfico representa um total de {entry?.n} mulheres e meninas
+        </strong>{" "}
+        com os filtros atuais aplicados.
+      </>,
+      <>
+        O eixo de baixo (<strong>horizontal</strong>) representa o tempo: os
+        dias antes e depois do momento em que a violência foi reconhecida por
+        algum serviço de saúde. Isso pode acontecer, por exemplo, com uma
+        notificação no Sinan, uma internação por causa externa ou quando a
+        paciente menciona a violência no prontuário do e-SUS APS.
+      </>,
+      <>
+        O eixo da lateral (<strong>vertical</strong>) mostra a probabilidade de
+        que o número de atendimentos aumente naquele dia, comparado com outros
+        períodos.
+      </>,
+      <>
+        <strong>Essa probabilidade já começa alta</strong>: mulheres e meninas em situação de
+        violência tendem a procurar mais os serviços de saúde, mesmo antes de
+        falar sobre a violência explicitamente.
+      </>,
+    ],
+    [
+      <>
+        O <strong>dia 0</strong>, destacado com uma linha, representa o momento
+        em que a violência é registrada de alguma forma no sistema de saúde.
+      </>,
+      <>
+        Observe que, nos dias anteriores ao Dia 0, há uma tendência de aumento
+        nos atendimentos. Isso significa que, em muitos casos, a vítima já
+        estava buscando ajuda, mesmo que ainda não tenha dito ou não tenha sido
+        identificada como alguém em situação de violência.
+      </>,
+    ],
+    [
+      <>
+        Quando toda a população feminina é analisada em conjunto,
+        considerando-se todos os tipos de violência, o padrão geral que surge é
+        o de que os atendimentos das vítimas tendem a aumentar cerca de{" "}
+        <strong>{daysBefore} dias</strong> antes da data em que a violência é
+        identificada.
+      </>,
+      <>
+        Esse padrão apresenta uma possibilidade de se identificar casos antes de
+        um agravamento. Esse é um padrão geral e, portanto, deve ser
+        relativizado para cada faixa etária para um direcionamento mais preciso.
+      </>,
+    ],
+  ];
 
   return (
     <div className="temporal-trend-content content">
@@ -66,18 +125,9 @@ function TemporalTrendView() {
       </div>
       <div className="temporal-trend-main-container">
         <div className="temporal-trend-left-container">
-          <p>
-            {currentState === 0
-              ? `O gráfico ao lado mostra a probabilidade de aumento nos atendimentos
-            de saúde ao longo do tempo em relação ao momento da violência,
-            considerando um grupo de ${entry?.n || "-"} mulheres/meninas. O eixo
-            X representa a diferença em dias para a ocorrência do evento de
-            violência, com valores negativos indicando o período anterior e
-            positivos correspondendo ao período posterior. O eixo Y exibe a
-            probabilidade de aumento nos atendimentos, permitindo observar
-            tendências ao longo do tempo.`
-              : currentState === 1 ? "Note o crescimento acentuado na probabilidade de atendimentos próximo ao dia do evento de violência (marcado como zero), seguido de variações posteriores, sugerindo um padrão de aumento da demanda por assistência médica antes da ocorrência da violência." : `Esses dados indicam que o número de atendimentos aumenta cerca de ${daysBefore} dias antes da data da violência, efetivamente expandido a janela em que esses casos possam ser identificados antes que haja um agavamento. `}
-          </p>
+          {texts[currentState].map((paragraph, idx) => (
+            <p key={idx}>{paragraph}</p>
+          ))}
           <div className="temporal-trend-button-wrapper">
             {currentState === [0, 1, 2].length - 1 ? (
               <a href="#" style={{ textDecoration: "none", color: "inherit" }}>

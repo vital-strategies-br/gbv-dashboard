@@ -13,6 +13,7 @@
 .temporal-trend-left-container {
   display: flex;
   flex-direction: column;
+  max-width: 500px;
   gap: 16px;
 }
 .temporal-trend-button-wrapper {

@@ -1,9 +1,12 @@
-export interface TemporalData {
-    violence_type: string,
-    age_group: number,
+export interface AgeGroupTemporalData {
     n: number,
     data: number[][];
     highlightDay: number;
+}
+
+export interface TemporalData {
+    violence_type: string,
+    age_groups: AgeGroupTemporalData[],
 }
 
 export interface LineChartProps {

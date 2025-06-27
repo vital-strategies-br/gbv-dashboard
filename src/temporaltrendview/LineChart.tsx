@@ -11,10 +11,10 @@ import "./LineChart.css";
 
 function LineChart({
   data,
-  width = 800,
-  height = 400,
+  width = 650,
+  height = 450,
   xAxisLimits = [-180, 180],
-  yAxisLimits = [0, 1],
+  yAxisLimits = [20, 100],
   annotations,
 }: LineChartProps) {
   // Margins for the drawable area
@@ -38,7 +38,7 @@ function LineChart({
     yAxisLimits[0],
     yAxisLimits[1],
     6,
-    [0.1, 0.2, 0.3]
+    [10, 20, 30]
   );
 
   // Step 1: Convert data points to (x, y) coordinates
@@ -131,7 +131,7 @@ function LineChart({
           textAnchor="middle"
           className="linechart-label"
         >
-          Diferença em dias para a violência
+          Dia em relação a identificação da violência
         </text>
         <text
           x={-(height - chartMarginBottom) / 2}
