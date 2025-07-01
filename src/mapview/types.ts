@@ -34,13 +34,8 @@ export interface TerritoryData {
     neighborhood: string,
     // The UI name of the territory
     name: string,
-    // Different IDs for the territory
+    // Shape ID
     id_shape: TerritoryId,
-    id_sinan: number,
-    id_geojson: number,
-    id_district: number,
-    // The UI name of the district
-    district_name: string,
     // Different data points for possible UI filters
     periods: Array<SubnotificationData>;
 }

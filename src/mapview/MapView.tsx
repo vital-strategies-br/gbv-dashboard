@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import Select from "react-select";
+import { Link } from "react-router-dom";
 
 // Components
 import HistogramChart from "./HistogramChart";
@@ -55,7 +56,8 @@ function MapView() {
   const [binData, binCategories, nullCount, territoryBins] = useMemo(() => {
     const [binData, binCategories, nullCount] = getHistogramData(
       filteredData,
-      obj => obj.subnotification_rate ? obj.subnotification_rate * 10 * 1000 : null,
+      (obj) =>
+        obj.subnotification_rate ? obj.subnotification_rate * 10 * 1000 : null,
       HISTOGRAM_BINS,
       HISTOGRAM_X_AXIS_LIMITS
     );
@@ -164,12 +166,14 @@ function MapView() {
           />
         )}
         <div className="report-button-wrapper">
-          <button className="button">
-            <img alt="" src={Document} />
-            <span>
-              Saiba mais sobre a pesquisa que deu origem a estes dados
-            </span>
-          </button>
+          <Link to="/nota-tecnica#subnotificacao-violencia-recife" className="no-underline">
+            <button className="button">
+              <img alt="" src={Document} />
+              <span>
+                Saiba mais sobre a pesquisa que deu origem a estes dados
+              </span>
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -123,6 +123,8 @@ function LineChart({
                   </text>
                 </g>
               );
+            } else {
+              return <></>
             }
           })}
         <text

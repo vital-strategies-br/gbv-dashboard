@@ -1,0 +1,509 @@
+{
+  "nodes": [
+    {
+      "id": "3589",
+      "name": "Abusar"
+    },
+    {
+      "id": "3191",
+      "name": "Ação_transitiva"
+    },
+    {
+      "id": "17762",
+      "name": "Acidente"
+    },
+    {
+      "id": "3392",
+      "name": "Afetar_intencionalmente"
+    },
+    {
+      "id": "3363",
+      "name": "Agir_intencionalmente"
+    },
+    {
+      "id": "1557310",
+      "name": "Ameaçar"
+    },
+    {
+      "id": "3580",
+      "name": "Arma"
+    },
+    {
+      "id": "3545",
+      "name": "Assistência"
+    },
+    {
+      "id": "3688",
+      "name": "Atributos_graduáveis"
+    },
+    {
+      "id": "4213",
+      "name": "Autoridade"
+    },
+    {
+      "id": "3525",
+      "name": "Avaliação_de_comportamento_social"
+    },
+    {
+      "id": "3289",
+      "name": "Catástrofe"
+    },
+    {
+      "id": "3287",
+      "name": "Causar_dano"
+    },
+    {
+      "id": "4311",
+      "name": "Cenário_da_violência"
+    },
+    {
+      "id": "3978",
+      "name": "Cenário_de_risco"
+    },
+    {
+      "id": "24051",
+      "name": "Cenário_de_sujeição"
+    },
+    {
+      "id": "3969",
+      "name": "Cenário_de_tiro"
+    },
+    {
+      "id": "3631",
+      "name": "Cometer_crime"
+    },
+    {
+      "id": "3187",
+      "name": "Comunicação"
+    },
+    {
+      "id": "3533",
+      "name": "Correr_risco"
+    },
+    {
+      "id": "4116",
+      "name": "Decisão_judicial"
+    },
+    {
+      "id": "3585",
+      "name": "Delitos"
+    },
+    {
+      "id": "3590",
+      "name": "Denunciar"
+    },
+    {
+      "id": "1552184",
+      "name": "Descrição_de_acidente"
+    },
+    {
+      "id": "3449",
+      "name": "Disparar_projétil"
+    },
+    {
+      "id": "3618",
+      "name": "Evento"
+    },
+    {
+      "id": "3271",
+      "name": "Experiência"
+    },
+    {
+      "id": "3574",
+      "name": "Fuga"
+    },
+    {
+      "id": "3296",
+      "name": "Homicídio"
+    },
+    {
+      "id": "3608",
+      "name": "Imagem_com_pessoa"
+    },
+    {
+      "id": "3876",
+      "name": "Informação_médica"
+    },
+    {
+      "id": "3277",
+      "name": "Investigação_criminológica"
+    },
+    {
+      "id": "3295",
+      "name": "Lesão_corporal"
+    },
+    {
+      "id": "3814",
+      "name": "Modalidades_de_auxílio"
+    },
+    {
+      "id": "3810",
+      "name": "Modalidades_de_competição"
+    },
+    {
+      "id": "3276",
+      "name": "Ofensa"
+    },
+    {
+      "id": "3406",
+      "name": "Outros_atos_prejudiciais"
+    },
+    {
+      "id": "3301",
+      "name": "Outros_crimes_contra_a_pessoa"
+    },
+    {
+      "id": "3975",
+      "name": "Perigo"
+    },
+    {
+      "id": "3284",
+      "name": "Processo_judicial"
+    },
+    {
+      "id": "3280",
+      "name": "Responsabilidade"
+    },
+    {
+      "id": "1552190",
+      "name": "Responsabilidade_criminal"
+    },
+    {
+      "id": "3285",
+      "name": "Segurança"
+    },
+    {
+      "id": "1557195",
+      "name": "Subsequente"
+    },
+    {
+      "id": "1557172",
+      "name": "Tentativa"
+    },
+    {
+      "id": "3271",
+      "name": "Experiência"
+    },
+    {
+      "id": "1557203",
+      "name": "Vitimização"
+    }
+  ],
+  "links": [
+    {
+      "source": "3191",
+      "target": "3392",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3191",
+      "target": "3618",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3392",
+      "target": "3406",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3392",
+      "target": "3301",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3363",
+      "target": "3392",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3363",
+      "target": "3545",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3363",
+      "target": "3271",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3363",
+      "target": "4116",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3688",
+      "target": "3810",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3688",
+      "target": "3525",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3688",
+      "target": "3876",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3688",
+      "target": "1552184",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "24051",
+      "target": "4311",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3631",
+      "target": "3296",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3631",
+      "target": "3589",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3631",
+      "target": "3276",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3631",
+      "target": "1552190",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3631",
+      "target": "3301",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3631",
+      "target": "1557310",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3631",
+      "target": "3295",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3631",
+      "target": "3285",
+      "type": "rel_inheritance"
+    },
+    {
+      "source": "3585",
+      "target": "3631",
+      "type": "rel_subframe"
+    },
+    {
+      "source": "3585",
+      "target": "3574",
+      "type": "rel_subframe"
+    },
+    {
+      "source": "3191",
+      "target": "3392",
+      "type": "rel_using"
+    },
+    {
+      "source": "3191",
+      "target": "3618",
+      "type": "rel_using"
+    },
+    {
+      "source": "3392",
+      "target": "3406",
+      "type": "rel_using"
+    },
+    {
+      "source": "3392",
+      "target": "3301",
+      "type": "rel_using"
+    },
+    {
+      "source": "3363",
+      "target": "3392",
+      "type": "rel_using"
+    },
+    {
+      "source": "3363",
+      "target": "3545",
+      "type": "rel_using"
+    },
+    {
+      "source": "3363",
+      "target": "3271",
+      "type": "rel_using"
+    },
+    {
+      "source": "3363",
+      "target": "4116",
+      "type": "rel_using"
+    },
+    {
+      "source": "3688",
+      "target": "3810",
+      "type": "rel_using"
+    },
+    {
+      "source": "3688",
+      "target": "3525",
+      "type": "rel_using"
+    },
+    {
+      "source": "3688",
+      "target": "3876",
+      "type": "rel_using"
+    },
+    {
+      "source": "3688",
+      "target": "1552184",
+      "type": "rel_using"
+    },
+    {
+      "source": "24051",
+      "target": "4311",
+      "type": "rel_using"
+    },
+    {
+      "source": "3631",
+      "target": "3296",
+      "type": "rel_using"
+    },
+    {
+      "source": "3631",
+      "target": "3589",
+      "type": "rel_using"
+    },
+    {
+      "source": "3631",
+      "target": "3276",
+      "type": "rel_using"
+    },
+    {
+      "source": "3631",
+      "target": "1552190",
+      "type": "rel_using"
+    },
+    {
+      "source": "3631",
+      "target": "3301",
+      "type": "rel_using"
+    },
+    {
+      "source": "3631",
+      "target": "1557310",
+      "type": "rel_using"
+    },
+    {
+      "source": "3631",
+      "target": "3295",
+      "type": "rel_using"
+    },
+    {
+      "source": "3631",
+      "target": "3285",
+      "type": "rel_using"
+    },
+    {
+      "source": "3187",
+      "target": "3590",
+      "type": "rel_using"
+    },
+    {
+      "source": "4116",
+      "target": "3284",
+      "type": "rel_using"
+    },
+    {
+      "source": "3585",
+      "target": "3631",
+      "type": "rel_using"
+    },
+    {
+      "source": "3618",
+      "target": "17762",
+      "type": "rel_using"
+    },
+    {
+      "source": "3271",
+      "target": "3608",
+      "type": "rel_using"
+    },
+    {
+      "source": "3608",
+      "target": "1552184",
+      "type": "rel_using"
+    },
+    {
+      "source": "3277",
+      "target": "3284",
+      "type": "rel_using"
+    },
+    {
+      "source": "3285",
+      "target": "3580",
+      "type": "rel_see_also"
+    },
+    {
+      "source": "1557195",
+      "target": "1557172",
+      "type": "rel_reframing_mapping"
+    },
+    {
+      "source": "1557195",
+      "target": "1557203",
+      "type": "rel_reframing_mapping"
+    },
+    {
+      "source": "1557172",
+      "target": "3631",
+      "type": "rel_reframing_mapping"
+    },
+    {
+      "source": "1557203",
+      "target": "3271",
+      "type": "rel_reframing_mapping"
+    },
+    {
+      "source": "3589",
+      "target": "3392",
+      "type": "rel_inchoative_of"
+    },
+    {
+      "source": "3287",
+      "target": "3392",
+      "type": "rel_causative_of"
+    },
+    {
+      "source": "3289",
+      "target": "3287",
+      "type": "rel_causative_of"
+    },
+    {
+      "source": "3975",
+      "target": "3978",
+      "type": "rel_perspective_on"
+    },
+    {
+      "source": "4311",
+      "target": "24051",
+      "type": "rel_perspective_on"
+    },
+    {
+      "source": "3969",
+      "target": "3449",
+      "type": "rel_perspective_on"
+    },
+    {
+      "source": "3574",
+      "target": "3814",
+      "type": "rel_metaphorical_projection"
+    }
+  ]
+}

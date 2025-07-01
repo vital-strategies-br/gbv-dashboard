@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import { Link } from "react-router-dom";
 
 // Types
 import { TemporalData } from "./types";
@@ -134,11 +135,11 @@ function TemporalTrendView() {
           ))}
           <div className="temporal-trend-button-wrapper">
             {currentState === [0, 1, 2].length - 1 ? (
-              <a href="#" style={{ textDecoration: "none", color: "inherit" }}>
+              <Link to="/nota-tecnica#padroes-no-tempo" className="no-underline">
                 <button className="button">
                   <span>Entenda como esses dados foram analisados</span>
                 </button>
-              </a>
+              </Link>
             ) : (
               <button
                 onClick={() => setCurrentState(currentState + 1)}

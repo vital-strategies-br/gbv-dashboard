@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // Types
-import { HealthUnitData, TerritoryDetailProps } from "./types";
+import { TerritoryDetailProps } from "./types";
 // Utils
 import { formatPercentage } from "./utils";
 // Image
@@ -9,21 +9,6 @@ import Close from "../icons/close.svg";
 import Help from "../icons/help.svg";
 // CSS
 import "./TerritoryDetail.css";
-
-const fakeUnits: HealthUnitData[] = [
-  {
-    unit_name: "UBS Central",
-    suspected_cases: 15,
-    esus_users: 230,
-    sinan_notifications: 0,
-  },
-  {
-    unit_name: "UBS Norte",
-    suspected_cases: 24,
-    esus_users: 112,
-    sinan_notifications: 0,
-  },
-];
 
 function TerritoryDetail({ data }: TerritoryDetailProps) {
   const [isHelpOpen, setIsHelpOpen] = useState<boolean>(false);

@@ -1,25 +1,23 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// Components
-import Section from "./common/Section";
+import Navbar from "./common/Navbar";
 import Homepage from "./homepage/Homepage";
+import TechnicalNote from "./technicalnote/TechnicalNote";
+import Section from "./common/Section";
 import MapView from "./mapview/MapView";
 import LexiconView from "./lexiconview/LexiconView";
 import TemporalTrendView from "./temporaltrendview/TemporalTrendView";
-// Icons
 import Demographic from "./icons/demographic.svg";
 import GraphBar from "./icons/graph-bar.svg";
 import TrendInspect from "./icons/trend-inspect.svg";
-// CSS
 import "./App.css";
 
-function App() {
+function DashboardSections() {
   return (
-    <div className="viewport">
-      <Homepage />
-
+    <>
       <Section
-        id="dashboard"
+        id="painel"
         title="Subnotificação de violência contra mulher no município de Recife"
         subtitle="Estimativa de Subnotificação por 10.000 usuárias das atenção básica."
         iconSrc={Demographic}
@@ -28,7 +26,6 @@ function App() {
       >
         <MapView />
       </Section>
-
       <Section
         id="patterns-over-time"
         title="Padrões de registros ao longo do tempo"
@@ -38,7 +35,6 @@ function App() {
       >
         <TemporalTrendView />
       </Section>
-
       <Section
         id="gbv-lexicon"
         title="Léxico da Violência de Gênero"
@@ -48,7 +44,29 @@ function App() {
       >
         <LexiconView />
       </Section>
-    </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="viewport">
+        <Navbar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Homepage />
+                <DashboardSections />
+              </>
+            }
+          />
+          <Route path="/nota-tecnica" element={<TechnicalNote />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

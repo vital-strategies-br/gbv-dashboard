@@ -1,0 +1,118 @@
+.tech-note {
+  display: flex;
+  padding: 2rem 6rem;
+  background-color: #ffffff;
+  color: #121e86;
+  justify-content: center;
+  padding-top: 100px;
+}
+.tech-note > .content {
+  max-width: 900px;
+}
+.tech-note h1 {
+  font-size: 42px;
+  line-height: 63px;
+  margin: 24px 0 6px;
+}
+.tech-note h2 {
+  font-size: 28px;
+  line-height: 42px;
+  margin: 32px 0;
+}
+.tech-note .author {
+  font-style: italic;
+}
+.tech-note .author > a,
+.tech-note .author > a:hover,
+.tech-note .references a,
+.tech-note .references a:hover {
+  color: inherit;
+  text-decoration: underline;
+  font: inherit;
+}
+.tech-note p {
+  font-family: "Tiempos Text";
+  font-size: 18px;
+  line-height: 32px;
+  margin: 16px 0;
+  text-align: justify;
+  color: rgb(10, 16, 33);
+}
+.tech-note .img-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.tech-note img {
+  margin: 12px 0;
+  height: 75px;
+  max-width: 100%;
+  align-self: center;
+}
+
+.tech-note .references li {
+  margin-bottom: .75rem;
+}
+
+.table-wrapper {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+  overflow-x: auto;
+}
+
+.tech-note .table {
+  width: auto;
+  max-width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 0.95rem;
+}
+
+.tech-note .table thead {
+  background-color: #121e86;
+  color: white;
+  text-align: left;
+}
+
+.tech-note .table th,
+.tech-note .table td {
+  padding: 10px 14px;
+  border: 1px solid #e0e0e0;
+}
+
+.tech-note .table tbody tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+.tech-note .table tbody tr:hover {
+  background-color: #eef1ff;
+}
+
+.tech-note .table td {
+  color: #333;
+}
+
+.tech-note .table td:nth-child(2),
+.tech-note .table th:nth-child(2) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.tech-note .graph-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1280px) {
+  .tech-note {
+    padding: 2rem 3rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .tech-note {
+    padding: 2rem 20px;
+  }
+}
