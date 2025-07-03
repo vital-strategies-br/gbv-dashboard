@@ -92,7 +92,7 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
             <p>
               <strong>Taxa de Subnotificação:</strong> Calculada a partir dos
               resultados do modelo de inteligência artificial, esta taxa é o nº
-              de casos suspeitos de violência que não foram notificados dividido
+              de casos suspeitos de violência ou subnotificados que não foram notificados dividido
               pelo total de mulheres atendidas na atenção básica.
             </p>
             <p>
@@ -101,8 +101,7 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
               município.
             </p>
             <p>
-              <strong>População feminina:</strong> População estimada para 2021
-              com base nos dados do Censo 2010.
+              <strong>População feminina:</strong> População estimada com base nos dados do Censo 2010.
             </p>
             <p>
               <strong>Usuárias da atenção básica:</strong> Número de mulheres
