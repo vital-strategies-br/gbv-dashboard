@@ -34,7 +34,6 @@ export function generateTickRange(
     }
   }
 
-  console.log(`Best step size: ${bestStep}, Tick count: ${bestTickCount}`);
   // Generate final ticks with best step size
   const minTick = Math.floor(dataMin / bestStep) * bestStep;
   const maxTick = Math.ceil(dataMax / bestStep) * bestStep;

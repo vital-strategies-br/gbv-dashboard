@@ -91,36 +91,107 @@
 
 
 .territory-detail-help-box {
-  position: absolute;
-  top: 12px;
-  left: 340px;
-  /* max-width: calc(300px); */
-  width: 500px;
-  padding: 16px;
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  background-color: white;
-  border-radius: 4px;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 480px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #ffffff;
   border: 1px solid #cccccc;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  animation: fadeIn 0.25s ease-in-out;
 }
 
 .territory-detail-help-box-content {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding-top: 8px;
 }
 
-.territory-detail-help-box p {
-  font-size: 0.875rem;
+.help-box-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333333;
+}
+
+.help-definition-list {
+  margin:0 ;
+}
+
+.help-definition-list dt {
+  font-weight: 600;
+  margin-top: 10px;
+  color: #222222;
+}
+
+.help-definition-list dd {
+  font-size: 1rem;
+  line-height: 1.33rem;
+  color: #555555;
+  margin-left: 0;
+  margin-bottom: 12px;
+}
+
+.territory-detail-help-box-close-wrapper {
+  position: absolute;
+  top: 12px;
+  right: 12px;
 }
 
 .territory-detail-help-box-close-wrapper img {
   cursor: pointer;
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
 }
 
-.territory-detail-message-no-unit {
-  font-style: italic;
-  color: #222222b3;
+.territory-detail-help-box-close-wrapper img:hover {
+  opacity: 1;
+}
+
+/* Optional backdrop */
+.territory-detail-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .territory-detail-help-box {
+    width: 95vw;
+    top: 12px;
+    right: 8px;
+    padding: 16px;
+  }
+
+  .help-box-title {
+    font-size: 1rem;
+  }
+
+  .help-definition-list dd {
+    font-size: 0.8rem;
+  }
 }

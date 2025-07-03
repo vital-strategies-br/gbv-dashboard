@@ -73,7 +73,7 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
                 <div>
                   {formatPercentage(
                     (healthUnitData.suspected_cases || 0) /
-                      (healthUnitData.esus_users || 1),
+                    (healthUnitData.esus_users || 1),
                     1
                   )}
                 </div>
@@ -87,43 +87,54 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
       )}
 
       {isHelpOpen && (
-        <div className="territory-detail-help-box">
-          <div className="territory-detail-help-box-content">
-            <p>
-              <strong>Taxa de Subnotificação:</strong> Calculada a partir dos
-              resultados do modelo de inteligência artificial, esta taxa é o nº
-              de casos suspeitos de violência ou subnotificados que não foram notificados dividido
-              pelo total de mulheres atendidas na atenção básica.
-            </p>
-            <p>
-              <strong>Categoria:</strong> Classificação da taxa de
-              subnotificação do bairro em relação à média de casos suspeitos do
-              município.
-            </p>
-            <p>
-              <strong>População feminina:</strong> População estimada com base nos dados do Censo 2010.
-            </p>
-            <p>
-              <strong>Usuárias da atenção básica:</strong> Número de mulheres
-              que residem no bairro e possuem pelo menos um registro de
-              atendimento em serviço da atenção básica no período selecionado.
-            </p>
-            <p>
-              <strong>Casos suspeitos:</strong> Numéro de casos em que há
-              padrões no prontuário eletrônico similar ao de casos notificados
-              de violência.
-            </p>
-            <p>
-              <strong>Notificações no SINAN:</strong> Numéro de notificações
-              registradas no SINAN de mulheres que residem no bairro durante
-              período selecionado.
-            </p>
+        <>
+          <div className="territory-detail-backdrop" onClick={() => setIsHelpOpen(false)} />
+
+          <div className="territory-detail-help-box">
+            <div className="territory-detail-help-box-content">
+              <h3 className="help-box-title">Entenda os Indicadores:</h3>
+
+              <dl className="help-definition-list">
+                <dt><strong>Taxa de Subnotificação</strong></dt>
+                <dd>
+                  Proporção estimada de casos suspeitos de violência que não foram notificados no SINAN, em relação ao total de mulheres atendidas na atenção básica. Calculada com auxílio de um modelo de inteligência artificial.
+                </dd>
+
+                <dt><strong>Categoria</strong></dt>
+                <dd>
+                  Classificação da subnotificação do bairro comparada à média municipal no mesmo período.
+                </dd>
+
+                <dt><strong>População feminina</strong></dt>
+                <dd>
+                  Estimativa com base nos dados do Censo 2010.
+                </dd>
+
+                <dt><strong>Usuárias da atenção básica</strong></dt>
+                <dd>
+                  Número de mulheres do bairro com pelo menos um atendimento registrado na atenção básica no período selecionado.
+                </dd>
+
+                <dt><strong>Casos suspeitos</strong></dt>
+                <dd>
+                  Casos com padrões no prontuário eletrônico similares aos de casos conhedidos de violência.
+                </dd>
+
+                <dt><strong>Notificações no SINAN</strong></dt>
+                <dd>
+                  Registros de notificações de violência no SINAN para mulheres do bairro no período.
+                </dd>
+              </dl>
+            </div>
+
+            <div className="territory-detail-help-box-close-wrapper">
+              <img src={Close} alt="Fechar ajuda" title="Fechar" onClick={() => setIsHelpOpen(false)} />
+            </div>
           </div>
-          <div className="territory-detail-help-box-close-wrapper">
-            <img src={Close} alt="Close" onClick={() => setIsHelpOpen(false)} />
-          </div>
-        </div>
+        </>
       )}
+
+
     </div>
   );
 }

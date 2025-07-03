@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 import HeroBackground from "../img/hero_background_v2.png";
 import "./Homepage.css";
 
 function Homepage() {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const id = location.hash.replace("#", "");
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 0);
+    }
+  }, [location]);
+
   return (
     <div className="homepage">
       <section className="hero">

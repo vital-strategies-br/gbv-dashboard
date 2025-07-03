@@ -9,18 +9,18 @@ import FormulaUnderreporting from "../img/formula_underreporting.png";
 import "./TechnicalNote.css";
 
 function TechnicalNote() {
-  const location = useLocation();
-  useEffect(() => {
-    if (location.hash) {
-      setTimeout(() => {
-        const id = location.hash.replace("#", "");
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 0);
-    }
-  }, [location]);
+  // const location = useLocation();
+  // useEffect(() => {
+  //   if (location.hash) {
+  //     setTimeout(() => {
+  //       const id = location.hash.replace("#", "");
+  //       const el = document.getElementById(id);
+  //       if (el) {
+  //         el.scrollIntoView({ behavior: "smooth", block: "start" });
+  //       }
+  //     }, 0);
+  //   }
+  // }, [location]);
 
   return (
     <section className="tech-note">

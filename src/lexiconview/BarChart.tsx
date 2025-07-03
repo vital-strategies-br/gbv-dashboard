@@ -74,7 +74,6 @@ function BarChart({
   const dataMax = Math.max(...allKeyness);
 
   const tickRange = generateTickRange(dataMin, dataMax);
-  console.log("Tick Range:", tickRange);
   const limits: [number, number] = [tickRange.min, tickRange.max];
 
   // These are the margins of the drawable area (excluding labels)

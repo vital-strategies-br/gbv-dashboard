@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./common/Navbar";
 import Homepage from "./homepage/Homepage";
 import TechnicalNote from "./technicalnote/TechnicalNote";
+import ScrollToTop from "./common/ScrollToTop";
 import Section from "./common/Section";
 import MapView from "./mapview/MapView";
 import LexiconView from "./lexiconview/LexiconView";
@@ -51,6 +52,7 @@ function DashboardSections() {
 function App() {
   return (
     <Router basename="/gbv-dashboard">
+      <ScrollToTop />
       <div className="viewport">
         <Navbar />
         <Routes>
