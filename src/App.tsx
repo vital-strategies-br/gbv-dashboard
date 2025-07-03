@@ -50,7 +50,7 @@ function DashboardSections() {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/gbv-dashboard">
       <div className="viewport">
         <Navbar />
         <Routes>
