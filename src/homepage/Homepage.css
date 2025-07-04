@@ -2,7 +2,7 @@
   display: flex;
   flex-flow: column nowrap;
   min-height: min(100vh, 995px);
-  background-color: #001a65;
+  background-color: #121E87;
 }
 
 .hero {
@@ -33,8 +33,8 @@
 
 .explore {
   padding: 2rem 6rem;
-  background-color: #ffffff;
-  color: #121e86;
+  background-color: #FAF4F0;
+  color: #121e87;
   text-align: left;
 }
 .explore h2 {

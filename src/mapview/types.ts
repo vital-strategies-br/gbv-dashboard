@@ -14,6 +14,7 @@ export interface HealthUnitData {
     unit_name: string;
     esus_users: number;
     sinan_notifications: number;
+    underreported_cases: number;
     suspected_cases: number;
 }
 
@@ -22,6 +23,7 @@ export interface SubnotificationData {
     population: number,
     resident_esus_users: Nullable<number>,
     resident_sinan_notifications: Nullable<number>,
+    resident_underreported_cases: Nullable<number>,
     resident_suspected_cases: Nullable<number>,
     subnotification_rate: Nullable<number>,
     subnotification_rate_zscore: Nullable<number>,

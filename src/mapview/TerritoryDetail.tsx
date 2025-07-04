@@ -42,6 +42,10 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
             <span>{data.resident_esus_users}</span>
           </div>
           <div className="territory-detail-info-box-row">
+            <span>Casos subnotificados</span>
+            <span>{data.resident_underreported_cases}</span>
+          </div>
+          <div className="territory-detail-info-box-row">
             <span>Casos suspeitos</span>
             <span>{data.resident_suspected_cases}</span>
           </div>
@@ -97,7 +101,7 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
               <dl className="help-definition-list">
                 <dt><strong>Taxa de Subnotificação</strong></dt>
                 <dd>
-                  Proporção estimada de casos suspeitos de violência que não foram notificados no SINAN, em relação ao total de mulheres atendidas na atenção básica. Calculada com auxílio de um modelo de inteligência artificial.
+                  Proporção estimada de casos suspeitos e subnotificados de violência que não foram notificados no Sinan, em relação ao total de mulheres atendidas na atenção básica. Calculada com auxílio de um modelo de inteligência artificial.
                 </dd>
 
                 <dt><strong>Categoria</strong></dt>
@@ -113,6 +117,11 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
                 <dt><strong>Usuárias da atenção básica</strong></dt>
                 <dd>
                   Número de mulheres do bairro com pelo menos um atendimento registrado na atenção básica no período selecionado.
+                </dd>
+
+                <dt><strong>Casos subnotificados</strong></dt>
+                <dd>
+                  Casos em que há certeza de violência, mas não há notificação. Identificados pelo código CID de atendimentos, hospitalização ou óbito ou por identificação de relato direto de violência em prontuário com auxílio de IA de análise semântica.
                 </dd>
 
                 <dt><strong>Casos suspeitos</strong></dt>

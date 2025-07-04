@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React from "react";
 
 import Graph from "./Graph";
 import HealthGraphData from "./data/health_domain_graph.json";
@@ -9,19 +8,6 @@ import FormulaUnderreporting from "../img/formula_underreporting.png";
 import "./TechnicalNote.css";
 
 function TechnicalNote() {
-  // const location = useLocation();
-  // useEffect(() => {
-  //   if (location.hash) {
-  //     setTimeout(() => {
-  //       const id = location.hash.replace("#", "");
-  //       const el = document.getElementById(id);
-  //       if (el) {
-  //         el.scrollIntoView({ behavior: "smooth", block: "start" });
-  //       }
-  //     }, 0);
-  //   }
-  // }, [location]);
-
   return (
     <section className="tech-note">
       <div className="content">
