@@ -316,8 +316,7 @@ function TechnicalNote() {
           granularidade. Por exemplo, o frame <strong>Medicamentos</strong>{" "}
           agrupa todos os tipos de fármacos, mas para uma classificação de casos
           de violência é importante saber se a unidade lexical que evocou esse
-          frame foi
-          <strong>ansiolítico</strong> ou <strong>analgésico</strong>.
+          frame foi <strong>ansiolítico</strong> ou <strong>analgésico</strong>.
         </p>
         <p dir="ltr">
           As anotações automáticas de sentenças geradas pelo LOME, junto com as
@@ -333,24 +332,21 @@ function TechnicalNote() {
           Por exemplo, na frase “Paciente relata agressão por parte do marido”,
           esse vetor de <em>features</em> deve ter a contagem 1 para os{" "}
           <em>frames</em> <strong>Pessoa por condição em saúde</strong>{" "}
-          (paciente), <strong>Causar dano</strong>
-          (agressão) e <strong>Relações pessoais</strong> (marido). Também 1
+          (paciente), <strong>Causar dano</strong> (agressão) e <strong>Relações pessoais</strong> (marido). Também 1
           para os elementos
           <strong>Paciente</strong> (paciente), <strong>Agressor</strong>{" "}
           (marido), <strong>Vítima</strong> (paciente),{" "}
-          <strong>Parceiro 1</strong>
-          (paciente) e <strong>Parceiro 2</strong> (marido). Por fim, a contagem
+          <strong>Parceiro 1</strong> (paciente) e <strong>Parceiro 2</strong> (marido). Por fim, a contagem
           também deve ser 1 para as co-ocorrências entre{" "}
           <strong>Paciente</strong>, <strong>Parceiro 1</strong> e{" "}
           <strong>Vítima</strong>, já que a paciente representa simultaneamente
-          todos esses elementos, e <strong>Agressor</strong>e{" "}
+          todos esses elementos, e <strong>Agressor</strong> e {" "}
           <strong>Parceiro 2</strong>, representados pelo marido. Nesse exemplo,
           todas as
           <em>features</em> citadas tem frequência igual, mas quando se
           considera todo o conjunto de sentenças de um prontuário, há uma
           tendência de que elas se repitam. Considere, por exemplo, quantas
-          vezes o substantivo
-          <strong>paciente</strong> ou o verbo <strong>relatar</strong> aparecem
+          vezes o substantivo <strong>paciente</strong> ou o verbo <strong>relatar</strong> aparecem
           em um prontuário. Portanto, é importante capturar de maneira mais
           geral as frequências dessas características semânticas em um
           determinado prontuário a fim de estimar sua importância.
@@ -395,8 +391,7 @@ function TechnicalNote() {
           pouco diferenciam prontuários entre si.
         </p>
         <p dir="ltr">
-          Com a aplicação de todas essas etapas, foram obtidos os vetores de
-          <em>features</em> de todos os registros do e-SUS APS. Esses vetores
+          Com a aplicação de todas essas etapas, foram obtidos os vetores de <em>features</em> de todos os registros do e-SUS APS. Esses vetores
           servem como conjunto de treinamento para o modelo de identificação de
           possíveis casos de violência.
         </p>
@@ -408,8 +403,7 @@ function TechnicalNote() {
           seu treinamento, a existência de um conjunto de dados devidamente
           rotulados. Para a tarefa de identificação de casos com padrão de
           violência, o conjunto deve ser composto de vetores de{" "}
-          <em>features</em>
-          semântica, representando registros de um dos SIS pareados e um rótulo
+          <em>features</em> semântica, representando registros de um dos SIS pareados e um rótulo
           identificando se o registro possui relação com um caso de violência ou
           não. Como os registros do e-SUS APS não são, em princípio, sobre
           violência, estabelecer essa causalidade é uma tarefa árdua. Mesmo com
@@ -554,7 +548,7 @@ function TechnicalNote() {
         </p>
         <p dir="ltr">
           Neste projeto optamos por usar um modelo do tipo conhecido por{" "}
-          <strong>SVM</strong>(<em>Support Vector Machine</em>). Em suas
+          <strong>SVM</strong> (<em>Support Vector Machine</em>). Em suas
           variações lineares, esse tipo de modelo é bastante interpretável: cada
           uma das features recebe um peso (positivo ou negativo) que determina a
           força da relação entre, por exemplo um <em>frame</em>, e os padrões de
@@ -704,8 +698,7 @@ function TechnicalNote() {
           agressão) e <strong>Suspeitos</strong> são meninas/mulheres que
           possuem pelo menos um registro em que o modelo de IA classificou como
           contendo padrões relacionados à violência e que não estejam no
-          conjunto de casos <strong>Subnotificados</strong> ou
-          <strong>Sinan</strong>. Portanto, a ideia é identificar o número de
+          conjunto de casos <strong>Subnotificados</strong> ou <strong>Sinan</strong>. Portanto, a ideia é identificar o número de
           casos de suspeita ou de violência confirmada em que não houve
           notificação e dividir esse número pelo número de mulheres que são
           usuárias da AP no território. Uma taxa de 10% indicaria que até 10%
@@ -873,12 +866,12 @@ function TechnicalNote() {
               target="_blank"
               rel="noopener noreferrer"
             >
-            Dutra, L., Lorenzi, A., Larré, L., Belcavello, F., Matos, E.,
-            Pestana, A., ... & Torrent, T. (2023, September). Building a
-            Frame-Semantic Model of the Healthcare Domain: Towards the
-            identification of gender-based violence in public health data. In
-            Simpósio Brasileiro de Tecnologia da Informação e da Linguagem
-            Humana (STIL) (pp. 338-346). SBC.
+              Dutra, L., Lorenzi, A., Larré, L., Belcavello, F., Matos, E.,
+              Pestana, A., ... & Torrent, T. (2023, September). Building a
+              Frame-Semantic Model of the Healthcare Domain: Towards the
+              identification of gender-based violence in public health data. In
+              Simpósio Brasileiro de Tecnologia da Informação e da Linguagem
+              Humana (STIL) (pp. 338-346). SBC.
             </a>
           </li>
           <li id="ref6">

@@ -101,8 +101,7 @@ function Lexicon() {
             </strong>
           </p>
           <p>
-            Para comparação, esses são os (as) 
-            <strong>{filterFrame.toUpperCase()}</strong> mais comuns na
+            Para comparação, esses são os (as) <strong>{filterFrame.toUpperCase()}</strong> mais comuns na
             população geral no mesmo período:
           </p>
           <div className="lexicon-top-lus">
