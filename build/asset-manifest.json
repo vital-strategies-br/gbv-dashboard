@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gbv-dashboard/static/css/main.bfe03b0a.css",
-    "main.js": "/gbv-dashboard/static/js/main.01b587e6.js",
+    "main.js": "/gbv-dashboard/static/js/main.48e104cb.js",
     "static/js/453.b33710e1.chunk.js": "/gbv-dashboard/static/js/453.b33710e1.chunk.js",
     "static/media/hero_background_v2.png": "/gbv-dashboard/static/media/hero_background_v2.304e361ac8e79c191ed1.png",
     "static/media/formula_underreporting.png": "/gbv-dashboard/static/media/formula_underreporting.012ff18fb119db501c5f.png",
@@ -22,11 +22,11 @@
     "static/media/show-menu.svg": "/gbv-dashboard/static/media/show-menu.4cf767e1a56461b3427e73c10c990051.svg",
     "static/media/chevron-right.svg": "/gbv-dashboard/static/media/chevron-right.9a291346bea6168a5c09af24d446179e.svg",
     "main.bfe03b0a.css.map": "/gbv-dashboard/static/css/main.bfe03b0a.css.map",
-    "main.01b587e6.js.map": "/gbv-dashboard/static/js/main.01b587e6.js.map",
+    "main.48e104cb.js.map": "/gbv-dashboard/static/js/main.48e104cb.js.map",
     "453.b33710e1.chunk.js.map": "/gbv-dashboard/static/js/453.b33710e1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bfe03b0a.css",
-    "static/js/main.01b587e6.js"
+    "static/js/main.48e104cb.js"
   ]
 }
