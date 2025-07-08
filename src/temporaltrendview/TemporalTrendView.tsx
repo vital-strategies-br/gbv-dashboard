@@ -32,7 +32,7 @@ function TemporalTrendView() {
   const entry = data.find((x) => x.violence_type === filterType)?.age_groups?.[
     filterAgeGroup
   ];
-  const daysBefore = entry?.highlightDay || -90;
+  const daysBefore = 92;
 
   // Define annotations
   const annotations = [];
