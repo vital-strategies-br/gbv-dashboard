@@ -23,8 +23,7 @@ function Homepage() {
       <section className="hero">
         <div className="hero-text">
           <h1>
-            Pesquisas e dados que auxiliam na prevenção da violência de gênero
-            contra mulheres.
+            Painel de subnotificação da violência de gênero no Recife
           </h1>
           <p>
             É possível identificar sinais de violência em atendimentos de rotina
@@ -36,10 +35,9 @@ function Homepage() {
           </p>
           <p>
             Os casos com notificação de violências no SINAN e prontuários foram
-            utilizados como padrão para treinar o modelo de inteligência
+            utilizados para treinar o modelo de inteligência
             artificial para a compreensão dos padrões de saúde de mulheres
-            vivenciando a violência. Esse modelo foi, então, aplicado aos demais
-            casos para identificar padrões de violência não notificada. A IA
+            vivenciando a violência. A partir desse aprendizado, o modelo foi aplicado aos demais atendimentos para identificar possíveis ocorrências não notificadas. A IA
             permite estimar o cenário de casos suspeitos não-notificados por
             unidade de saúde.
           </p>

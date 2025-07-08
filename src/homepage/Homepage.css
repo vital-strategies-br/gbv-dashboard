@@ -27,8 +27,9 @@
 }
 
 .hero img {
-  height: 40vmin;
-  max-height: 500px;
+  height: 80vmin;
+  max-height: 600px;
+  padding-right: 6rem;
 }
 
 .explore {
@@ -48,6 +49,10 @@
   .hero-text {
     padding: 2rem 3rem;
   }
+  .hero img {
+    height: auto;
+    max-width: 350px;
+  }
   .explore {
     padding: 2rem 3rem;
   }
@@ -61,6 +66,10 @@
   .hero-text h1 {
     font: normal normal normal 2rem/2.4rem "Tiempos Headline";
     max-width: unset;
+  }
+  .hero img {
+    height: auto;
+    max-width: 300px;
   }
   .explore {
     padding: 2rem 20px;
