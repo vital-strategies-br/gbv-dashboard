@@ -10,8 +10,8 @@ import LexiconDataJson from "./data/lexicon.json";
 // CSS
 import "./LexiconView.css";
 
-// const transformKeyness = (keyness: number): number => keyness >= 1 ? keyness : -1 / keyness;
-const transformKeyness = (keyness: number): number => (keyness - 1) * 100;
+const transformKeyness = (keyness: number): number =>
+  keyness !== 0 ? (keyness - 1) * 100 : 0;
 
 // Load data adapting keyness values
 const data: KeynessData[] = LexiconDataJson.visualization_data.map((entry) => ({
@@ -101,7 +101,7 @@ function Lexicon() {
             </strong>
           </p>
           <p>
-            Para comparação, esses são os (as) 
+            Para comparação, esses são os (as)
             <strong>{filterFrame.toUpperCase()}</strong> mais comuns na
             população geral no mesmo período:
           </p>

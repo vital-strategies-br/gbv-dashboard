@@ -715,7 +715,7 @@ function TechnicalNote() {
           <strong>Subnotificados</strong> é o conjunto de meninas/mulheres em
           que se pode ter certeza que houve violência sem notificação (por
           exemplo, menção explicita à violência no prontuário ou óbito por
-          agressão) e <strong>Suspeitos</strong> são meninas/mulheres que
+          agressão) e <strong>Prováveis</strong> são meninas/mulheres que
           possuem pelo menos um registro em que o modelo de IA classificou como
           contendo padrões relacionados à violência e que não estejam no
           conjunto de casos <strong>Subnotificados</strong> ou

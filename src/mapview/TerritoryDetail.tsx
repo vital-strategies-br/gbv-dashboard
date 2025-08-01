@@ -42,7 +42,7 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
             <span>{data.resident_esus_users}</span>
           </div>
           <div className="territory-detail-info-box-row">
-            <span>Casos suspeitos</span>
+            <span>Casos prováveis</span>
             <span>{data.resident_suspected_cases}</span>
           </div>
           <div className="territory-detail-info-box-row">
@@ -56,7 +56,7 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
         <div className="territory-detail-units-table">
           <div className="territory-detail-units-table-header">
             <div>Unidades de Saúde</div>
-            <div>Casos Suspeitos</div>
+            <div>Casos Prováveis</div>
             <div>Usuárias</div>
             <div>% Casos / Usuárias</div>
           </div>
@@ -92,13 +92,14 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
             <p>
               <strong>Taxa de Subnotificação:</strong> Calculada a partir dos
               resultados do modelo de inteligência artificial, esta taxa é o nº
-              de casos suspeitos de violência que não foram notificados dividido
-              pelo total de mulheres atendidas na atenção básica.
+              de casos (prováveis) de violência sinalizados pelo modelo de IA
+              que não foram notificados dividido pelo total de mulheres
+              atendidas na atenção básica.
             </p>
             <p>
               <strong>Categoria:</strong> Classificação da taxa de
-              subnotificação do bairro em relação à média de casos suspeitos do
-              município.
+              subnotificação do bairro em relação à média de casos prováveis
+              (identificados pelo modelo de IA) do município.
             </p>
             <p>
               <strong>População feminina:</strong> População estimada para 2021
@@ -110,9 +111,9 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
               atendimento em serviço da atenção básica no período selecionado.
             </p>
             <p>
-              <strong>Casos suspeitos:</strong> Numéro de casos em que há
-              padrões no prontuário eletrônico similar ao de casos notificados
-              de violência.
+              <strong>Casos prováveis:</strong> Numéro de casos em que a IA
+              identificou padrões textuais no prontuário eletrônico similares ao
+              de casos notificados de violência.
             </p>
             <p>
               <strong>Notificações no SINAN:</strong> Numéro de notificações

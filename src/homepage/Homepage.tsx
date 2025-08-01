@@ -26,7 +26,7 @@ function Homepage() {
             artificial para a compreensão dos padrões de saúde de mulheres
             vivenciando a violência. Esse modelo foi, então, aplicado aos demais
             casos para identificar padrões de violência não notificada. A IA
-            permite estimar o cenário de casos suspeitos não-notificados por
+            permite estimar o cenário de prováveis casos não-notificados por
             unidade de saúde.
           </p>
         </div>
