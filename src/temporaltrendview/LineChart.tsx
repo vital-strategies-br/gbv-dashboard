@@ -86,7 +86,7 @@ function LineChart({
           startMargin={chartMarginLeft}
           showLines={true}
         />
-        <path d={d} stroke="#4766ff" strokeWidth={3} fill="none" />
+        <path d={d} stroke="#121E87" strokeWidth={3} fill="none" />
         {annotations &&
           annotations.map((anno) => {
             if (typeof anno.xPos === "number") {

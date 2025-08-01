@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 import HeroBackground from "../img/hero_background_v2.png";
 import "./Homepage.css";
 
 function Homepage() {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const id = location.hash.replace("#", "");
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 0);
+    }
+  }, [location]);
+
   return (
     <div className="homepage">
       <section className="hero">
         <div className="hero-text">
-          <h1>
-            Pesquisas e dados que auxiliam na prevenção da violência de gênero
-            contra mulheres.
-          </h1>
+          <h1>Painel de subnotificação da violência de gênero no Recife</h1>
           <p>
             É possível identificar sinais de violência em atendimentos de rotina
             da atenção primária em saúde? Nós acreditamos que sim. Com o uso do
@@ -22,12 +33,12 @@ function Homepage() {
           </p>
           <p>
             Os casos com notificação de violências no SINAN e prontuários foram
-            utilizados como padrão para treinar o modelo de inteligência
-            artificial para a compreensão dos padrões de saúde de mulheres
-            vivenciando a violência. Esse modelo foi, então, aplicado aos demais
-            casos para identificar padrões de violência não notificada. A IA
-            permite estimar o cenário de prováveis casos não-notificados por
-            unidade de saúde.
+            utilizados para treinar o modelo de inteligência artificial para a
+            compreensão dos padrões de saúde de mulheres vivenciando a
+            violência. A partir desse aprendizado, o modelo foi aplicado aos
+            demais atendimentos para identificar possíveis ocorrências não
+            notificadas. A IA permite estimar o cenário de casos prováveis
+            não-notificados por unidade de saúde.
           </p>
         </div>
         <img src={HeroBackground} alt="" />

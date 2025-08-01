@@ -8,7 +8,7 @@ function Navbar() {
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const location = useLocation();
 
-  const isSticky = 
+  const isSticky =
     location.pathname !== "/" && location.pathname !== "/#painel";
 
   return (
@@ -17,7 +17,7 @@ function Navbar() {
         <img src={VitalLogo} alt="Vital Strategies Logo" />
       </div>
       <nav className={`nav ${!isNavMenuOpen ? "closed" : ""}`}>
-        <Link to="/" onClick={() => setIsNavMenuOpen(false)}>
+        <Link to="/" onClick={() => { setIsNavMenuOpen(false); }}>
           Início
         </Link>
         <Link to="/#painel" onClick={() => setIsNavMenuOpen(false)}>
@@ -26,9 +26,6 @@ function Navbar() {
         <Link to="/nota-tecnica" onClick={() => setIsNavMenuOpen(false)}>
           Nota técnica
         </Link>
-        {/* <a href="#" onClick={() => setIsNavMenuOpen(false)}>
-          Quem Somos
-        </a> */}
       </nav>
       <img
         className="hamburguer-menu-icon"

@@ -2,6 +2,7 @@
   "name": "vital-gbv-dashboard",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/gbv-dashboard",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -10,10 +11,9 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "electron-squirrel-startup": "^1.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-force-graph-2d": "^1.27.1",
+    "react-force-graph-2d": "^1.28.0",
     "react-router-dom": "^7.6.3",
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
@@ -24,9 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "electron": "yarn build && electron .",
-    "dist": "yarn build && electron-builder -mwl"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -48,22 +46,5 @@
   },
   "devDependencies": {
     "svg-path-bounding-box": "^1.0.4"
-  },
-  "main": "public/electron.js",
-  "homepage": ".",
-  "build": {
-    "appId": "org.vitalstrategies.dashboard",
-    "productName": "Dashboard",
-    "win": {
-      "target": [
-        "portable"
-      ]
-    },
-    "mac": {
-      "target": "dmg"
-    },
-    "linux": {
-      "target": "AppImage"
-    }
   }
 }

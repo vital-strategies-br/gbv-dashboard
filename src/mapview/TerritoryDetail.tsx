@@ -87,44 +87,54 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
       )}
 
       {isHelpOpen && (
-        <div className="territory-detail-help-box">
-          <div className="territory-detail-help-box-content">
-            <p>
-              <strong>Taxa de Subnotificação:</strong> Calculada a partir dos
-              resultados do modelo de inteligência artificial, esta taxa é o nº
-              de casos (prováveis) de violência sinalizados pelo modelo de IA
-              que não foram notificados dividido pelo total de mulheres
-              atendidas na atenção básica.
-            </p>
-            <p>
-              <strong>Categoria:</strong> Classificação da taxa de
-              subnotificação do bairro em relação à média de casos prováveis
-              (identificados pelo modelo de IA) do município.
-            </p>
-            <p>
-              <strong>População feminina:</strong> População estimada para 2021
-              com base nos dados do Censo 2010.
-            </p>
-            <p>
-              <strong>Usuárias da atenção básica:</strong> Número de mulheres
-              que residem no bairro e possuem pelo menos um registro de
-              atendimento em serviço da atenção básica no período selecionado.
-            </p>
-            <p>
-              <strong>Casos prováveis:</strong> Numéro de casos em que a IA
-              identificou padrões textuais no prontuário eletrônico similares ao
-              de casos notificados de violência.
-            </p>
-            <p>
-              <strong>Notificações no SINAN:</strong> Numéro de notificações
-              registradas no SINAN de mulheres que residem no bairro durante
-              período selecionado.
-            </p>
+        <>
+          <div
+            className="territory-detail-backdrop"
+            onClick={() => setIsHelpOpen(false)}
+          />
+          <div className="territory-detail-help-box">
+            <div className="territory-detail-help-box-content">
+              <p>
+                <strong>Taxa de Subnotificação:</strong> Calculada a partir dos
+                resultados do modelo de inteligência artificial, esta taxa é o
+                nº de casos (prováveis) de violência sinalizados pelo modelo de
+                IA que não foram notificados dividido pelo total de mulheres
+                atendidas na atenção básica.
+              </p>
+              <p>
+                <strong>Categoria:</strong> Classificação da taxa de
+                subnotificação do bairro em relação à média de casos prováveis
+                (identificados pelo modelo de IA) do município.
+              </p>
+              <p>
+                <strong>População feminina:</strong> População estimada para
+                2021 com base nos dados do Censo 2010.
+              </p>
+              <p>
+                <strong>Usuárias da atenção básica:</strong> Número de mulheres
+                que residem no bairro e possuem pelo menos um registro de
+                atendimento em serviço da atenção básica no período selecionado.
+              </p>
+              <p>
+                <strong>Casos prováveis:</strong> Numéro de casos em que a IA
+                identificou padrões textuais no prontuário eletrônico similares
+                ao de casos notificados de violência.
+              </p>
+              <p>
+                <strong>Notificações no SINAN:</strong> Numéro de notificações
+                registradas no SINAN de mulheres que residem no bairro durante
+                período selecionado.
+              </p>
+            </div>
+            <div className="territory-detail-help-box-close-wrapper">
+              <img
+                src={Close}
+                alt="Close"
+                onClick={() => setIsHelpOpen(false)}
+              />
+            </div>
           </div>
-          <div className="territory-detail-help-box-close-wrapper">
-            <img src={Close} alt="Close" onClick={() => setIsHelpOpen(false)} />
-          </div>
-        </div>
+        </>
       )}
     </div>
   );

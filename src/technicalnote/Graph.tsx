@@ -138,7 +138,7 @@ function Graph(props: any) {
           ctx.restore();
         }
       }}
-      linkDirectionalArrowLength={10}
+      linkDirectionalArrowLength={5}
       linkDirectionalArrowRelPos={0.8}
     />
   );

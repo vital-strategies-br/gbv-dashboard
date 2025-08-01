@@ -1,8 +1,8 @@
 .tech-note {
   display: flex;
   padding: 2rem 6rem;
-  background-color: #ffffff;
-  color: #121e86;
+  background-color: #FAF4F0;
+  color: #121e87;
   justify-content: center;
   padding-top: 100px;
 }
@@ -71,7 +71,7 @@
 }
 
 .tech-note .table thead {
-  background-color: #121e86;
+  background-color: #121e87;
   color: white;
   text-align: left;
 }

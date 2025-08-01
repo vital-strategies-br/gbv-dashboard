@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/gbv-dashboard/static/css/main.d4e353bc.css",
+    "main.js": "/gbv-dashboard/static/js/main.3b777d5e.js",
+    "static/js/453.b33710e1.chunk.js": "/gbv-dashboard/static/js/453.b33710e1.chunk.js",
+    "static/media/hero_background_v2.png": "/gbv-dashboard/static/media/hero_background_v2.f294ad82b9c275f9329e.png",
+    "static/media/formula_underreporting.png": "/gbv-dashboard/static/media/formula_underreporting.debd3ef23bd809412c5d.png",
+    "static/media/TiemposTextWeb-Regular.woff": "/gbv-dashboard/static/media/TiemposTextWeb-Regular.43ab87fa737767816781.woff",
+    "static/media/TiemposHeadlineWeb-Regular.woff2": "/gbv-dashboard/static/media/TiemposHeadlineWeb-Regular.0986716d0664687c7ccf.woff2",
+    "static/media/Larsseit.woff2": "/gbv-dashboard/static/media/Larsseit.b0d63db662335fdb571e.woff2",
+    "static/media/formula_keyness.png": "/gbv-dashboard/static/media/formula_keyness.ea007faf33c618fc25b5.png",
+    "static/media/vital_logo_white.png": "/gbv-dashboard/static/media/vital_logo_white.7a008d8837a87560a8b4.png",
+    "static/media/help.svg": "/gbv-dashboard/static/media/help.ae5043ef9795cdfdae46cc64eeee58a7.svg",
+    "static/media/demographic.svg": "/gbv-dashboard/static/media/demographic.48a573a54a13060f853a163f2c5b9e27.svg",
+    "static/media/trend-inspect.svg": "/gbv-dashboard/static/media/trend-inspect.8ebbf2093bde3c5d11acac9d5e18de46.svg",
+    "index.html": "/gbv-dashboard/index.html",
+    "static/media/graph-bar.svg": "/gbv-dashboard/static/media/graph-bar.da0a3d951fe6821b297216129317bc84.svg",
+    "static/media/expand.svg": "/gbv-dashboard/static/media/expand.3aca7ae52ed03cec81a1165b3fbf81a1.svg",
+    "static/media/close.svg": "/gbv-dashboard/static/media/close.b2fd5e7f26ff85a7216bda62217a2c62.svg",
+    "static/media/collapse.svg": "/gbv-dashboard/static/media/collapse.c1349bdae372a3e9bdaa7fb803c59dd6.svg",
+    "static/media/document.svg": "/gbv-dashboard/static/media/document.60321a5cd09c529090070e19742427a6.svg",
+    "static/media/show-menu.svg": "/gbv-dashboard/static/media/show-menu.1bc50a2e0b33036ea5ab69e43b784df0.svg",
+    "static/media/chevron-right.svg": "/gbv-dashboard/static/media/chevron-right.c3a7c3a7203723f80eb1c58bc1dc2df1.svg",
+    "main.d4e353bc.css.map": "/gbv-dashboard/static/css/main.d4e353bc.css.map",
+    "main.3b777d5e.js.map": "/gbv-dashboard/static/js/main.3b777d5e.js.map",
+    "453.b33710e1.chunk.js.map": "/gbv-dashboard/static/js/453.b33710e1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d4e353bc.css",
+    "static/js/main.3b777d5e.js"
+  ]
+}
