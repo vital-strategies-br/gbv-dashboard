@@ -158,7 +158,7 @@ function HistogramChart({
         y={height - 4}
         className="histogram-label"
       >
-        Número estimado de casos suspeitos por 10 mil usuárias AB
+        Número estimado de casos prováveis por 10 mil usuárias AB
       </text>
       <text
         x={-height / 2}
