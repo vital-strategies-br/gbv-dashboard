@@ -1,14 +1,26 @@
+.svg-map-canvas {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  min-height: 300px;
+  max-height: 700px;
+}
+
 .svg-map-wrapper {
   position: relative;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
-  justify-content: center;
-  /* max-width: 50vh; */
+  width: 100%;
 }
 
 .svg-map {
-  height: calc(100vh - 224px);
-  max-height: 700px;
+  height: 100%;
+  width: 100%;
+  flex: 1 1 auto;
 }
 
 .svg-map path:hover {
@@ -17,17 +29,82 @@
 
 .svg-map-instructions {
   position: absolute;
-  bottom: 2vh;
-  left: 20px;
-  width: 20%;
-  font-size: 0.875rem;
-  line-height: 00.875rem;
+  top: 14px;
+  right: 14px;
+  max-width: 25%;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  line-height: 1.25;
 }
 
-@media (max-width: 600px) {
-  .svg-map-instructions {
-    bottom: 0px;
-    left: 0px;
-    width: 100px;
+.svg-map-instructions strong {
+  letter-spacing: 0.02em;
+}
+
+.svg-map-legend--side {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 180px;
+  padding: 10px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background: white;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
+  .svg-map-legend--side {
+    position: static;
+    width: auto;
+    max-width: 100%;
+    margin: 12px auto 0;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
   }
+}
+
+@media (max-width: 900px) {
+  .svg-map-canvas {
+    min-height: 250px;
+    max-height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .svg-map-canvas {
+    min-height: 200px;
+    max-height: 400px;
+  }
+  
+  .svg-map-legend--side {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+.svg-map-legend-item {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  align-items: center;
+  column-gap: 8px;
+  min-width: 0;
+}
+
+.svg-map-legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  border: 1px solid #cccccc;
+  flex-shrink: 0;
+}
+
+.svg-map-legend-label {
+  font-size: 12px;
+  line-height: 1.15;
+  color: rgba(0, 0, 0, 0.8);
+  word-break: break-word;
 }

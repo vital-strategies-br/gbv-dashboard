@@ -10,7 +10,12 @@ import Tooltip from "./Tooltip";
 // Types
 import { TerritoryData, TerritoryId } from "./types";
 // Utils
-import { applyFilter, assignCategories, getHistogramData } from "./utils";
+import {
+  applyFilter,
+  getCategoryScheme,
+  assignCategories,
+  getHistogramData,
+} from "./utils";
 // Image
 import Document from "../icons/document.svg";
 // Data
@@ -53,6 +58,19 @@ function MapView() {
     () => Object.fromEntries(filteredData.map((obj) => [obj.id_shape, obj])),
     [filteredData]
   );
+
+  const all_rates = filteredData
+    .map((obj) => obj.subnotification_rate)
+    .filter((x): x is number => x != null);
+  const average_rate = all_rates.reduce((a, b) => a + b, 0) / all_rates.length;
+  const median_rate = (() => {
+    const sorted = all_rates.slice().sort((a, b) => a - b);
+    const mid = Math.floor(sorted.length / 2);
+    return sorted.length % 2 !== 0
+      ? sorted[mid]
+      : (sorted[mid - 1] + sorted[mid]) / 2;
+  })();
+
   const [binData, binCategories, nullCount, territoryBins] = useMemo(() => {
     const [binData, binCategories, nullCount] = getHistogramData(
       filteredData,
@@ -70,6 +88,40 @@ function MapView() {
     });
 
     return [binData, binCategories, nullCount, territoryBins];
+  }, [filteredData]);
+
+  const rateToPer10k = (r: number) => r * 10 * 1000;
+  const categoryBoundaries = useMemo(() => {
+    const scheme = getCategoryScheme();
+
+    // Use the same base variable that z-scores were computed from:
+    // subnotification_rate (NOT multiplied)
+    const rates = filteredData
+      .map((d) => d.subnotification_rate)
+      .filter((x): x is number => x != null);
+
+    // Guard: if no data, just return scheme (SVGMap can fallback)
+    if (rates.length === 0) return scheme;
+
+    const mean = rates.reduce((a, b) => a + b, 0) / rates.length;
+
+    // Population std dev (most common for display thresholds; use sample if you prefer)
+    const variance =
+      rates.reduce((sum, x) => sum + (x - mean) * (x - mean), 0) / rates.length;
+    const std = Math.sqrt(variance);
+
+    // Convert z-score boundaries (-3..3 etc) into rate-per-10k boundaries
+    const boundariesRatePer10k = scheme.boundaries.map((z) =>
+      rateToPer10k(mean + z * std)
+    );
+
+    return {
+      ...scheme,
+      zBoundaries: scheme.boundaries,
+      boundaries: boundariesRatePer10k,
+      mean,
+      std,
+    };
   }, [filteredData]);
 
   return (
@@ -115,7 +167,7 @@ function MapView() {
           <SVGMap
             data={filteredDataById}
             selectedShapeId={selectedTerritory}
-            // highlightedCategory={highlightedCategory}
+            categoryBoundaries={categoryBoundaries}
             highlightedTerritories={
               highlightedBin
                 ? binData[highlightedBin].map((obj) => obj.id_shape)
@@ -160,13 +212,18 @@ function MapView() {
             nullCount={nullCount}
             xAxisLimits={HISTOGRAM_X_AXIS_LIMITS}
             yAxisLimits={HISTOGRAM_Y_AXIS_LIMITS}
+            avgValue={average_rate * 10 * 1000}
+            medianValue={median_rate * 10 * 1000}
             highlightedBin={highlightedBin}
             onBarMouseEnter={(index) => setHighlightedBin(index)}
             onBarMouseLeave={() => setHighlightedBin(null)}
           />
         )}
         <div className="report-button-wrapper">
-          <Link to="/nota-tecnica#subnotificacao-violencia-recife" className="no-underline">
+          <Link
+            to="/nota-tecnica#subnotificacao-violencia-recife"
+            className="no-underline"
+          >
             <button className="button">
               <img alt="" src={Document} />
               <span>

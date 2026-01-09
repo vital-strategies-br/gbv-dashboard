@@ -11,7 +11,7 @@ import "./LineChart.css";
 
 function LineChart({
   data,
-  width = 650,
+  width = 700,
   height = 450,
   xAxisLimits = [-180, 180],
   yAxisLimits = [20, 100],
@@ -66,7 +66,7 @@ function LineChart({
     .join(" ");
 
   return (
-    <svg width={width} height={height} className="linechart">
+    <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" className="linechart">
       <g>
         <AxisGridTicks
           axis="x"

@@ -3,3 +3,21 @@
   min-height: 100vh;
   flex-direction: column;
 }
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    .container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+    .container {
+        padding: 10px;
+    }
+}

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // Types
 import { TerritoryDetailProps } from "./types";
 // Utils
-import { formatPercentage } from "./utils";
+import { formatPercentage, formatRatePer10k } from "./utils";
 // Image
 import Close from "../icons/close.svg";
 import Help from "../icons/help.svg";
@@ -12,6 +12,7 @@ import "./TerritoryDetail.css";
 
 function TerritoryDetail({ data }: TerritoryDetailProps) {
   const [isHelpOpen, setIsHelpOpen] = useState<boolean>(false);
+  const hasUnitData = data.units.filter((x) => x.esus_users > 0).length > 0
 
   return (
     <div className="territory-detail-container">
@@ -26,8 +27,8 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
         </div>
         <div className="territory-detail-info-box-body">
           <div className="territory-detail-info-box-row">
-            <span>Taxa de subnotificação</span>
-            <span>{formatPercentage(data.subnotification_rate)}</span>
+            <span>Taxa de subnotificação por 10 mil</span>
+            <span>{formatRatePer10k(data.subnotification_rate)}</span>
           </div>
           <div className="territory-detail-info-box-row">
             <span>Categoria</span>
@@ -56,7 +57,7 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
         </div>
       </div>
 
-      {data.units.length > 0 ? (
+      {hasUnitData ? (
         <div className="territory-detail-units-table">
           <div className="territory-detail-units-table-header">
             <div>Unidades de Saúde</div>
@@ -101,7 +102,7 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
               <dl className="help-definition-list">
                 <dt><strong>Taxa de Subnotificação</strong></dt>
                 <dd>
-                  Calculada a partir dos resultados do modelo de inteligência artificial, esta taxa é o nº de casos (prováveis) de violência sinalizados pelo modelo de IA que não foram notificados dividido pelo total de mulheres atendidas na atenção básica.
+                  Calculada a partir dos resultados do modelo de inteligência artificial, esta taxa é o nº de casos (prováveis) de violência sinalizados pelo modelo de IA que não foram notificados dividido pelo total de mulheres atendidas na atenção primária e multiplicados por 10 mil.
                 </dd>
 
                 <dt><strong>Categoria</strong></dt>

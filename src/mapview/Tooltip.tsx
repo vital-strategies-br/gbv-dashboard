@@ -2,7 +2,7 @@ import React from "react";
 
 import useMousePosition from "../hooks/useMousePosition";
 import { TooltipProps } from "./types";
-import { formatPercentage } from "./utils";
+import { formatRatePer10k } from "./utils";
 // CSS
 import "./Tooltip.css";
 
@@ -21,8 +21,8 @@ function Tooltip({ data }: TooltipProps) {
     >
       <h4 className="tooltip-title">{data.name}</h4>
       <div className="tooltip-data">
-        Taxa de subnotificação:{" "}
-        <strong>{formatPercentage(data.subnotification_rate)}</strong>
+        Subnotificação por 10 mil:{" "}
+        <strong>{formatRatePer10k(data.subnotification_rate)}</strong>
       </div>
       <div className="tooltip-data">
         Categoria: <strong>{data.category || "n.d."}</strong>

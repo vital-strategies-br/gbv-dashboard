@@ -10,3 +10,18 @@ g.histogram-bar-na > text {
   text-anchor: middle;
   fill: #464646;
 }
+
+.histogram-label-sub {
+  font-size: 14px;
+  fill: #808080;
+}
+
+.histogram-hover-label { 
+  text-anchor: middle;
+  fill: #464646;
+  font-weight: bold;
+}
+
+.histogram-bar-xrange-bg {
+  fill: #e5f0ff;
+}

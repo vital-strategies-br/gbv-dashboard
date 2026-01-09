@@ -1,7 +1,8 @@
 .homepage {
   display: flex;
   flex-flow: column nowrap;
-  min-height: min(100vh, 995px);
+  /* min-height: min(100vh, 995px); */
+  min-height: min(100vh, 800px);
   background-color: #121E87;
 }
 

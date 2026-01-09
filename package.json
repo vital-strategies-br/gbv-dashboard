@@ -2,7 +2,7 @@
   "name": "vital-gbv-dashboard",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/gbv-dashboard",
+  "homepage": "/painel-violencia-de-genero",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",

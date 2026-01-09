@@ -9,12 +9,27 @@
   flex: 1;
   display: flex;
   gap: 32px;
+  flex-wrap: nowrap;
 }
+
 .temporal-trend-left-container {
   display: flex;
   flex-direction: column;
   max-width: 500px;
+  flex-shrink: 0;
   gap: 16px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 1200px) {
+  .temporal-trend-main-container {
+    flex-wrap: wrap;
+  }
+  
+  .temporal-trend-left-container {
+    max-width: 100%;
+    flex-shrink: 1;
+  }
 }
 .temporal-trend-button-wrapper {
   display: flex;

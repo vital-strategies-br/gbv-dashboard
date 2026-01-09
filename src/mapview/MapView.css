@@ -11,7 +11,7 @@
   flex-direction: column;
   padding: 32px 0;
   min-width: 500px;
-  gap: 32px;
+  gap: 16px;
 }
 
 /* MAP CONTAINER */
@@ -19,12 +19,18 @@
   display: flex;
   flex: 1;
   justify-content: center;
+  min-height: 300px;
 }
 
 .report-button-wrapper {
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  margin-top: auto;
+}
+
+.mapview-instructions-wrapper {
+  flex-shrink: 0;
 }
 
 @media (max-width: 720px) {
@@ -33,5 +39,17 @@
   }
   .mapview-section {
     min-width: 350px;
+    gap: 12px;
+    padding: 24px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    width: 100%;
+    height: auto;
+  }
+  .mapview-map-container {
+    min-height: 250px;
   }
 }

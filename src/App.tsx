@@ -18,21 +18,12 @@ function DashboardSections() {
   return (
     <>
       <Section
-        id="painel"
-        title="Subnotificação de violência contra mulher no município de Recife"
-        subtitle="Estimativa de Subnotificação por 10.000 usuárias das atenção básica."
-        iconSrc={Demographic}
-        iconAlt=""
-        defaultOpen
-      >
-        <MapView />
-      </Section>
-      <Section
         id="patterns-over-time"
         title="Padrões de registros ao longo do tempo"
         subtitle="Mapeamento de registros no e-SUS AB antes e depois do episódio de violência."
         iconSrc={TrendInspect}
         iconAlt=""
+        defaultOpen
       >
         <TemporalTrendView />
       </Section>
@@ -45,13 +36,22 @@ function DashboardSections() {
       >
         <LexiconView />
       </Section>
+      <Section
+        id="painel"
+        title="Subnotificação de violência contra mulher no município de Recife"
+        subtitle="Estimativa de Subnotificação por 10.000 usuárias das atenção básica."
+        iconSrc={Demographic}
+        iconAlt=""
+      >
+        <MapView />
+      </Section>
     </>
   );
 }
 
 function App() {
   return (
-    <Router basename="/gbv-dashboard">
+    <Router basename="/painel-violencia-de-genero">
       <ScrollToTop />
       <div className="viewport">
         <Navbar />

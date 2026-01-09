@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import RecifeLogo from "../img/recife_logo_white.svg";
 import VitalLogo from "../img/vital_logo_white.png";
 import ShowMenu from "../icons/show-menu.svg";
 import "./Navbar.css";
@@ -14,6 +15,7 @@ function Navbar() {
   return (
     <header className={`header ${!isSticky ? "non-sticky" : ""}`}>
       <div className="logo">
+        <img src={RecifeLogo} alt="Recife Logo" />
         <img src={VitalLogo} alt="Vital Strategies Logo" />
       </div>
       <nav className={`nav ${!isNavMenuOpen ? "closed" : ""}`}>

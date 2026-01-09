@@ -1,4 +1,4 @@
-import { RelativeCategory, TerritoryData, SubnotificationData, UISubnotificationData } from "./types";
+import { CategoryScheme, RelativeCategory, TerritoryData, SubnotificationData, UISubnotificationData } from "./types";
 
 export const SEQUENTIAL_PALETTE = [
     // '#fff0f0',
@@ -15,6 +15,54 @@ export const SEQUENTIAL_PALETTE = [
 ];
 
 export const NA_COLOR = "#d4d4d4"
+
+export const CATEGORY_ORDER: RelativeCategory[] = [
+    RelativeCategory.MINIMAL,
+    RelativeCategory.LOW,
+    RelativeCategory.BELOW_AVERAGE,
+    RelativeCategory.AVERAGE,
+    RelativeCategory.ABOVE_AVERAGE,
+    RelativeCategory.HIGH,
+    RelativeCategory.EXTREME,
+];
+
+
+export function getCategoryScheme(): CategoryScheme {
+    const allCategories = CATEGORY_ORDER;
+    const innerCategories = allCategories.slice(1, -1);
+
+    const range = 6; // -3 .. 3
+    const step = range / innerCategories.length;
+
+    const boundaries: number[] = [-3];
+    for (let i = 1; i < innerCategories.length; i++) {
+        boundaries.push(-3 + step * i);
+    }
+    boundaries.push(3);
+
+    return {
+        allCategories,
+        innerCategories,
+        boundaries,
+        step,
+    };
+}
+
+const CATEGORY_SCHEME = getCategoryScheme();
+
+
+export function zScoreToCategory(zScore: Nullable<number>): Nullable<RelativeCategory> {
+    if (zScore == null) return null;
+
+    const { allCategories, innerCategories, step } = CATEGORY_SCHEME;
+
+    if (zScore <= -3) return allCategories[0];
+    if (zScore >= 3) return allCategories[allCategories.length - 1];
+
+    const index = Math.floor((zScore + 3) / step);
+    return innerCategories[Math.min(Math.max(index, 0), innerCategories.length - 1)];
+}
+
 
 export function applyFilter(data: TerritoryData[], filterFn: (obj: SubnotificationData) => boolean): UISubnotificationData[] {
     return data.map((neighborhood) => {
@@ -33,36 +81,17 @@ export function applyFilter(data: TerritoryData[], filterFn: (obj: Subnotificati
     });
 }
 
-export function assignCategories(neighborhoods: TerritoryData[]): TerritoryData[] {
-    // Get the categories dynamically, excluding the first and last
-    const allCategories = Object.values(RelativeCategory);
-    const categories = allCategories.slice(1, -1); // Exclude EXTREME categories
-
-    // Helper function to get the category based on z-score
-    const getCategory = (zScore: Nullable<number>): Nullable<RelativeCategory> => {
-        if (zScore === null) return null;
-
-        if (zScore <= -3) return allCategories[0];
-        if (zScore >= 3) return allCategories[allCategories.length - 1];
-
-        // Determine the appropriate category within the (-3, 3) range
-        const range = 6; // From -3 to 3
-        const numCategories = categories.length;
-        const step = range / numCategories;
-        const index = Math.floor((zScore + 3) / step);
-
-        return categories[Math.min(Math.max(index, 0), numCategories - 1)];
-    };
-
-    // Create a new object with updated categories
-    return neighborhoods.map(neighborhood => ({
+export function assignCategories(
+    neighborhoods: TerritoryData[]
+): TerritoryData[] {
+    return neighborhoods.map((neighborhood) => ({
         ...neighborhood,
-        periods: neighborhood.periods.map(data => ({
+        periods: neighborhood.periods.map((data) => ({
             ...data,
-            category: getCategory(data.subnotification_rate_zscore)
-        }))
+            category: zScoreToCategory(data.subnotification_rate_zscore),
+        })),
     }));
-};
+}
 
 /**
  * Initializes category counts for each bin.
@@ -70,7 +99,7 @@ export function assignCategories(neighborhoods: TerritoryData[]): TerritoryData[
  * @returns An object with category counts initialized to zero for each bin.
  */
 function initializeCategoryCounts(bins: number): { [binIndex: number]: { [category: string]: number } } {
-    const initialCounts = Object.values(RelativeCategory).reduce((acc, category) => {
+    const initialCounts = CATEGORY_ORDER.reduce((acc, category) => {
         acc[category] = 0;
         return acc;
     }, {} as { [category: string]: number });
@@ -170,26 +199,22 @@ export function getHistogramData(
  * getColorForCategory(null);
  */
 export function getColorForCategory(category: Nullable<RelativeCategory>): string {
-    // Return NA_COLOR if category is null
-    if (category === null || category === undefined) {
-        return NA_COLOR;
-    }
+  if (category == null) return NA_COLOR;
 
-    // Define the mapping of RelativeCategory to palette indices
-    const categoryToPaletteIndex: { [key in RelativeCategory]: number } = {
-        [RelativeCategory.MINIMAL]: 0,
-        [RelativeCategory.LOW]: 1,
-        [RelativeCategory.BELOW_AVERAGE]: 2,
-        [RelativeCategory.AVERAGE]: 3,
-        [RelativeCategory.ABOVE_AVERAGE]: 4,
-        [RelativeCategory.HIGH]: 5,
-        [RelativeCategory.EXTREME]: 6,
-    };
+  const idx = CATEGORY_ORDER.indexOf(category);
+  if (idx === -1) return NA_COLOR;
 
-    return SEQUENTIAL_PALETTE[categoryToPaletteIndex[category]];
+  // If palette is longer than categories, keep as-is; if shorter, clamp.
+  return SEQUENTIAL_PALETTE[Math.min(idx, SEQUENTIAL_PALETTE.length - 1)] ?? NA_COLOR;
 }
+
 
 export function formatPercentage(float: Nullable<number>, decimalPoints: number = 2) {
     if (float === null) return "n.d.";
     return (float * 100).toFixed(decimalPoints) + "%"
+}
+
+export function formatRatePer10k(float: Nullable<number>) {
+    if (float === null) return "n.d.";
+    return Math.round(float * 10 * 1000);
 }

@@ -22,7 +22,7 @@ function Homepage() {
     <div className="homepage">
       <section className="hero">
         <div className="hero-text">
-          <h1>Painel de subnotificação da violência de gênero no Recife</h1>
+          <h1>Painel da violência de gênero e saúde no Recife</h1>
           <p>
             É possível identificar sinais de violência em atendimentos de rotina
             da atenção primária em saúde? Nós acreditamos que sim. Com o uso do

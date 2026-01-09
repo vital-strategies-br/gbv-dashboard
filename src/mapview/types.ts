@@ -52,6 +52,8 @@ export interface SVGMapProps {
     data: { [index: string]: UISubnotificationData },
     // The 'id' of the selected path
     selectedShapeId: Nullable<number>,
+    // the boundaries of each category
+    categoryBoundaries: CategoryScheme,
     // The territory category to be highlighted
     highlightedCategory?: Nullable<RelativeCategory>;
     // The territories to be highlighted
@@ -77,8 +79,10 @@ export interface HistogramChartProps {
     nullCount: number;
     xAxisLimits: [number, number];
     yAxisLimits: [number, number];
-    width?: number,
-    height?: number,
+    avgValue?: number;
+    medianValue?: number;
+    width?: number;
+    height?: number;
     highlightedCategory?: Nullable<RelativeCategory>;
     highlightedBin?: Nullable<number>;
     onBarMouseEnter: (index: number | undefined) => void;
@@ -96,9 +100,17 @@ export interface HistogramBarProps {
     isActive?: boolean;
     onMouseEnter?: (index: number | undefined) => void;
     onMouseLeave?: () => void;
+    xRangeLabel?: string;
 }
 
 export interface TerritoryDetailProps {
     data: UISubnotificationData;
 }
 
+
+export type CategoryScheme = {
+  allCategories: RelativeCategory[];
+  innerCategories: RelativeCategory[];
+  boundaries: number[]; // z-score boundaries
+  step: number;
+};

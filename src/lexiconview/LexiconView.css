@@ -8,20 +8,20 @@
 .lexicon-main-container {
     flex: 1;
     display: flex;
-    flex-wrap: wrap;
     gap: 32px;
+    flex-wrap: nowrap;
 }
 .lexicon-text-wrapper {
-    flex: 1 0 320px;
-    min-width: 320px;
+    flex: 0 1 400px;
+    min-width: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 .lexicon-barchart-wrapper {
-    flex: 1 0 320px;
-    min-width: 320px;
+    flex: 1 1 auto;
+    min-width: 0;
     box-sizing: border-box;
 }
 .lexicon-top-lus ol {
@@ -36,4 +36,32 @@
 .lexicon-top-lus ol li {
     font-weight: bold;
     overflow-wrap: break-word;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 1200px) {
+    .lexicon-main-container {
+        flex-wrap: wrap;
+    }
+    
+    .lexicon-text-wrapper {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    
+    .lexicon-barchart-wrapper {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    
+    .lexicon-top-lus ol {
+        column-count: 2;
+        column-gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .lexicon-top-lus ol {
+        column-count: 1;
+    }
 }
