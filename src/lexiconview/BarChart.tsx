@@ -246,7 +246,7 @@ function BarChart({
       <g>
         {selectedBarIndex !== null &&
           (() => {
-            const POPUP_WIDTH = 320;
+            const POPUP_WIDTH = 340;
             const POPUP_HEIGHT = ageGroupLabels.length * 24 + 42;
             const barX =
               chartMarginLeft + barGap + selectedBarIndex * (barWidth + barGap);
