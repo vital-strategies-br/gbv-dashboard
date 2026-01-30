@@ -21,7 +21,7 @@ function Tooltip({ data }: TooltipProps) {
     >
       <h4 className="tooltip-title">{data.name}</h4>
       <div className="tooltip-data">
-        Subnotificação por 10 mil:{" "}
+        Casos prováveis por 10 mil:{" "}
         <strong>{formatRatePer10k(data.subnotification_rate)}</strong>
       </div>
       <div className="tooltip-data">

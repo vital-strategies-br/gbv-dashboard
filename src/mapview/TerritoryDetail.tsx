@@ -27,7 +27,7 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
         </div>
         <div className="territory-detail-info-box-body">
           <div className="territory-detail-info-box-row">
-            <span>Taxa de subnotificação por 10 mil</span>
+            <span>Taxa de casos prováveis por 10 mil</span>
             <span>{formatRatePer10k(data.subnotification_rate)}</span>
           </div>
           <div className="territory-detail-info-box-row">
@@ -100,14 +100,14 @@ function TerritoryDetail({ data }: TerritoryDetailProps) {
               <h3 className="help-box-title">Entenda os Indicadores:</h3>
 
               <dl className="help-definition-list">
-                <dt><strong>Taxa de Subnotificação</strong></dt>
+                <dt><strong>Taxa de casos prováveis</strong></dt>
                 <dd>
                   Calculada a partir dos resultados do modelo de inteligência artificial, esta taxa é o nº de casos (prováveis) de violência sinalizados pelo modelo de IA que não foram notificados dividido pelo total de mulheres atendidas na atenção primária e multiplicados por 10 mil.
                 </dd>
 
                 <dt><strong>Categoria</strong></dt>
                 <dd>
-                  Classificação da taxa de subnotificação do bairro em relação à média de casos prováveis (identificados pelo modelo de IA) do município.
+                  Classificação da taxa de casos prováveis do bairro em relação à média de casos prováveis (identificados pelo modelo de IA) do município.
                 </dd>
 
                 <dt><strong>População feminina</strong></dt>

@@ -39,7 +39,7 @@ function DashboardSections() {
       <Section
         id="painel"
         title="Subnotificação de violência contra mulher no município de Recife"
-        subtitle="Estimativa de Subnotificação por 10.000 usuárias das atenção básica."
+        subtitle="Casos potenciais por 10.000 usuárias das atenção básica."
         iconSrc={Demographic}
         iconAlt=""
       >

@@ -194,8 +194,8 @@ function MapView() {
       <div className="mapview-section">
         <div className="mapview-instructions-wrapper">
           <p className="mapview-instructions">
-            O mapa do Recife à esquerda mostra a estimativa de subnotificação de
-            casos de violência contra a mulher para cada 10.000 usuárias da
+            O mapa do Recife à esquerda mostra uma estimativa de potenciais casos de
+            violência não notificados contra a mulher para cada 10.000 usuárias da
             atenção básica (AB) em cada bairro. O gráfico de barras agrupa
             bairros em faixas de estimativa similares. Ao passar o mouse sobre
             cada barra, destacam-se os bairros com quantidades similares de

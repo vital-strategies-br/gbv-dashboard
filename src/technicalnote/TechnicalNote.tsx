@@ -332,24 +332,26 @@ function TechnicalNote() {
           Por exemplo, na frase “Paciente relata agressão por parte do marido”,
           esse vetor de <em>features</em> deve ter a contagem 1 para os{" "}
           <em>frames</em> <strong>Pessoa por condição em saúde</strong>{" "}
-          (paciente), <strong>Causar dano</strong> (agressão) e <strong>Relações pessoais</strong> (marido). Também 1
-          para os elementos
+          (paciente), <strong>Causar dano</strong> (agressão) e{" "}
+          <strong>Relações pessoais</strong> (marido). Também 1 para os
+          elementos
           <strong>Paciente</strong> (paciente), <strong>Agressor</strong>{" "}
           (marido), <strong>Vítima</strong> (paciente),{" "}
-          <strong>Parceiro 1</strong> (paciente) e <strong>Parceiro 2</strong> (marido). Por fim, a contagem
-          também deve ser 1 para as co-ocorrências entre{" "}
-          <strong>Paciente</strong>, <strong>Parceiro 1</strong> e{" "}
+          <strong>Parceiro 1</strong> (paciente) e <strong>Parceiro 2</strong>{" "}
+          (marido). Por fim, a contagem também deve ser 1 para as co-ocorrências
+          entre <strong>Paciente</strong>, <strong>Parceiro 1</strong> e{" "}
           <strong>Vítima</strong>, já que a paciente representa simultaneamente
-          todos esses elementos, e <strong>Agressor</strong> e {" "}
+          todos esses elementos, e <strong>Agressor</strong> e{" "}
           <strong>Parceiro 2</strong>, representados pelo marido. Nesse exemplo,
           todas as
           <em>features</em> citadas tem frequência igual, mas quando se
           considera todo o conjunto de sentenças de um prontuário, há uma
           tendência de que elas se repitam. Considere, por exemplo, quantas
-          vezes o substantivo <strong>paciente</strong> ou o verbo <strong>relatar</strong> aparecem
-          em um prontuário. Portanto, é importante capturar de maneira mais
-          geral as frequências dessas características semânticas em um
-          determinado prontuário a fim de estimar sua importância.
+          vezes o substantivo <strong>paciente</strong> ou o verbo{" "}
+          <strong>relatar</strong> aparecem em um prontuário. Portanto, é
+          importante capturar de maneira mais geral as frequências dessas
+          características semânticas em um determinado prontuário a fim de
+          estimar sua importância.
         </p>
         <p dir="ltr">
           A próxima etapa consiste em aplicar, para cada um dos vetores de
@@ -391,7 +393,8 @@ function TechnicalNote() {
           pouco diferenciam prontuários entre si.
         </p>
         <p dir="ltr">
-          Com a aplicação de todas essas etapas, foram obtidos os vetores de <em>features</em> de todos os registros do e-SUS APS. Esses vetores
+          Com a aplicação de todas essas etapas, foram obtidos os vetores de{" "}
+          <em>features</em> de todos os registros do e-SUS APS. Esses vetores
           servem como conjunto de treinamento para o modelo de identificação de
           possíveis casos de violência.
         </p>
@@ -403,17 +406,17 @@ function TechnicalNote() {
           seu treinamento, a existência de um conjunto de dados devidamente
           rotulados. Para a tarefa de identificação de casos com padrão de
           violência, o conjunto deve ser composto de vetores de{" "}
-          <em>features</em> semântica, representando registros de um dos SIS pareados e um rótulo
-          identificando se o registro possui relação com um caso de violência ou
-          não. Como os registros do e-SUS APS não são, em princípio, sobre
-          violência, estabelecer essa causalidade é uma tarefa árdua. Mesmo com
-          as linhas da vida de mulheres reconstruídas pelo pareamento de dados
-          em diferentes sistemas, não é possível estabelecer de maneira
-          automática e sistemática a relação entre, por exemplo, uma visita a
-          uma UBS e uma hospitalização. Por conta disso, foram definidas regras
-          de aproximação para uma pré-classificação de registros a fim de se
-          construir um conjunto de treinamento. Essas regras organizaram os
-          registros em alguns grupos distintos:
+          <em>features</em> semântica, representando registros de um dos SIS
+          pareados e um rótulo identificando se o registro possui relação com um
+          caso de violência ou não. Como os registros do e-SUS APS não são, em
+          princípio, sobre violência, estabelecer essa causalidade é uma tarefa
+          árdua. Mesmo com as linhas da vida de mulheres reconstruídas pelo
+          pareamento de dados em diferentes sistemas, não é possível estabelecer
+          de maneira automática e sistemática a relação entre, por exemplo, uma
+          visita a uma UBS e uma hospitalização. Por conta disso, foram
+          definidas regras de aproximação para uma pré-classificação de
+          registros a fim de se construir um conjunto de treinamento. Essas
+          regras organizaram os registros em alguns grupos distintos:
         </p>
         <ul>
           <li dir="ltr">
@@ -666,25 +669,25 @@ function TechnicalNote() {
           className="anchor-target"
           dir="ltr"
         >
-          Subnotificação de violência contra mulher no Recife
+          Prováveis casos de violência contra mulher no Recife
         </h2>
         <p dir="ltr">
-          A subnotificação foi calculada a partir dos registros do e-SUS APS
-          classificados pelo modelo de inteligência artificial. Como mencionado
-          anteriormente, essa classificação só foi possível porque o modelo foi
-          treinado com alguns registros em que havia alta probabilidade de haver
-          padrões de violência nos textos, principalmente usando notificações de
-          violência e declarações explícitas de violência nos atendimentos da
-          atenção básica.
+          A taxa de casos prováveis de violência foi calculada a partir dos
+          registros do e-SUS APS classificados pelo modelo de inteligência
+          artificial. Como mencionado anteriormente, essa classificação só foi
+          possível porque o modelo foi treinado com alguns registros em que
+          havia alta probabilidade de haver padrões de violência nos textos,
+          principalmente usando notificações de violência e declarações
+          explícitas de violência nos atendimentos da atenção básica.
         </p>
         <p dir="ltr">
           Após atribuir uma classificação do modelo treinado para cada registro
           do e-SUS, esses mesmos registros foram agrupados por bairro de
           residência da paciente. A partir disso, pode-se calcular uma
           estimativa de notificação para apoiar a gestão a identificar
-          territórios com maior ou menor subnotificação. A taxa de
-          subnotificação de um determinado território é dada pela seguinte
-          fórmula:
+          territórios com maior ou menor prevalência de violência contra
+          mulheres e meninas. A taxa de casos prováveis de um determinado
+          território é dada pela seguinte fórmula:
         </p>
         <div className="img-wrapper">
           <img src={FormulaUnderreporting} alt="Formula de Subnotificação" />
@@ -698,7 +701,8 @@ function TechnicalNote() {
           agressão) e <strong>Prováveis</strong> são meninas/mulheres que
           possuem pelo menos um registro em que o modelo de IA classificou como
           contendo padrões relacionados à violência e que não estejam no
-          conjunto de casos <strong>Subnotificados</strong> ou <strong>Sinan</strong>. Portanto, a ideia é identificar o número de
+          conjunto de casos <strong>Subnotificados</strong> ou{" "}
+          <strong>Sinan</strong>. Portanto, a ideia é identificar o número de
           casos de suspeita ou de violência confirmada em que não houve
           notificação e dividir esse número pelo número de mulheres que são
           usuárias da AP no território. Uma taxa de 10% indicaria que até 10%
